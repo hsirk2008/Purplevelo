@@ -2,6 +2,7 @@
 class Session {
 	public $session_id = '';
 	public $data = array();
+	public $adaptor;
 
 	public function __construct($adaptor = 'native') {
 		$class = 'Session\\' . $adaptor;
@@ -10,12 +11,8 @@ class Session {
 			$this->adaptor = new $class($this);
 		} else {
 			throw new \Exception('Error: Could not load session adaptor ' . $adaptor . ' session!');
-		}		
+		}               
 		
-		if ($this->adaptor) {
-			session_set_save_handler($this->adaptor);
-		}
-			
 		if ($this->adaptor && !session_id()) {
 			ini_set('session.use_only_cookies', 'Off');
 			ini_set('session.use_cookies', 'On');
@@ -27,8 +24,9 @@ class Session {
 			}
 			
 			session_set_cookie_params(0, '/');
+			session_set_save_handler($this->adaptor, true);
 			session_start();
-		}			
+		}                       
 	}
 		
 	public function start($key = 'default', $value = '') {
@@ -38,7 +36,7 @@ class Session {
 			$this->session_id = $_COOKIE[$key];
 		} else {
 			$this->session_id = $this->createId();
-		}	
+		}       
 		
 		if (!isset($_SESSION[$this->session_id])) {
 			$_SESSION[$this->session_id] = array();
@@ -51,7 +49,7 @@ class Session {
 		}
 		
 		return $this->session_id;
-	}	
+	}       
 
 	public function getId() {
 		return $this->session_id;
@@ -61,7 +59,7 @@ class Session {
 		if (version_compare(phpversion(), '5.5.4', '>') == true) {
 			return $this->adaptor->create_sid();
 		} elseif (function_exists('random_bytes')) {
-        	return substr(bin2hex(random_bytes(26)), 0, 26);
+		return substr(bin2hex(random_bytes(26)), 0, 26);
 		} elseif (function_exists('openssl_random_pseudo_bytes')) {
 			return substr(bin2hex(openssl_random_pseudo_bytes(26)), 0, 26);
 		} else {

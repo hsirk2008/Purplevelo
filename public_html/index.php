@@ -1,4 +1,7 @@
 <?php
+// Suppress PHP 8.2 deprecation warnings
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
+
 // Version
 define('VERSION', '2.3.0.2');
 
