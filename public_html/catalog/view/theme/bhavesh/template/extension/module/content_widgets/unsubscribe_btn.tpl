@@ -1,0 +1,1 @@
+<span class="unsubscribe"><a onclick="unsubscribe(<?php echo $module; ?>);"><?php echo $bhavesh_unsubscribe_btn; ?></a></span>

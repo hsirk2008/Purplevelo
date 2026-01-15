@@ -1,0 +1,36 @@
+[04-Apr-2022 06:55:01 UTC] PHP Warning:  require_once(/home/yu63ztrturqx/public_html/digitalcosmo.co.in/perfectnails/system/startup.php): failed to open stream: No such file or directory in /home/yu63ztrturqx/public_html/digitalcosmo.co.in/index.php on line 17
+[04-Apr-2022 06:55:01 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/yu63ztrturqx/public_html/digitalcosmo.co.in/perfectnails/system/startup.php' (include_path='.:/opt/alt/php56/usr/share/pear:/opt/alt/php56/usr/share/php') in /home/yu63ztrturqx/public_html/digitalcosmo.co.in/index.php on line 17
+[04-Apr-2022 06:58:58 UTC] PHP Warning:  require_once(/home/yu63ztrturqx/public_html/digitalcosmo.co.in/perfectnails/system/startup.php): failed to open stream: No such file or directory in /home/yu63ztrturqx/public_html/digitalcosmo.co.in/index.php on line 17
+[04-Apr-2022 06:58:58 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/yu63ztrturqx/public_html/digitalcosmo.co.in/perfectnails/system/startup.php' (include_path='.:/opt/alt/php56/usr/share/pear:/opt/alt/php56/usr/share/php') in /home/yu63ztrturqx/public_html/digitalcosmo.co.in/index.php on line 17
+[04-Apr-2022 07:01:40 UTC] PHP Warning:  require_once(/home/yu63ztrturqx/public_html/digitalcosmo.co.in/perfectnails/system/startup.php): failed to open stream: No such file or directory in /home/yu63ztrturqx/public_html/digitalcosmo.co.in/index.php on line 17
+[04-Apr-2022 07:01:40 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/yu63ztrturqx/public_html/digitalcosmo.co.in/perfectnails/system/startup.php' (include_path='.:/opt/alt/php56/usr/share/pear:/opt/alt/php56/usr/share/php') in /home/yu63ztrturqx/public_html/digitalcosmo.co.in/index.php on line 17
+[04-Apr-2022 07:04:42 UTC] PHP Warning:  require_once(/home/yu63ztrturqx/public_html/digitalcosmo.co.in/perfectnails/system/startup.php): failed to open stream: No such file or directory in /home/yu63ztrturqx/public_html/digitalcosmo.co.in/index.php on line 17
+[04-Apr-2022 07:04:42 UTC] PHP Fatal error:  require_once(): Failed opening required '/home/yu63ztrturqx/public_html/digitalcosmo.co.in/perfectnails/system/startup.php' (include_path='.:/opt/alt/php56/usr/share/pear:/opt/alt/php56/usr/share/php') in /home/yu63ztrturqx/public_html/digitalcosmo.co.in/index.php on line 17
+[10-Apr-2022 07:51:06 UTC] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in /home/yu63ztrturqx/public_html/digitalcosmo.co.in/perfectnails/system/storage/modification/catalog/controller/startup/seo_url.php on line 208
+[10-Apr-2022 07:51:09 UTC] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in /home/yu63ztrturqx/public_html/digitalcosmo.co.in/perfectnails/system/storage/modification/catalog/controller/startup/seo_url.php on line 208
+[10-Apr-2022 07:51:42 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/yu63ztrturqx/public_html/digitalcosmo.co.in/perfectnails/system/storage/modification/catalog/controller/startup/seo_url.php on line 206
+[19-Jun-2023 14:11:53 UTC] PHP Fatal error:  Uncaught Exception: Error: Table 'mamadou2023.oc_extension' doesn't exist<br />Error No: 1146<br />SELECT * FROM oc_extension WHERE `type` = 'openbay' in /home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/library/db.php(16): DB\MySQLi->query('SELECT * FROM o...', Array)
+#1 /home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/library/openbay.php(117): DB->query('SELECT * FROM o...')
+#2 /home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/library/openbay.php(10): Openbay->getInstalled()
+#3 /home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/storage/modification/system/engine/loader.php(110): Openbay->__construct(Object(Registry))
+#4 /home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/framework.php(81): Loader->library('openbay')
+#5 /home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/startup.php(124): require_once('/home/yu63ztrtu.. in /home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/library/db/mysqli.php on line 40
+[19-Jun-2023 14:12:14 UTC] PHP Fatal error:  Uncaught Exception: Error: Table 'mamadou2023.oc_extension' doesn't exist<br />Error No: 1146<br />SELECT * FROM oc_extension WHERE `type` = 'openbay' in /home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/library/db.php(16): DB\MySQLi->query('SELECT * FROM o...', Array)
+#1 /home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/library/openbay.php(117): DB->query('SELECT * FROM o...')
+#2 /home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/library/openbay.php(10): Openbay->getInstalled()
+#3 /home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/storage/modification/system/engine/loader.php(110): Openbay->__construct(Object(Registry))
+#4 /home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/framework.php(81): Loader->library('openbay')
+#5 /home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/startup.php(124): require_once('/home/yu63ztrtu.. in /home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/library/db/mysqli.php on line 40
+[19-Jun-2023 14:12:16 UTC] PHP Fatal error:  Uncaught Exception: Error: Table 'mamadou2023.oc_extension' doesn't exist<br />Error No: 1146<br />SELECT * FROM oc_extension WHERE `type` = 'openbay' in /home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/library/db/mysqli.php:40
+Stack trace:
+#0 /home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/library/db.php(16): DB\MySQLi->query('SELECT * FROM o...', Array)
+#1 /home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/library/openbay.php(117): DB->query('SELECT * FROM o...')
+#2 /home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/library/openbay.php(10): Openbay->getInstalled()
+#3 /home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/storage/modification/system/engine/loader.php(110): Openbay->__construct(Object(Registry))
+#4 /home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/framework.php(81): Loader->library('openbay')
+#5 /home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/startup.php(124): require_once('/home/yu63ztrtu.. in /home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/library/db/mysqli.php on line 40
+[05-Jul-2023 17:21:17 UTC] PHP Warning:  unlink(/home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/storage/cache/cache.bhavesh_mandatory_css_store_0.1688542069): No such file or directory in /home/yu63ztrturqx/public_html/digitalcosmo.co.in/mamadou/system/library/cache/file.php on line 17
