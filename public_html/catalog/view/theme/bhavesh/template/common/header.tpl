@@ -50,44 +50,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<!-- Critical CSS - Bootstrap required for layout -->
+<!-- Critical CSS -->
 <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
 
-<!-- Inline Critical CSS for above-fold content -->
-<style id="critical-css">
-body{font-family:'Josefin Sans','Montserrat',sans-serif;margin:0;padding:0;background:#fff;color:#333}
-#header,header,.header-wrapper{background:#543361;color:#fff}
-.container{max-width:1200px;margin:0 auto;padding:0 15px}
-.row{display:flex;flex-wrap:wrap;margin:0 -15px}
-.col-xs-12{width:100%;padding:0 15px}
-.col-sm-6{width:50%}
-.col-md-3,.col-md-4{width:25%}
-@media(min-width:768px){.col-sm-6{width:50%}.col-md-3{width:25%}.col-md-4{width:33.33%}}
-#logo,#logo img{max-height:120px;display:block}
-nav,#nav,.main-nav{background:#fff}
-.navbar-nav{display:flex;list-style:none;margin:0;padding:0}
-.navbar-nav>li{margin:0 15px}
-.navbar-nav>li>a{color:#333;text-decoration:none;padding:20px 0;display:block}
-.btn,.btn-outline{display:inline-block;padding:12px 24px;border-radius:50px;text-decoration:none}
-.btn-contrast{background:#543361;color:#fff}
-section{position:relative}
-video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
-.hidden{display:none}
-img{max-width:100%;height:auto}
-</style>
-
 <!-- Fonts with display swap for performance -->
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet"></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
 <!-- Core JS - jQuery must load first -->
 <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js"></script>
 <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" defer></script>
 <script src="catalog/view/theme/bhavesh/js/slick.min.js" defer></script>
 <script src="catalog/view/theme/bhavesh/js/bhavesh_common.js" defer></script>
-<!-- Main stylesheet - deferred for performance -->
-<link rel="preload" href="catalog/view/theme/bhavesh/stylesheet/stylesheet.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link href="catalog/view/theme/bhavesh/stylesheet/stylesheet.css" rel="stylesheet"></noscript>
+<!-- Main stylesheet -->
+<link href="catalog/view/theme/bhavesh/stylesheet/stylesheet.css" rel="stylesheet">
 <!-- Mandatory Theme Settings CSS -->
 <style id="bhavesh-mandatory-css"><?php echo $bhavesh_mandatory_css; ?></style>
 
@@ -140,13 +115,10 @@ img{max-width:100%;height:auto}
 <?php } ?>
 
 
-<!-- Chat CSS - deferred for performance -->
-<link rel="preload" href="chat/plugin/components/font-awesome/css/fontawesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="chat/plugin/czm-chat-support.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript>
-<link href="chat/plugin/components/font-awesome/css/fontawesome.min.css" rel="stylesheet">
-<link href="chat/plugin/czm-chat-support.css" rel="stylesheet">
-</noscript>
+<!-- *** [START] REQUIRED CSS FILES *** -->
+                <link href="chat/plugin/components/font-awesome/css/fontawesome.min.css" rel="stylesheet">
+                <link href="chat/plugin/czm-chat-support.css" rel="stylesheet">
+                <!-- *** [END] REQUIRED CSS FILES *** -->
 
 
 
