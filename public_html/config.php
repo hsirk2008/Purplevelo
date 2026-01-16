@@ -29,11 +29,27 @@ define('DIR_LOGS', '/home/runner/workspace/public_html/system/storage/logs/');
 define('DIR_MODIFICATION', '/home/runner/workspace/public_html/system/storage/modification/');
 define('DIR_UPLOAD', '/home/runner/workspace/public_html/system/storage/upload/');
 
-// DB
+// DB - Debug env vars in production
+$pghost = getenv('PGHOST');
+$pguser = getenv('PGUSER');
+$pgpass = getenv('PGPASSWORD');
+$pgdb = getenv('PGDATABASE');
+$pgport = getenv('PGPORT');
+
+// If PG vars not set, try parsing DATABASE_URL
+if (empty($pghost) && getenv('DATABASE_URL')) {
+    $db_url = parse_url(getenv('DATABASE_URL'));
+    $pghost = $db_url['host'] ?? '';
+    $pgport = $db_url['port'] ?? '5432';
+    $pguser = $db_url['user'] ?? '';
+    $pgpass = $db_url['pass'] ?? '';
+    $pgdb = ltrim($db_url['path'] ?? '', '/');
+}
+
 define('DB_DRIVER', 'postgresql');
-define('DB_HOSTNAME', getenv('PGHOST'));
-define('DB_USERNAME', getenv('PGUSER'));
-define('DB_PASSWORD', getenv('PGPASSWORD'));
-define('DB_DATABASE', getenv('PGDATABASE'));
-define('DB_PORT', getenv('PGPORT'));
+define('DB_HOSTNAME', $pghost);
+define('DB_USERNAME', $pguser);
+define('DB_PASSWORD', $pgpass);
+define('DB_DATABASE', $pgdb);
+define('DB_PORT', $pgport ?: '5432');
 define('DB_PREFIX', 'oc_');
