@@ -991,10 +991,6 @@ div.required .control-label:after {
 	/*position: relative;*/
 	z-index: 10;
 }
-.header-style .table-cell.logo, .sticky-header .table-cell.logo {
-	background-color: #000000 !important;
-	height: 100%;
-}
 #logo img {
 	padding:0px 0;
 	max-height:150px;
@@ -7245,21 +7241,3 @@ ul.sitemap > li > ul > li > ul > li > a {margin-left:28px;opacity:0.8;}
 .icon-vynil:before {content: "\e92d";}
 .icon-truck:before {content: "\e92e";}
 .icon-world:before {content: "\e92f";}
-/* Logo black background overlay */
-.header-style .table-cell.logo {
-    position: relative;
-}
-.header-style .table-cell.logo::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #000000;
-    z-index: 0;
-}
-.header-style .table-cell.logo #logo {
-    position: relative;
-    z-index: 1;
-}
