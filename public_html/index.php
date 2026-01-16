@@ -5,15 +5,17 @@ error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
 // Version
 define('VERSION', '2.3.0.2');
 
-// Configuration
-if (is_file('config.php')) {
-	require_once('config.php');
+// Configuration - use absolute path for production compatibility
+$config_file = __DIR__ . '/config.php';
+if (is_file($config_file)) {
+        require_once($config_file);
 }
 
-// Install
+// Install check disabled - config is always present
 if (!defined('DIR_APPLICATION')) {
-	header('Location: install/index.php');
-	exit;
+        // Log error for debugging
+        error_log('OpenCart config not loaded from: ' . $config_file);
+        die('Configuration error. Please contact support.');
 }
 
 // Startup
