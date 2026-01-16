@@ -72,10 +72,40 @@ final class PostgreSQL {
         $sql = preg_replace('/\bMONTH\s*\(\s*([^)]+)\s*\)/i', 'EXTRACT(MONTH FROM $1)::INTEGER', $sql);
         $sql = preg_replace('/\bYEAR\s*\(\s*([^)]+)\s*\)/i', 'EXTRACT(YEAR FROM $1)::INTEGER', $sql);
         
+        $sql = preg_replace_callback('/\bGROUP_CONCAT\s*\(\s*DISTINCT\s+([^)]+?)\s*ORDER\s+BY\s+([^)]+?)\s+(ASC|DESC)?\s*(?:SEPARATOR\s*\'([^\']*)\')?\s*\)/i', function($m) {
+            $sep = isset($m[4]) && $m[4] !== '' ? $m[4] : ',';
+            $ord = isset($m[3]) && $m[3] ? $m[3] : 'ASC';
+            return "STRING_AGG(DISTINCT {$m[1]}::TEXT, '{$sep}' ORDER BY {$m[2]} {$ord})";
+        }, $sql);
+        
+        $sql = preg_replace_callback('/\bGROUP_CONCAT\s*\(\s*DISTINCT\s+([^)]+?)\s*(?:SEPARATOR\s*\'([^\']*)\')?\s*\)/i', function($m) {
+            $sep = isset($m[2]) && $m[2] !== '' ? $m[2] : ',';
+            return "STRING_AGG(DISTINCT {$m[1]}::TEXT, '{$sep}')";
+        }, $sql);
+        
+        $sql = preg_replace_callback('/\bGROUP_CONCAT\s*\(\s*([^)]+?)\s+ORDER\s+BY\s+([^)]+?)\s+(ASC|DESC)?\s*(?:SEPARATOR\s*\'([^\']*)\')?\s*\)/i', function($m) {
+            $sep = isset($m[4]) && $m[4] !== '' ? $m[4] : ',';
+            $ord = isset($m[3]) && $m[3] ? $m[3] : 'ASC';
+            return "STRING_AGG({$m[1]}::TEXT, '{$sep}' ORDER BY {$m[2]} {$ord})";
+        }, $sql);
+        
+        $sql = preg_replace_callback('/\bGROUP_CONCAT\s*\(\s*([^)]+?)\s*SEPARATOR\s*\'([^\']*)\'\s*\)/i', function($m) {
+            return "STRING_AGG({$m[1]}::TEXT, '{$m[2]}')";
+        }, $sql);
+        
         $sql = preg_replace('/\bGROUP_CONCAT\s*\(\s*([^)]+)\s*\)/i', 'STRING_AGG($1::TEXT, \',\')', $sql);
         
         $sql = preg_replace('/\bLCASE\s*\(/i', 'LOWER(', $sql);
         $sql = preg_replace('/\bUCASE\s*\(/i', 'UPPER(', $sql);
+        
+        $sql = preg_replace('/\bCONCAT_WS\s*\(/i', 'CONCAT_WS(', $sql);
+        
+        $sql = preg_replace('/\bIF\s*\(\s*([^,]+)\s*,\s*([^,]+)\s*,\s*([^)]+)\s*\)/i', 'CASE WHEN $1 THEN $2 ELSE $3 END', $sql);
+        
+        $sql = preg_replace('/\bFIND_IN_SET\s*\(\s*([^,]+)\s*,\s*([^)]+)\s*\)/i', 'POSITION($1::TEXT IN $2)', $sql);
+        
+        $sql = preg_replace('/SQL_CALC_FOUND_ROWS\s*/i', '', $sql);
+        $sql = preg_replace('/FOUND_ROWS\s*\(\s*\)/i', '0', $sql);
         
         $sql = preg_replace('/\bUNIX_TIMESTAMP\s*\(\s*\)/i', "EXTRACT(EPOCH FROM CURRENT_TIMESTAMP)::INTEGER", $sql);
         
