@@ -22,14 +22,14 @@
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Purple Velo - Curated Cycling Tours"/>
 <meta property="og:title" content="<?php echo $title; ?>"/>
-<meta property="og:description" content="<?php echo $description ? $description : 'Self-guided European cycling holidays. Curated cycling tours through France, Italy, Spain and more.'; ?>"/>
+<meta property="og:description" content="<?php echo $description ? $description : 'Curated cycling holidays in Europe. Scenic tours through France, Italy, Spain and more.'; ?>"/>
 <meta property="og:url" content="<?php echo $base . ltrim($_SERVER['REQUEST_URI'], '/'); ?>"/>
 <meta property="og:image" content="<?php echo $base; ?>image/catalog/purple-velo-og.jpg"/>
 <meta property="og:locale" content="en_GB"/>
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="<?php echo $title; ?>"/>
-<meta name="twitter:description" content="<?php echo $description ? $description : 'Self-guided European cycling holidays. Curated cycling tours.'; ?>"/>
+<meta name="twitter:description" content="<?php echo $description ? $description : 'Curated cycling holidays in Europe. Scenic tours through France, Italy, Spain and more.'; ?>"/>
 <meta name="twitter:image" content="<?php echo $base; ?>image/catalog/purple-velo-og.jpg"/>
 
 <script type="application/ld+json">
@@ -37,7 +37,7 @@
   "@context": "https://schema.org",
   "@type": "TravelAgency",
   "name": "Purple Velo",
-  "description": "Self-guided European cycling holidays and curated cycling tours",
+  "description": "Curated cycling holidays in Europe. Scenic tours through France, Italy, Spain and more.",
   "url": "<?php echo $base; ?>",
   "logo": "<?php echo $logo; ?>",
   "telephone": "<?php echo $telephone; ?>",
