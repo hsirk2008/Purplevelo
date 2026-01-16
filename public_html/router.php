@@ -27,22 +27,64 @@ if ($path === '/llms.txt') {
     exit;
 }
 
-if ($path !== '/' && file_exists(__DIR__ . $decoded_path)) {
-    // Set CORS for font files
-    if (preg_match('/\.(woff2?|ttf|eot|otf)$/i', $path)) {
-        header('Access-Control-Allow-Origin: *');
-        header('Cache-Control: public, max-age=31536000');
-    }
-    // Cache static assets for 1 year
-    if (preg_match('/\.(css|js|jpg|jpeg|png|gif|webp|svg|ico|mp4|webm|pdf)$/i', $path)) {
-        header('Cache-Control: public, max-age=31536000, immutable');
-    }
+if ($path !== '/' && file_exists(__DIR__ . $decoded_path) && !is_dir(__DIR__ . $decoded_path)) {
+    $filepath = __DIR__ . $decoded_path;
+    $extension = strtolower(pathinfo($filepath, PATHINFO_EXTENSION));
+    
     // For PHP files, include them directly
-    if (preg_match('/\.php$/i', $path)) {
-        include __DIR__ . $decoded_path;
+    if ($extension === 'php') {
+        include $filepath;
         exit;
     }
-    return false;
+    
+    // MIME types
+    $mimeTypes = [
+        'css' => 'text/css',
+        'js' => 'application/javascript',
+        'jpg' => 'image/jpeg',
+        'jpeg' => 'image/jpeg',
+        'png' => 'image/png',
+        'gif' => 'image/gif',
+        'webp' => 'image/webp',
+        'svg' => 'image/svg+xml',
+        'ico' => 'image/x-icon',
+        'woff' => 'font/woff',
+        'woff2' => 'font/woff2',
+        'ttf' => 'font/ttf',
+        'eot' => 'application/vnd.ms-fontobject',
+        'otf' => 'font/otf',
+        'mp4' => 'video/mp4',
+        'webm' => 'video/webm',
+        'pdf' => 'application/pdf',
+        'html' => 'text/html',
+        'htm' => 'text/html',
+        'json' => 'application/json',
+        'xml' => 'application/xml',
+        'txt' => 'text/plain',
+    ];
+    
+    // Set Content-Type
+    if (isset($mimeTypes[$extension])) {
+        header('Content-Type: ' . $mimeTypes[$extension]);
+    }
+    
+    // Cache static assets for 1 year (fonts, images, css, js, video)
+    if (preg_match('/^(css|js|jpg|jpeg|png|gif|webp|svg|ico|woff|woff2|ttf|eot|otf|mp4|webm|pdf)$/i', $extension)) {
+        header('Cache-Control: public, max-age=31536000, immutable');
+        header('Expires: ' . gmdate('D, d M Y H:i:s', time() + 31536000) . ' GMT');
+    }
+    
+    // CORS for fonts
+    if (preg_match('/^(woff|woff2|ttf|eot|otf)$/i', $extension)) {
+        header('Access-Control-Allow-Origin: *');
+    }
+    
+    // Set Content-Length
+    header('Content-Length: ' . filesize($filepath));
+    
+    // Serve the file
+    readfile($filepath);
+    exit;
 }
 
 $_SERVER['REQUEST_URI'] = $uri;
