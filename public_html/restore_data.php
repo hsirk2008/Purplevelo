@@ -1,141 +1,112 @@
 <?php
 header('Content-Type: text/plain');
-set_time_limit(300);
-echo "=== Production Database Restore ===\n\n";
+set_time_limit(600);
+ini_set('memory_limit', '256M');
+
+echo "=== Production Database Restore (Direct SQL) ===\n\n";
 
 $secret = $_GET['key'] ?? '';
 if ($secret !== 'pv2026restore') {
     die("Access denied. Use ?key=pv2026restore to run restore.");
 }
 
-$pghost = getenv('PGHOST');
-$pguser = getenv('PGUSER');
-$pgpass = getenv('PGPASSWORD');
-$pgdb = getenv('PGDATABASE');
-$pgport = getenv('PGPORT');
-
-if (empty($pghost) && getenv('DATABASE_URL')) {
-    $db_url = parse_url(getenv('DATABASE_URL'));
-    $pghost = $db_url['host'] ?? '';
-    $pgport = $db_url['port'] ?? '5432';
-    $pguser = $db_url['user'] ?? '';
-    $pgpass = $db_url['pass'] ?? '';
-    $pgdb = ltrim($db_url['path'] ?? '', '/');
+$db_url = getenv('DATABASE_URL');
+if (empty($db_url)) {
+    $pghost = getenv('PGHOST');
+    $pgport = getenv('PGPORT') ?: '5432';
+    $pguser = getenv('PGUSER');
+    $pgpass = getenv('PGPASSWORD');
+    $pgdb = getenv('PGDATABASE');
+    $db_url = "postgresql://{$pguser}:{$pgpass}@{$pghost}:{$pgport}/{$pgdb}";
 }
+
+echo "Checking database connection...\n";
+
+$parsed = parse_url($db_url);
+$pghost = $parsed['host'] ?? '';
+$pgport = $parsed['port'] ?? '5432';
+$pguser = $parsed['user'] ?? '';
+$pgpass = $parsed['pass'] ?? '';
+$pgdb = ltrim($parsed['path'] ?? '', '/');
 
 $conn_str = "host={$pghost} port={$pgport} dbname={$pgdb} user={$pguser} password={$pgpass}";
 $conn = @pg_connect($conn_str);
 
 if (!$conn) {
-    die("Database connection failed: " . pg_last_error());
+    die("Database connection failed\n");
 }
 
 echo "Connected to: {$pgdb}\n";
 
 $result = pg_query($conn, "SELECT COUNT(*) as cnt FROM oc_setting");
 $row = pg_fetch_assoc($result);
-$existing_count = (int)$row['cnt'];
-echo "Existing settings: {$existing_count}\n";
+$existing = (int)$row['cnt'];
+echo "Existing settings: {$existing}\n";
 
-if ($existing_count > 50) {
-    die("\nDatabase already has data ({$existing_count} settings). Restore aborted.\n");
+if ($existing > 50) {
+    die("\nDatabase already has {$existing} settings. Restore aborted to prevent duplicates.\n");
 }
 
-$sql_file = __DIR__ . '/data/oc_data_copy.sql';
+$sql_file = __DIR__ . '/data/db_backup.sql.gz';
 if (!file_exists($sql_file)) {
-    die("Data file not found: {$sql_file}");
+    die("Backup file not found\n");
 }
 
-echo "\nLoading and executing SQL dump...\n";
+echo "\nLoading compressed SQL dump...\n";
 
-$handle = fopen($sql_file, 'r');
-if (!$handle) {
-    die("Cannot open SQL file");
+$sql = gzdecode(file_get_contents($sql_file));
+if ($sql === false) {
+    die("Failed to decompress backup\n");
 }
 
-$success = 0;
-$errors = 0;
-$in_copy = false;
-$copy_table = '';
-$copy_columns = '';
-$copy_data = [];
-$line_num = 0;
+echo "SQL size: " . strlen($sql) . " bytes\n";
+echo "Executing SQL...\n\n";
 
-while (($line = fgets($handle)) !== false) {
-    $line_num++;
-    $line = rtrim($line, "\r\n");
-    
-    if (strpos($line, '--') === 0 || $line === '' || strpos($line, 'SET ') === 0 || strpos($line, 'SELECT ') === 0 || strpos($line, '\\') === 0) {
-        continue;
+putenv("PGPASSWORD={$pgpass}");
+$temp_sql = tempnam('/tmp', 'restore_');
+file_put_contents($temp_sql, $sql);
+
+$cmd = "psql -h " . escapeshellarg($pghost) . 
+       " -p " . escapeshellarg($pgport) . 
+       " -U " . escapeshellarg($pguser) . 
+       " -d " . escapeshellarg($pgdb) . 
+       " -f " . escapeshellarg($temp_sql) . " 2>&1";
+
+echo "Running psql...\n";
+$output = shell_exec($cmd);
+
+unlink($temp_sql);
+
+$lines = explode("\n", $output);
+$copy_count = 0;
+$error_count = 0;
+foreach ($lines as $line) {
+    if (strpos($line, 'COPY') !== false) {
+        $copy_count++;
     }
-    
-    if (preg_match('/^COPY\s+(\S+)\s+\(([^)]+)\)\s+FROM\s+stdin;$/i', $line, $matches)) {
-        $in_copy = true;
-        $copy_table = $matches[1];
-        $copy_columns = $matches[2];
-        $copy_data = [];
-        continue;
-    }
-    
-    if ($in_copy) {
-        if ($line === '\.') {
-            if (!empty($copy_data)) {
-                $cols = $copy_columns;
-                foreach ($copy_data as $row_data) {
-                    $values = explode("\t", $row_data);
-                    $escaped = [];
-                    foreach ($values as $val) {
-                        if ($val === '\\N') {
-                            $escaped[] = 'NULL';
-                        } else {
-                            $val = str_replace(['\\t', '\\n', '\\r', '\\\\'], ["\t", "\n", "\r", "\\"], $val);
-                            $escaped[] = "'" . pg_escape_string($conn, $val) . "'";
-                        }
-                    }
-                    $sql = "INSERT INTO {$copy_table} ({$cols}) VALUES (" . implode(',', $escaped) . ")";
-                    $result = @pg_query($conn, $sql);
-                    if ($result) {
-                        $success++;
-                    } else {
-                        $errors++;
-                        if ($errors <= 5) {
-                            echo "Error at line {$line_num}: " . pg_last_error($conn) . "\n";
-                        }
-                    }
-                }
-            }
-            $in_copy = false;
-            $copy_table = '';
-            $copy_columns = '';
-            $copy_data = [];
-            
-            if (($success % 500) == 0 && $success > 0) {
-                echo "Progress: {$success} rows inserted...\n";
-            }
-        } else {
-            $copy_data[] = $line;
-        }
+    if (stripos($line, 'error') !== false) {
+        $error_count++;
+        echo "Error: {$line}\n";
     }
 }
 
-fclose($handle);
-
-echo "\n=== Restore Complete ===\n";
-echo "Successful inserts: {$success}\n";
-echo "Errors: {$errors}\n";
+echo "\nCOPY statements executed: {$copy_count}\n";
+echo "Errors: {$error_count}\n";
 
 $result = pg_query($conn, "SELECT COUNT(*) as cnt FROM oc_setting");
 $row = pg_fetch_assoc($result);
 echo "\nFinal settings count: {$row['cnt']}\n";
 
-$checks = ['config_language', 'config_theme', 'config_template'];
+$checks = ['config_language', 'config_theme', 'config_template', 'config_url'];
 foreach ($checks as $key) {
     $result = pg_query($conn, "SELECT value FROM oc_setting WHERE key = '{$key}' AND store_id = 0");
     if ($result && pg_num_rows($result) > 0) {
         $row = pg_fetch_assoc($result);
         echo "{$key}: {$row['value']}\n";
+    } else {
+        echo "{$key}: NOT FOUND\n";
     }
 }
 
 pg_close($conn);
-echo "\nDone! Try loading the homepage now.\n";
+echo "\nRestore complete! Try the homepage now.\n";
