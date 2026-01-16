@@ -50,19 +50,25 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<!-- Critical CSS -->
+<!-- Preload critical fonts -->
+<link rel="preload" href="https://fonts.gstatic.com/s/josefinsans/v32/Qw3PZQNVED7rKGKxtqIqX5E-AVSJrOCfjY46_DjRbMZhKSbpUVzEEQ.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://fonts.gstatic.com/s/montserrat/v26/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y.woff2" as="font" type="font/woff2" crossorigin>
+
+<!-- Critical CSS - Bootstrap required for layout -->
 <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
 
 <!-- Fonts with display swap for performance -->
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet"></noscript>
 
 <!-- Core JS - jQuery must load first -->
 <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js"></script>
 <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" defer></script>
 <script src="catalog/view/theme/bhavesh/js/slick.min.js" defer></script>
 <script src="catalog/view/theme/bhavesh/js/bhavesh_common.js" defer></script>
-<!-- Main stylesheet -->
-<link href="catalog/view/theme/bhavesh/stylesheet/stylesheet.css" rel="stylesheet">
+<!-- Main stylesheet - deferred for performance -->
+<link rel="preload" href="catalog/view/theme/bhavesh/stylesheet/stylesheet.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="catalog/view/theme/bhavesh/stylesheet/stylesheet.css" rel="stylesheet"></noscript>
 <!-- Mandatory Theme Settings CSS -->
 <style id="bhavesh-mandatory-css"><?php echo $bhavesh_mandatory_css; ?></style>
 
@@ -115,10 +121,13 @@
 <?php } ?>
 
 
-<!-- *** [START] REQUIRED CSS FILES *** -->
-                <link href="chat/plugin/components/font-awesome/css/fontawesome.min.css" rel="stylesheet">
-                <link href="chat/plugin/czm-chat-support.css" rel="stylesheet">
-                <!-- *** [END] REQUIRED CSS FILES *** -->
+<!-- Chat CSS - deferred for performance -->
+<link rel="preload" href="chat/plugin/components/font-awesome/css/fontawesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="chat/plugin/czm-chat-support.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+<link href="chat/plugin/components/font-awesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="chat/plugin/czm-chat-support.css" rel="stylesheet">
+</noscript>
 
 
 
