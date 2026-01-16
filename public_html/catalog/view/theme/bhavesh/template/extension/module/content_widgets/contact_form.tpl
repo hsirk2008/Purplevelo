@@ -22,7 +22,7 @@
   <div class="col-sm-12">
   <label><?php echo $bhavesh_text_captcha; ?></label>
     <div class="input-group">
-    <span class="input-group-addon captcha_addon"><img src="index.php?route=extension/bhavesh/bhavesh_features/bhavesh_captcha" alt="" class="captchaimg" /></span>
+    <span class="input-group-addon captcha_addon"><img loading="lazy" src="index.php?route=extension/bhavesh/bhavesh_features/bhavesh_captcha" alt="" class="captchaimg" /></span>
     <input type="text" name="captcha" value="" class="form-control" />
     </div>
   </div>

@@ -33,7 +33,7 @@
       <div class="col-sm-12">
       <label class="control-label"><?php echo $bhavesh_entry_captcha; ?></label>
         <div class="input-group">
-        <span class="input-group-addon captcha_addon grey"><img src="index.php?route=extension/bhavesh/question/question_captcha" id="captcha_product_questions" alt="" class="captchaimg" /></span>
+        <span class="input-group-addon captcha_addon grey"><img loading="lazy" src="index.php?route=extension/bhavesh/question/question_captcha" id="captcha_product_questions" alt="" class="captchaimg" /></span>
         <input type="text" name="captcha_product_questions" value="" id="input-captcha_product_questions" class="form-control grey" />
         </div>
       </div>

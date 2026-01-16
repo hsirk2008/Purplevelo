@@ -13,33 +13,54 @@
 
 
 
-<meta property="og:image" content="https://digitalcosmo.co.in/mamadou/image/catalog/meta-tag-image.jpg"/>
-
-    <meta property="og:type" content="website"/>
-    <meta property="og:title" content="World Business Investment Ltd"/>
-    <meta property="og:description" content="We are European company based in the united kingdom and operate around all the world. We are expert in transport multimodal. "/>
-    <meta property="og:url" content="<?php echo $base; ?>"/>
-
-
 <title><?php echo $title; ?></title>
 <base href="<?php echo $base; ?>" />
+<link rel="canonical" href="<?php echo $base . ltrim($_SERVER['REQUEST_URI'], '/'); ?>" />
 <?php if ($description) { ?><meta name="description" content="<?php echo $description; ?>" /><?php } ?>
-<?php if ($keywords) { ?><meta name="keywords" content= "<?php echo $keywords; ?>" /><?php } ?>
-<!-- Load essential resources -->
-<script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js"></script>
-<link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
-<script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js"></script>
-<script src="catalog/view/theme/bhavesh/js/slick.min.js"></script>
-<script src="catalog/view/theme/bhavesh/js/bhavesh_common.js"></script>
+<?php if ($keywords) { ?><meta name="keywords" content="<?php echo $keywords; ?>" /><?php } ?>
+
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Purple Velo - Curated Cycling Tours"/>
+<meta property="og:title" content="<?php echo $title; ?>"/>
+<meta property="og:description" content="<?php echo $description ? $description : 'Self-guided European cycling holidays. Curated cycling tours through France, Italy, Spain and more.'; ?>"/>
+<meta property="og:url" content="<?php echo $base . ltrim($_SERVER['REQUEST_URI'], '/'); ?>"/>
+<meta property="og:image" content="<?php echo $base; ?>image/catalog/purple-velo-og.jpg"/>
+<meta property="og:locale" content="en_GB"/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="<?php echo $title; ?>"/>
+<meta name="twitter:description" content="<?php echo $description ? $description : 'Self-guided European cycling holidays. Curated cycling tours.'; ?>"/>
+<meta name="twitter:image" content="<?php echo $base; ?>image/catalog/purple-velo-og.jpg"/>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  "name": "Purple Velo",
+  "description": "Self-guided European cycling holidays and curated cycling tours",
+  "url": "<?php echo $base; ?>",
+  "logo": "<?php echo $logo; ?>",
+  "telephone": "<?php echo $telephone; ?>",
+  "address": {"@type": "PostalAddress", "addressCountry": "GB"},
+  "areaServed": ["Europe", "France", "Italy", "Spain", "Portugal"],
+  "serviceType": ["Cycling Tours", "Self-Guided Holidays", "Bike Tours"]
+}
+</script>
+<!-- Preconnect for fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 
-<script id="leform-remote" src="https://digitalcosmo.in/formx/content/plugins/halfdata-green-forms/js/leform.min.js?ver=1.54" data-handler="https://digitalcosmo.in/formx/ajax.php"></script>
+<!-- Critical CSS -->
+<link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
-</style>
+<!-- Fonts with display swap for performance -->
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+<!-- Core JS - jQuery must load first -->
+<script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js"></script>
+<script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" defer></script>
+<script src="catalog/view/theme/bhavesh/js/slick.min.js" defer></script>
+<script src="catalog/view/theme/bhavesh/js/bhavesh_common.js" defer></script>
 <!-- Main stylesheet -->
 <link href="catalog/view/theme/bhavesh/stylesheet/stylesheet.css" rel="stylesheet">
 <!-- Mandatory Theme Settings CSS -->
@@ -53,9 +74,9 @@
 <?php foreach ($styles as $style) { ?>
 <link href="<?php echo $style['href']; ?>" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
 <?php } ?>
-<!-- Pluing scripts(s) -->
+<!-- Plugin scripts(s) - deferred for performance -->
 <?php foreach ($scripts as $script) { ?>
-<script src="<?php echo $script; ?>"></script>
+<script src="<?php echo $script; ?>" defer></script>
 <?php } ?>
 <!-- Page specific meta information -->
 <?php foreach ($links as $link) { ?>
@@ -102,7 +123,6 @@
 
 
 
- <link rel="stylesheet" href="https://digitalcosmo.in/perfectnails/ani/style.css">
  
  
  <style type="text/css">

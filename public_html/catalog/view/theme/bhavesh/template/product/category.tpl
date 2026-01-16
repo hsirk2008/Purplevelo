@@ -26,7 +26,7 @@
       
       <?php if (($thumb && $category_thumb_status)|| $description) { ?>
         <?php if ($thumb && $category_thumb_status) { ?>
-        <img class="category-main-thumb" src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" />
+        <img class="category-main-thumb" loading="lazy" src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" />
         <?php } ?>
         <?php if ($description && $description != '<p><br></p>') { ?>
         <div class="category-description"><?php echo $description; ?></div>
@@ -38,7 +38,7 @@
       	<div class="grid-holder categories grid<?php echo $bhavesh_subs_grid; ?>">
         <?php foreach ($categories as $category) { ?>
             <div class="item">
-            <a href="<?php echo $category['href']; ?>"><img src="<?php echo $category['thumb']; ?>" alt="<?php echo $category['name']; ?>" title="<?php echo $category['name']; ?>" /></a>
+            <a href="<?php echo $category['href']; ?>"><img loading="lazy" src="<?php echo $category['thumb']; ?>" alt="<?php echo $category['name']; ?>" title="<?php echo $category['name']; ?>" /></a>
             <a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></div>
             <?php } ?>
         </div>

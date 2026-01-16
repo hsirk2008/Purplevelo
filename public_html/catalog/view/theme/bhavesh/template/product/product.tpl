@@ -89,7 +89,7 @@
         <span class="badge out_of_stock_badge"><i><?php echo $bhavesh_text_out_of_stock; ?></i></span>
         <?php } ?>
 
-        <a class="<?php if (!$images) { echo "link cloud-zoom"; } else if (($product_layout == 'full-width')) { echo "link"; } else { echo "cloud-zoom"; } ?>" id="main-image" href="<?php echo $popup; ?>" rel="position:'inside', showTitle: false"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
+        <a class="<?php if (!$images) { echo "link cloud-zoom"; } else if (($product_layout == 'full-width')) { echo "link"; } else { echo "cloud-zoom"; } ?>" id="main-image" href="<?php echo $popup; ?>" rel="position:'inside', showTitle: false"><img loading="lazy" src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
         </div>
         <?php } ?>
        
@@ -97,11 +97,11 @@
         <ul class="image-additional">
         <?php foreach ($images as $image) { ?>
         <li>
-        <a class="link <?php if ($product_layout != 'full-width') { echo "cloud-zoom-gallery locked"; } ?>" href="<?php echo $image['popup']; ?>" rel="useZoom: 'main-image', smallImage: '<?php echo $image['thumb_lg']; ?>'"><img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
+        <a class="link <?php if ($product_layout != 'full-width') { echo "cloud-zoom-gallery locked"; } ?>" href="<?php echo $image['popup']; ?>" rel="useZoom: 'main-image', smallImage: '<?php echo $image['thumb_lg']; ?>'"><img loading="lazy" src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
         </li>
         <?php } ?>
             <?php if ($thumb && ($product_layout != "full-width")) { ?>
-            <li><a class="link cloud-zoom-gallery locked active" href="<?php echo $popup; ?>" rel="useZoom: 'main-image', smallImage: '<?php echo $thumb; ?>'"><img src="<?php echo $thumb_sm; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
+            <li><a class="link cloud-zoom-gallery locked active" href="<?php echo $popup; ?>" rel="useZoom: 'main-image', smallImage: '<?php echo $thumb; ?>'"><img loading="lazy" src="<?php echo $thumb_sm; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
             <?php } ?>
         </ul>
 
@@ -195,7 +195,7 @@
                   <label>
                     <input type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" />
                     <?php if ($option_value['image']) { ?>
-                    <img src="<?php echo $option_value['image']; ?>" alt="<?php echo $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" data-toggle="tooltip" data-title="<?php echo $option_value['name']; ?><?php if ($option_value['price']) { ?> (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)<?php } ?>" />
+                    <img loading="lazy" src="<?php echo $option_value['image']; ?>" alt="<?php echo $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" data-toggle="tooltip" data-title="<?php echo $option_value['name']; ?><?php if ($option_value['price']) { ?> (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)<?php } ?>" />
                     <?php } ?>
                     <span class="name">
                     <?php echo $option_value['name']; ?>
@@ -223,7 +223,7 @@
                   <label>
                     <input type="checkbox" name="option[<?php echo $option['product_option_id']; ?>][]" value="<?php echo $option_value['product_option_value_id']; ?>" />
                     <?php if ($option_value['image']) { ?>
-                    <img src="<?php echo $option_value['image']; ?>" alt="<?php echo $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" data-toggle="tooltip" data-title="<?php echo $option_value['name']; ?><?php if ($option_value['price']) { ?> (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)<?php } ?>" /> 
+                    <img loading="lazy" src="<?php echo $option_value['image']; ?>" alt="<?php echo $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" data-toggle="tooltip" data-title="<?php echo $option_value['name']; ?><?php if ($option_value['price']) { ?> (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)<?php } ?>" /> 
                     <?php } ?>
                     <span class="name">
                     <?php echo $option_value['name']; ?>
@@ -757,7 +757,7 @@ $('#button-cart').on('click', function() {
 					html += '<div class="inner">';
 					html += '<a class="popup-note-close" onclick="$(this).parent().parent().remove()">&times;</a>';
 					html += '<div class="table">';
-					html += '<div class="table-cell v-top img"><img src="' + json['image'] + '" /></div>';
+					html += '<div class="table-cell v-top img"><img loading="lazy" src="' + json['image'] + '" /></div>';
 					html += '<div class="table-cell v-top">' + json['success'] + '</div>';
 					html += '</div>';
 					html += '</div>';

@@ -6,7 +6,7 @@
         <tr>
           <td class="image">
           <?php if ($product['thumb']) { ?>
-            <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" /></a>
+            <a href="<?php echo $product['href']; ?>"><img loading="lazy" src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" /></a>
             <?php } ?></td>
           <td class="main"><a class="product-name main-font" href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
             <?php echo $product['quantity']; ?> x <span class="price"><?php echo $product['price']; ?></span>

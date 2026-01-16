@@ -32,7 +32,7 @@
                 
                 <?php if($blog['image']){ ?>
                 <div class="banner_wrap hover-zoom hover-darken">
-				<img class="zoom_image" src="<?php echo $blog['image']; ?>" alt="<?php echo $blog['title']; ?>" title="<?php echo $blog['title']; ?>" />
+				<img class="zoom_image" loading="lazy" src="<?php echo $blog['image']; ?>" alt="<?php echo $blog['title']; ?>" title="<?php echo $blog['title']; ?>" />
                 <a href="<?php echo $blog['href']; ?>" class="effect-holder"></a>
                 <?php if($date_added_status){ ?>
                 <div class="date_added">

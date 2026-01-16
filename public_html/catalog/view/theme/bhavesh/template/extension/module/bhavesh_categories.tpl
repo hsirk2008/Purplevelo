@@ -20,7 +20,7 @@
               <?php foreach ($categories as $category) { ?>
                 <div class="item single-category has-subs">
                 <div class="table">
-                <div class="table-cell v-top img-cell"><img src="<?php echo $category['thumb']; ?>" alt="<?php echo $category['name']; ?>" /></div>
+                <div class="table-cell v-top img-cell"><img loading="lazy" src="<?php echo $category['thumb']; ?>" alt="<?php echo $category['name']; ?>" /></div>
                 
                 <div class="table-cell w100 v-top">
                 <h5><b><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></b></h5>
@@ -41,7 +41,7 @@
               <?php foreach ($categories as $category) { ?>
                 <div class="item single-category no-subs">
                 <div class="banner_wrap hover-zoom">
-                <a href="<?php echo $category['href']; ?>"><img class="zoom_image" src="<?php echo $category['thumb']; ?>" alt="<?php echo $category['name']; ?>" /></a>
+                <a href="<?php echo $category['href']; ?>"><img class="zoom_image" loading="lazy" src="<?php echo $category['thumb']; ?>" alt="<?php echo $category['name']; ?>" /></a>
                 <?php if ($count) { ?>
                 <div class="overlay">
                 <a class="table w100 h100" href="<?php echo $category['href']; ?>">

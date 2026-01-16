@@ -40,7 +40,7 @@
             <td class="remove-cell text-center"><a href="<?php echo $product['remove']; ?>" title="<?php echo $button_remove; ?>" class="product-remove"><i class="fa fa-times"></i></a></td>
               <td class="image">
               <?php if ($product['thumb']) { ?>
-                <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" /></a>
+                <a href="<?php echo $product['href']; ?>"><img loading="lazy" src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" /></a>
                 <?php } ?>
                 </td>
               <td>

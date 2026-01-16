@@ -7,7 +7,7 @@
 <?php if($section['sort_order'] != '-1'){ ?>
 <div class="ms-slide <?php if (!empty($section['slide_kenburn'])) echo 'kenburn ' . $section['slide_kenburn']; ?>" data-delay="<?php echo $section['duration']; ?>" <?php if (!empty($section['bg_color'])) { ?>style="background-color:<?php echo $section['bg_color']; ?>"<?php } ?>>
 <?php if (!empty($section['is_bg'])) { ?>
-<img src="<?php echo $section['thumb_image']; ?>" data-src="<?php echo $section['thumb_image']; ?>" class="slide-bg" alt="">
+<img loading="lazy" src="<?php echo $section['thumb_image']; ?>" data-src="<?php echo $section['thumb_image']; ?>" class="slide-bg" alt="">
 <?php } ?>
 <?php foreach($section['groups'] as $key => $group){ ?>
 <?php if($group['type'] == 'text'){ ?>
@@ -18,7 +18,7 @@
 <?php } ?>
 <?php if($group['type'] == 'image'){ ?>
 <!-- Image layer -->
-    <img src="<?php echo $group['image']; ?>" alt="" data-src="<?php echo $group['image']; ?>" class="ms-layer image" 
+    <img loading="lazy" src="<?php echo $group['image']; ?>" alt="" data-src="<?php echo $group['image']; ?>" class="ms-layer image" 
     <?php if($group['minheight']){ ?> style="min-height:<?php echo $group['minheight']; ?>px" <?php } ?>
     data-origin = "ml" data-type = "image" data-offset-x = "<?php echo $group['left']; ?>" data-offset-y = "<?php echo $group['top']; ?>" data-parallax = "<?php echo $group['p_index']; ?>" data-duration = "<?php echo $group['durationin']; ?>" data-delay = "<?php echo $group['start']; ?>" data-effect = "<?php echo $group['transitionin']; ?>" data-ease = "<?php echo $group['easingin']; ?>" data-hide-effect = "<?php echo $group['transitionout']; ?>" data-hide-duration = "<?php echo $group['durationout']; ?>" data-hide-ease = "<?php echo $group['easingout']; ?>" data-hide-time = "<?php echo $group['end']; ?>" />
 <?php } ?>

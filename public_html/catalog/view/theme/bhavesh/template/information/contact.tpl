@@ -58,7 +58,7 @@
        <h3 class="lined-title lg margin-b30"><span><b><?php echo $heading_title; ?></b></span></h3>
        
        <?php if ($image) { ?>
-       <div class="contact-image margin-b25"><img src="<?php echo $image; ?>" alt="<?php echo $store; ?>" title="<?php echo $store; ?>" /></div>
+       <div class="contact-image margin-b25"><img loading="lazy" src="<?php echo $image; ?>" alt="<?php echo $store; ?>" title="<?php echo $store; ?>" /></div>
        <?php } ?>
        
            <div class="grid-holder margin-b20">
@@ -119,7 +119,7 @@
                 
                 <?php if ($location['image']) { ?>
                 <div class="contact-image margin-b25">
-                <img src="<?php echo $location['image']; ?>" alt="<?php echo $location['name']; ?>" title="<?php echo $location['name']; ?>" />
+                <img loading="lazy" src="<?php echo $location['image']; ?>" alt="<?php echo $location['name']; ?>" title="<?php echo $location['name']; ?>" />
                 </div>
                 <?php } ?>
                 

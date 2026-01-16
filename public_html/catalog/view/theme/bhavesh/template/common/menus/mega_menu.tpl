@@ -69,9 +69,9 @@ $row_fluid = $row_fluid+$submenu['content_width'];
 <div class="single-product menu-product">
 <div class="image">
 <a href="<?php echo $submenu['product']['link']; ?>">
-<img src="<?php echo $submenu['product']['image']; ?>" alt="<?php echo $submenu['product']['name']; ?>" title="<?php echo $submenu['product']['name']; ?>" />
+<img loading="lazy" src="<?php echo $submenu['product']['image']; ?>" alt="<?php echo $submenu['product']['name']; ?>" title="<?php echo $submenu['product']['name']; ?>" />
 <?php if ($submenu['product']['image2']) { ?>
-<img class="thumb2" src="<?php echo $submenu['product']['image2']; ?>" alt="<?php echo $submenu['product']['name']; ?>" title="<?php echo $submenu['product']['name']; ?>" />
+<img class="thumb2" loading="lazy" src="<?php echo $submenu['product']['image2']; ?>" alt="<?php echo $submenu['product']['name']; ?>" title="<?php echo $submenu['product']['name']; ?>" />
 <?php } ?>
 </a>
 <?php if ($submenu['product']['price'] && $submenu['product']['special'] && ($salebadge_status)) { ?>

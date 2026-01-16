@@ -14,7 +14,7 @@
                        value="<?= $input_data['input_value']; ?>"
                     <?= $checked; ?>
                     >
-                <img src="<?= $input_data['image']; ?>" title="<?= $input_data['input_label'] ?>"/>
+                <img loading="lazy" src="<?= $input_data['image']; ?>" title="<?= $input_data['input_label'] ?>"/>
                 <span><?= $input_data['input_label'] ?></span>
             </label>
         <?php } ?>

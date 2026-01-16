@@ -42,7 +42,7 @@
             <?php foreach ($products as $product) { ?>
             <td class="text-center product">
             <?php if ($product['thumb']) { ?>
-              <img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="margin-b15" /></br>
+              <img loading="lazy" src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="margin-b15" /></br>
               <?php } ?>
               
               <a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>

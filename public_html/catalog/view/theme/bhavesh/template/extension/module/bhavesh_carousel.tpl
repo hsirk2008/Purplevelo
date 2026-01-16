@@ -16,9 +16,9 @@
   <?php foreach ($banners as $banner) { ?>
     <div class="item text-center">
     <?php if ($banner['link']) { ?>
-        <a href="<?php echo $banner['link']; ?>"><img src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" class="display-inline-block" /></a>
+        <a href="<?php echo $banner['link']; ?>"><img loading="lazy" src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" class="display-inline-block" /></a>
     <?php } else { ?>
-        <img src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" class="display-inline-block" />
+        <img loading="lazy" src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" class="display-inline-block" />
     <?php } ?>
     </div>
   <?php } ?>

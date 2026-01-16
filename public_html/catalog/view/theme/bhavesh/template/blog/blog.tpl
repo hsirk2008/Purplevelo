@@ -18,7 +18,7 @@
     
     <?php if($main_thumb && $blogsetting_post_thumb){ ?>
     <div class="main_thumb">
-    <img src="<?php echo $main_thumb; ?>" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" />
+    <img loading="lazy" src="<?php echo $main_thumb; ?>" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" />
     <?php if($post_date_added_status){ ?>
     <div class="date_added">
     <span class="day"><?php echo $date_added_day; ?></span>
@@ -85,7 +85,7 @@
             <div class="item single-blog related">
                 <?php if(($blog['image']) && ($rel_thumb_status)){ ?>
                 <div class="banner_wrap hover-zoom hover-darken">
-				<img class="zoom_image" src="<?php echo $blog['image']; ?>" alt="<?php echo $blog['title']; ?>" title="<?php echo $blog['title']; ?>" />
+				<img class="zoom_image" loading="lazy" src="<?php echo $blog['image']; ?>" alt="<?php echo $blog['title']; ?>" title="<?php echo $blog['title']; ?>" />
                 <a href="<?php echo $blog['href']; ?>" class="effect-holder"></a>
                 <?php if($date_added_status){ ?>
                 <div class="date_added">
@@ -149,7 +149,7 @@
                               <div class="form-group required">
                               <label class="control-label" for="input-captcha_comment"><?php echo $entry_captcha; ?></label>
                                 <div class="input-group">
-                                <span class="input-group-addon captcha_addon"><img src="index.php?route=extension/blog/blog/captcha" alt="" id="captcha_comment" /></span>
+                                <span class="input-group-addon captcha_addon"><img loading="lazy" src="index.php?route=extension/blog/blog/captcha" alt="" id="captcha_comment" /></span>
                                 <input type="text" name="captcha_comment" value="" id="input-captcha_comment" class="form-control" />
                                 </div>
                               </div>

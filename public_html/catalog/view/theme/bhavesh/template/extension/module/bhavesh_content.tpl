@@ -28,7 +28,7 @@
 <!-- Banner type -->
 <?php if ($column['data2']) { ?>
 <div class="banner_wrap">
-<div class="zoom_image_wrap"><img class="zoom_image" src="<?php echo $column['data2']; ?>" alt="" /></div>
+<div class="zoom_image_wrap"><img class="zoom_image" loading="lazy" src="<?php echo $column['data2']; ?>" alt="" /></div>
 <div class="effect-holder"></div>
 <div class="banner_overlay">
     <div class="cm_item_wrapper <?php if ($column['data5']) { ?>pointer" onclick="location.href='<?php echo $column['data5']; ?>';<?php } ?>">
@@ -41,7 +41,7 @@
 <?php } ?>
 <?php if ($column['data4']) { ?>
 <div class="banner_wrap">
-<div class="zoom_image_wrap"><img class="zoom_image" src="<?php echo $column['data4']; ?>" alt="" /></div>
+<div class="zoom_image_wrap"><img class="zoom_image" loading="lazy" src="<?php echo $column['data4']; ?>" alt="" /></div>
 <div class="effect-holder"></div>
 <div class="banner_overlay">
     <div class="cm_item_wrapper <?php if ($column['data6']) { ?>pointer" onclick="location.href='<?php echo $column['data6']; ?>';<?php } ?>">
@@ -60,7 +60,7 @@
 <div class="item single-testimonial">
     <div class="testimonial-wrap">
     <?php if ($testimonial['image']) { ?>
-    <p><img src="<?php echo $testimonial['image']; ?>" alt=""/></p>
+    <p><img loading="lazy" src="<?php echo $testimonial['image']; ?>" alt=""/></p>
     <?php } ?>
     <p><?php echo $testimonial['description'] ; ?></p>
     <p><b><?php echo $testimonial['name']; ?></b><?php if ($testimonial['org']) echo ' - ' . $testimonial['org']; ?></p> 

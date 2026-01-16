@@ -14,10 +14,28 @@ if ($path === '/restore_data.php') {
     exit;
 }
 
+// Handle sitemap.xml dynamically
+if ($path === '/sitemap.xml') {
+    include __DIR__ . '/sitemap.php';
+    exit;
+}
+
+// Handle llms.txt
+if ($path === '/llms.txt') {
+    header('Content-Type: text/plain; charset=utf-8');
+    readfile(__DIR__ . '/llms.txt');
+    exit;
+}
+
 if ($path !== '/' && file_exists(__DIR__ . $decoded_path)) {
     // Set CORS for font files
     if (preg_match('/\.(woff2?|ttf|eot|otf)$/i', $path)) {
         header('Access-Control-Allow-Origin: *');
+        header('Cache-Control: public, max-age=31536000');
+    }
+    // Cache static assets for 1 year
+    if (preg_match('/\.(css|js|jpg|jpeg|png|gif|webp|svg|ico)$/i', $path)) {
+        header('Cache-Control: public, max-age=31536000');
     }
     // For PHP files, include them directly
     if (preg_match('/\.php$/i', $path)) {

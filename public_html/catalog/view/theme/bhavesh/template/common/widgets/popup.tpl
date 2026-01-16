@@ -3,7 +3,7 @@
 
 <?php if ($img) { ?>
 <div class="table-cell img-cell">
-<img src="<?php echo $img; ?>" alt="" />
+<img loading="lazy" src="<?php echo $img; ?>" alt="" />
 </div>
 <?php } ?>
 

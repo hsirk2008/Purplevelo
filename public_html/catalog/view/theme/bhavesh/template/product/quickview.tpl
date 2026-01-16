@@ -7,11 +7,11 @@
             
         <?php if ($thumb) { ?>
         <div class="main-image qv_image carousel" style="width:<?php echo $img_w; ?>px;">
-        <img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" />
+        <img loading="lazy" src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" />
         
         <?php if ($images) { ?>
         <?php foreach ($images as $image) { ?>
-        <img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" />
+        <img loading="lazy" src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" />
         <?php } ?>
         <?php } ?>
         
@@ -103,7 +103,7 @@
                   <label>
                     <input type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" />
                     <?php if ($option_value['image']) { ?>
-                    <img src="<?php echo $option_value['image']; ?>" alt="<?php echo $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" data-toggle="tooltip" data-title="<?php echo $option_value['name']; ?><?php if ($option_value['price']) { ?> (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)<?php } ?>" />
+                    <img loading="lazy" src="<?php echo $option_value['image']; ?>" alt="<?php echo $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" data-toggle="tooltip" data-title="<?php echo $option_value['name']; ?><?php if ($option_value['price']) { ?> (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)<?php } ?>" />
                     <?php } ?>
                     <span class="name">
                     <?php echo $option_value['name']; ?>
@@ -131,7 +131,7 @@
                   <label>
                     <input type="checkbox" name="option[<?php echo $option['product_option_id']; ?>][]" value="<?php echo $option_value['product_option_value_id']; ?>" />
                     <?php if ($option_value['image']) { ?>
-                    <img src="<?php echo $option_value['image']; ?>" alt="<?php echo $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" data-toggle="tooltip" data-title="<?php echo $option_value['name']; ?><?php if ($option_value['price']) { ?> (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)<?php } ?>" /> 
+                    <img loading="lazy" src="<?php echo $option_value['image']; ?>" alt="<?php echo $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" data-toggle="tooltip" data-title="<?php echo $option_value['name']; ?><?php if ($option_value['price']) { ?> (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)<?php } ?>" /> 
                     <?php } ?>
                     <span class="name">
                     <?php echo $option_value['name']; ?>
@@ -407,7 +407,7 @@ $('#button-cart-quickview').on('click', function() {
 					html += '<div class="inner">';
 					html += '<a class="popup-note-close" onclick="$(this).parent().parent().remove()">&times;</a>';
 					html += '<div class="table">';
-					html += '<div class="table-cell v-top img"><img src="' + json['image'] + '" /></div>';
+					html += '<div class="table-cell v-top img"><img loading="lazy" src="' + json['image'] + '" /></div>';
 					html += '<div class="table-cell v-top">' + json['success'] + '</div>';
 					html += '</div>';
 					html += '</div>';

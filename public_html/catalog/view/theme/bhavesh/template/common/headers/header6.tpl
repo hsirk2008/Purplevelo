@@ -39,7 +39,7 @@
     <div class="table-cell text-left w20 logo">
     	<?php if ($logo) { ?>
         <div id="logo">
-    	<a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" /></a>
+    	<a href="<?php echo $home; ?>"><img loading="lazy" src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" /></a>
         </div>
     	<?php } ?>
     </div>

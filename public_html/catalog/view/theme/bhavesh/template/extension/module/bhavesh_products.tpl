@@ -33,9 +33,9 @@
             <div class="item single-product fadeInUp animated" data-animation="slideInUp" data-animation-delay="300ms">
             <div class="image" <?php if ((isset($columns)) && ($columns == 'list')) echo 'style="width:' . $img_width . 'px"'; ?>>
                 <a href="<?php echo $product['href']; ?>">
-                <img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" />
+                <img loading="lazy" src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" />
                 <?php if ($product['thumb2']) { ?>
-                <img class="thumb2" src="<?php echo $product['thumb2']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" />
+                <img class="thumb2" loading="lazy" src="<?php echo $product['thumb2']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" />
                 <?php } ?>
                 </a>
             <?php if (($product['price']) && ($product['special']) && ($salebadge_status)) { ?>

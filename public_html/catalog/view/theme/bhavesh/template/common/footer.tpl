@@ -33,7 +33,7 @@
 <p class="infoline"><?php echo $footer_infoline_3; ?></p>
 <?php } ?>
 <?php if ($payment_img) { ?>
-<img class="payment_img" src="<?php echo $payment_img; ?>" alt="" />
+<img class="payment_img" loading="lazy" src="<?php echo $payment_img; ?>" alt="" />
 <?php } ?>
 </div>
 </div>
