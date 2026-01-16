@@ -97,10 +97,9 @@
 </div>
 <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
 <link href="catalog/view/theme/bhavesh/js/lightgallery/css/lightgallery.css" rel="stylesheet" />
-<script src="catalog/view/theme/bhavesh/js/jquery.matchHeight.min.js"></script>
-<script src="catalog/view/theme/bhavesh/js/countdown.js"></script>
-<script src="catalog/view/theme/bhavesh/js/live_search.js"></script>
-<script src="catalog/view/theme/bhavesh/js/featherlight.js"></script>
+<script src="catalog/view/theme/bhavesh/js/countdown.js" defer></script>
+<script src="catalog/view/theme/bhavesh/js/live_search.js" defer></script>
+<script src="catalog/view/theme/bhavesh/js/featherlight.js" defer></script>
 <?php if ($view_popup) { ?>
 <!-- Popup -->
 <script>
@@ -116,9 +115,11 @@ $.featherlight({ajax: 'index.php?route=extension/bhavesh/bhavesh_features/bhaves
 <?php if ($sticky_columns) { ?>
 <!-- Sticky columns -->
 <script>
-if ($(window).width() > 767) {
-$('#column-left, #column-right').theiaStickySidebar({containerSelector:$(this).closest('.row'),additionalMarginTop:<?php echo $sticky_columns_offset; ?>});
-}
+$(document).ready(function() {
+  if ($(window).width() > 767 && typeof $.fn.theiaStickySidebar === 'function') {
+    $('#column-left, #column-right').theiaStickySidebar({containerSelector:$(this).closest('.row'),additionalMarginTop:<?php echo $sticky_columns_offset; ?>});
+  }
+});
 </script>
 <?php } ?>
 <?php if ($view_cookie_bar) { ?>
@@ -205,7 +206,6 @@ $('#column-left, #column-right').theiaStickySidebar({containerSelector:$(this).c
  
  
 
-<script  src="https://digitalcosmo.in/perfectnails/ani/script.js"></script>
 
 <script async type="text/javascript">
     // This Function repeats the News-Ticker-Text
