@@ -19,10 +19,10 @@ define('DIR_MODIFICATION', '/home/runner/workspace/public_html/system/storage/mo
 define('DIR_UPLOAD', '/home/runner/workspace/public_html/system/storage/upload/');
 
 // DB
-define('DB_DRIVER', 'mysqli');
-define('DB_HOSTNAME', 'srv2000.hstgr.io');
-define('DB_USERNAME', 'u254080638_krish');
-define('DB_PASSWORD', 'RED@2circles');
-define('DB_DATABASE', 'u254080638_krish');
-define('DB_PORT', '3306');
+define('DB_DRIVER', 'postgresql');
+define('DB_HOSTNAME', getenv('PGHOST'));
+define('DB_USERNAME', getenv('PGUSER'));
+define('DB_PASSWORD', getenv('PGPASSWORD'));
+define('DB_DATABASE', getenv('PGDATABASE'));
+define('DB_PORT', getenv('PGPORT'));
 define('DB_PREFIX', 'oc_');

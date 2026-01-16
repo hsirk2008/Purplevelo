@@ -64,6 +64,19 @@ final class PostgreSQL {
         
         $sql = preg_replace('/\bNOW\s*\(\s*\)/i', 'CURRENT_TIMESTAMP', $sql);
         
+        $sql = preg_replace('/DATE_SUB\s*\(\s*([^,]+)\s*,\s*INTERVAL\s+(\d+)\s+(\w+)\s*\)/i', '($1 - INTERVAL \'$2 $3\')', $sql);
+        $sql = preg_replace('/DATE_ADD\s*\(\s*([^,]+)\s*,\s*INTERVAL\s+(\d+)\s+(\w+)\s*\)/i', '($1 + INTERVAL \'$2 $3\')', $sql);
+        
+        $sql = preg_replace('/\bDAYOFWEEK\s*\(\s*([^)]+)\s*\)/i', 'EXTRACT(DOW FROM $1)::INTEGER + 1', $sql);
+        $sql = preg_replace('/\bDAY\s*\(\s*([^)]+)\s*\)/i', 'EXTRACT(DAY FROM $1)::INTEGER', $sql);
+        $sql = preg_replace('/\bMONTH\s*\(\s*([^)]+)\s*\)/i', 'EXTRACT(MONTH FROM $1)::INTEGER', $sql);
+        $sql = preg_replace('/\bYEAR\s*\(\s*([^)]+)\s*\)/i', 'EXTRACT(YEAR FROM $1)::INTEGER', $sql);
+        
+        $sql = preg_replace('/\bGROUP_CONCAT\s*\(\s*([^)]+)\s*\)/i', 'STRING_AGG($1::TEXT, \',\')', $sql);
+        
+        $sql = preg_replace('/\bLCASE\s*\(/i', 'LOWER(', $sql);
+        $sql = preg_replace('/\bUCASE\s*\(/i', 'UPPER(', $sql);
+        
         $sql = preg_replace('/\bUNIX_TIMESTAMP\s*\(\s*\)/i', "EXTRACT(EPOCH FROM CURRENT_TIMESTAMP)::INTEGER", $sql);
         
         $sql = preg_replace('/\bUNIX_TIMESTAMP\s*\(\s*([^)]+)\s*\)/i', "EXTRACT(EPOCH FROM $1)::INTEGER", $sql);
