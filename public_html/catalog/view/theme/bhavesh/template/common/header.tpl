@@ -95,9 +95,9 @@
 
 
 <!-- *** [START] REQUIRED CSS FILES *** -->
-		<link href="chat/plugin/components/font-awesome/css/fontawesome.min.css" rel="stylesheet">
-		<link href="chat/plugin/czm-chat-support.css" rel="stylesheet">
-		<!-- *** [END] REQUIRED CSS FILES *** -->
+                <link href="chat/plugin/components/font-awesome/css/fontawesome.min.css" rel="stylesheet">
+                <link href="chat/plugin/czm-chat-support.css" rel="stylesheet">
+                <!-- *** [END] REQUIRED CSS FILES *** -->
 
 
 
@@ -141,7 +141,7 @@ color: #FFF;
 box-shadow: 1px 1px 3px #333;
 }
 .social-icons.icon-zoom .fa:hover, .social-icons.icon-zoom .fa:active {
-	-webkit-transform: scale(1.1);
+        -webkit-transform: scale(1.1);
 -moz-transform: scale(1.1);
 -ms-transform: scale(1.1);
 -o-transform: scale(1.1);
@@ -294,8 +294,8 @@ transform: scale(1.1) rotate(360deg);
   width: 0;
   height: 0;
   border-left: 32px solid #fff;
-	border-top: 22px solid transparent;
-	border-bottom: 22px solid transparent;
+        border-top: 22px solid transparent;
+        border-bottom: 22px solid transparent;
 }
 
 @keyframes pulse-border {
@@ -577,7 +577,7 @@ blink(this);
 });
 }
 $(document).ready(function(){
-blink('.blink');	
+blink('.blink');        
 });
 </script>
    
@@ -587,7 +587,7 @@ blink('.blink');
    
        
     
-<?php require_once('catalog/view/theme/bhavesh/template/common/mobile-nav.tpl'); ?>
+<?php require_once(DIR_TEMPLATE . 'bhavesh/template/common/mobile-nav.tpl'); ?>
 <div class="outer-container main-wrapper">
 <?php if ($notification_status) { ?>
 <div class="top_notificaiton">
@@ -603,7 +603,7 @@ blink('.blink');
   </div>
 </div>
 <?php } ?>
-<?php require_once('catalog/view/theme/bhavesh/template/common/headers/' . $bhavesh_header . '.tpl'); ?>
+<?php require_once(DIR_TEMPLATE . 'bhavesh/template/common/headers/' . $bhavesh_header . '.tpl'); ?>
 <!-- breadcrumb -->
 <div class="breadcrumb-holder">
 <div class="container">
