@@ -34,8 +34,8 @@ if ($path !== '/' && file_exists(__DIR__ . $decoded_path)) {
         header('Cache-Control: public, max-age=31536000');
     }
     // Cache static assets for 1 year
-    if (preg_match('/\.(css|js|jpg|jpeg|png|gif|webp|svg|ico)$/i', $path)) {
-        header('Cache-Control: public, max-age=31536000');
+    if (preg_match('/\.(css|js|jpg|jpeg|png|gif|webp|svg|ico|mp4|webm|pdf)$/i', $path)) {
+        header('Cache-Control: public, max-age=31536000, immutable');
     }
     // For PHP files, include them directly
     if (preg_match('/\.php$/i', $path)) {
