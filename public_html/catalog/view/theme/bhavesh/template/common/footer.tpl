@@ -147,57 +147,57 @@ $('#column-left, #column-right').theiaStickySidebar({containerSelector:$(this).c
  
   
  
- 	<!-- *** [START] REQUIRED DIV *** -->
-		<div id="example"></div>
-		<!-- *** [END] REQUIRED DIV *** -->
-		
-		<!-- *** [START] REQUIRED JS FILES *** -->
-		<script src="chat/plugin/components/moment/moment.min.js"></script>
-		<script src="chat/plugin/components/moment/moment-timezone-with-data.min.js"></script>
-		<script src="chat/plugin/czm-chat-support.min.js"></script>
-				<script>
-			$('#example').czmChatSupport({
+        <!-- *** [START] REQUIRED DIV *** -->
+                <div id="example"></div>
+                <!-- *** [END] REQUIRED DIV *** -->
+                
+                <!-- *** [START] REQUIRED JS FILES *** -->
+                <script src="chat/plugin/components/moment/moment.min.js"></script>
+                <script src="chat/plugin/components/moment/moment-timezone-with-data.min.js"></script>
+                <script src="chat/plugin/czm-chat-support.min.js"></script>
+                                <script>
+                        $('#example').czmChatSupport({
 
-				/* Button Settings */
-				button: {
-					position: "right", /* left, right or false. "position:false" does not pin to the left or right */
-					style: 2, /* Button style. Number between 1 and 7 */
-					src: '<i class="fab fa-whatsapp"></i>', /* Image, Icon or SVG */
-					backgroundColor: "#25D366", /* Html color code */
-					effect: 1, /* Button effect. Number between 1 and 7 */
-					notificationNumber: false, /* Custom text or false. To remove, (notificationNumber:false) */
-					speechBubble: "How May I help You?", /* To remove, (speechBubble:false) */
-					pulseEffect:true, /* To remove, (pulseEffect:false) */
-					text: { /* For Button style larger than 1 */
-						title: "Chat", /* Writing is required */
-						description: false, /* To remove, (description:false) */
-						online: false, /* To remove, (online:false) */
-						offline: "We will be back soon" /* To remove, (offline:false) */
-					},
-					link: {
-						desktop: "https://wa.me/+447587080497", /* Writing is required */
-						mobile: "https://wa.me/+447587080497" /* If it is hidden desktop link will be valid. To remove, (mobile:false) */
-					},
-					onlineDay: {
-						/* Change the day you are offline like this. (sunday:false) */
-						sunday: "00:00-23:59",
-						monday: "00:00-23:59",
-						tuesday: "00:00-23:59",
-						wednesday: "00:00-23:59",
-						thursday: "00:00-23:59",
-						friday: "00:00-23:59",
-						saturday: "00:00-23:59"
-					}
-				},
+                                /* Button Settings */
+                                button: {
+                                        position: "right", /* left, right or false. "position:false" does not pin to the left or right */
+                                        style: 2, /* Button style. Number between 1 and 7 */
+                                        src: '<i class="fab fa-whatsapp"></i>', /* Image, Icon or SVG */
+                                        backgroundColor: "#25D366", /* Html color code */
+                                        effect: 1, /* Button effect. Number between 1 and 7 */
+                                        notificationNumber: false, /* Custom text or false. To remove, (notificationNumber:false) */
+                                        speechBubble: "How May I help You?", /* To remove, (speechBubble:false) */
+                                        pulseEffect:true, /* To remove, (pulseEffect:false) */
+                                        text: { /* For Button style larger than 1 */
+                                                title: "Chat", /* Writing is required */
+                                                description: false, /* To remove, (description:false) */
+                                                online: false, /* To remove, (online:false) */
+                                                offline: "We will be back soon" /* To remove, (offline:false) */
+                                        },
+                                        link: {
+                                                desktop: "https://wa.me/+447587080497", /* Writing is required */
+                                                mobile: "https://wa.me/+447587080497" /* If it is hidden desktop link will be valid. To remove, (mobile:false) */
+                                        },
+                                        onlineDay: {
+                                                /* Change the day you are offline like this. (sunday:false) */
+                                                sunday: "00:00-23:59",
+                                                monday: "00:00-23:59",
+                                                tuesday: "00:00-23:59",
+                                                wednesday: "00:00-23:59",
+                                                thursday: "00:00-23:59",
+                                                friday: "00:00-23:59",
+                                                saturday: "00:00-23:59"
+                                        }
+                                },
 
-				/* Other Settings */
-				sound: false, /* true (default sound), false or custom sound. Custom sound example, (sound:'assets/sound/notification.mp3') */
-				changeBrowserTitle: false, /* Custom text or false. To remove, (changeBrowserTitle:false) */
-				cookie: false, /* It does not show the speech bubble, notification number, pulse effect and automatic open popup again for the specified time. For example, do not show for 1 hour, (cookie:1) or to remove, (cookie:false) */
-			});
-		</script>
-		<!-- *** [END] REQUIRED JS FILES *** -->
-		<!-- *** [END] REQUIRED JS FILES *** -->
+                                /* Other Settings */
+                                sound: false, /* true (default sound), false or custom sound. Custom sound example, (sound:'assets/sound/notification.mp3') */
+                                changeBrowserTitle: false, /* Custom text or false. To remove, (changeBrowserTitle:false) */
+                                cookie: false, /* It does not show the speech bubble, notification number, pulse effect and automatic open popup again for the specified time. For example, do not show for 1 hour, (cookie:1) or to remove, (cookie:false) */
+                        });
+                </script>
+                <!-- *** [END] REQUIRED JS FILES *** -->
+                <!-- *** [END] REQUIRED JS FILES *** -->
  
  
  
@@ -209,8 +209,11 @@ $('#column-left, #column-right').theiaStickySidebar({containerSelector:$(this).c
 
 <script async type="text/javascript">
     // This Function repeats the News-Ticker-Text
-    var repeatText = document.getElementById("ticker_text").textContent;
-    document.getElementById("ticker_text").innerHTML = repeatText.repeat(1000);
+    var tickerElement = document.getElementById("ticker_text");
+    if (tickerElement) {
+        var repeatText = tickerElement.textContent;
+        tickerElement.innerHTML = repeatText.repeat(1000);
+    }
     
     
     
