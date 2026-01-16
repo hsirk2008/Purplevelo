@@ -36,7 +36,7 @@
   <div class="container <?php echo $main_header_width; ?>">
     <div class="table header-main <?php echo $main_menu_align; ?>">
     
-    <div class="table-cell text-left w20 logo">
+    <div class="table-cell text-left w20 logo" style="background-color: #000000;">
     	<?php if ($logo) { ?>
         <div id="logo">
     	<a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" /></a>
