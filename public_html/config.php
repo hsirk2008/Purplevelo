@@ -1,9 +1,20 @@
 <?php
+// Determine the domain - works in both development and production
+$domain = getenv('REPLIT_DEV_DOMAIN');
+if (!$domain) {
+    $domains = getenv('REPLIT_DOMAINS');
+    if ($domains) {
+        $domain = explode(',', $domains)[0];
+    } else {
+        $domain = 'purplevelo.com';
+    }
+}
+
 // HTTP
-define('HTTP_SERVER', 'https://' . getenv('REPLIT_DEV_DOMAIN') . '/');
+define('HTTP_SERVER', 'https://' . $domain . '/');
 
 // HTTPS
-define('HTTPS_SERVER', 'https://' . getenv('REPLIT_DEV_DOMAIN') . '/');
+define('HTTPS_SERVER', 'https://' . $domain . '/');
 
 // DIR
 define('DIR_APPLICATION', '/home/runner/workspace/public_html/catalog/');
