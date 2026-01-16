@@ -50,7 +50,7 @@ body, .product-name.main-font, .gridlist .single-product .product-name, .gridlis
 	background:#fbbc34;
 }
 .header-style {
-	background:linear-gradient(0deg, #fff 55%, #a578b7 50%);;
+	background:linear-gradient(0deg, #fff 55%, #000000 50%);;
 	transition:background 400ms;
 	position:relative;
 }
