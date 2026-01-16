@@ -8,10 +8,21 @@ $uri = $_SERVER['REQUEST_URI'];
 $path = parse_url($uri, PHP_URL_PATH);
 $decoded_path = urldecode($path);
 
+// Handle restore_data.php directly (bypass OpenCart)
+if ($path === '/restore_data.php') {
+    include __DIR__ . '/restore_data.php';
+    exit;
+}
+
 if ($path !== '/' && file_exists(__DIR__ . $decoded_path)) {
     // Set CORS for font files
     if (preg_match('/\.(woff2?|ttf|eot|otf)$/i', $path)) {
         header('Access-Control-Allow-Origin: *');
+    }
+    // For PHP files, include them directly
+    if (preg_match('/\.php$/i', $path)) {
+        include __DIR__ . $decoded_path;
+        exit;
     }
     return false;
 }
