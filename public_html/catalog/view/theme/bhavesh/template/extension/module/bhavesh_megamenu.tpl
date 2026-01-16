@@ -3,7 +3,7 @@
     <h4 class="menu-heading"><b><?php echo $heading_title; ?></b></h4>
         <ul class="categories vertical-menu-bg">
             <?php foreach($menu as $key=> $row) { ?>
-            <?php require('catalog/view/theme/bhavesh/template/common/menus/mega_menu.tpl'); ?>
+            <?php require(DIR_TEMPLATE . 'bhavesh/template/common/menus/mega_menu.tpl'); ?>
             <?php } ?>
         </ul>
     </div>

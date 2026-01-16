@@ -38,7 +38,7 @@
               <?php } else if (isset($primary_menu)) { ?> 
                 <!-- Mega menu -->
                 <?php foreach($primary_menu_desktop as $key=> $row) { ?>
-                <?php require('catalog/view/theme/bhavesh/template/common/menus/mega_menu.tpl'); ?>
+                <?php require(DIR_TEMPLATE . 'bhavesh/template/common/menus/mega_menu.tpl'); ?>
                 <?php } ?>
               <?php } ?>
             </ul>

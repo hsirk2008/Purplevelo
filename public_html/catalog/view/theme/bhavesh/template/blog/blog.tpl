@@ -70,7 +70,7 @@
       <h3 class="section-title"><b><?php echo $text_related_products; ?></b></h3>
         <div class="grid-holder grid grid<?php echo $rel_prod_per_row; ?>">
         <?php foreach ($products as $product) { ?>
-        <?php require('catalog/view/theme/bhavesh/template/product/single_product.tpl'); ?>
+        <?php require(DIR_TEMPLATE . 'bhavesh/template/product/single_product.tpl'); ?>
         <?php } ?>
       </div>
       <?php } ?>

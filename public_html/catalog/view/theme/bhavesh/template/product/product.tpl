@@ -614,7 +614,7 @@
         
         <div class="grid grid-holder related carousel grid<?php echo $bhavesh_rel_prod_grid; ?>">
             <?php foreach ($products as $product) { ?>
-              <?php require('catalog/view/theme/bhavesh/template/product/single_product.tpl'); ?>
+              <?php require(DIR_TEMPLATE . 'bhavesh/template/product/single_product.tpl'); ?>
             <?php } ?>
         </div>
         </div>

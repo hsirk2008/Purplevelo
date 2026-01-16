@@ -17,7 +17,7 @@
 <?php } else if (isset($primary_menu)) { ?>
 <!-- Mega menu -->
 <?php foreach($primary_menu_mobile as $key=> $row) { ?>
-<?php require('catalog/view/theme/bhavesh/template/common/menus/mega_menu.tpl'); ?>
+<?php require(DIR_TEMPLATE . 'bhavesh/template/common/menus/mega_menu.tpl'); ?>
 <?php } ?>
 <?php } ?>
 </ul>
@@ -30,7 +30,7 @@
     <?php } else if (isset($secondary_menu)) { ?> 
         <!-- Mega menu -->
         <?php foreach($secondary_menu_mobile as $key=> $row) { ?>
-        	<?php require('catalog/view/theme/bhavesh/template/common/menus/mega_menu.tpl'); ?>
+                <?php require(DIR_TEMPLATE . 'bhavesh/template/common/menus/mega_menu.tpl'); ?>
         <?php } ?>
     <?php } ?>
 </ul>
@@ -39,7 +39,7 @@
 
 <!----
 <ul class="categories">
-    <?php require('catalog/view/theme/bhavesh/template/common/static_links.tpl'); ?>
+    <?php require(DIR_TEMPLATE . 'bhavesh/template/common/static_links.tpl'); ?>
 </ul>
 ---->
 
