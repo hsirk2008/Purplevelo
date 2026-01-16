@@ -58,6 +58,9 @@ final class PostgreSQL {
     private function translateQuery($sql) {
         $sql = str_replace('`', '"', $sql);
         
+        $sql = str_replace("'0000-00-00 00:00:00'", "'1970-01-01 00:00:00'", $sql);
+        $sql = str_replace("'0000-00-00'", "'1970-01-01'", $sql);
+        
         $sql = preg_replace('/\bLIMIT\s+(\d+)\s*,\s*(\d+)/i', 'LIMIT $2 OFFSET $1', $sql);
         
         $sql = preg_replace('/\bIFNULL\s*\(/i', 'COALESCE(', $sql);
