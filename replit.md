@@ -4,6 +4,13 @@
 Self-guided European cycling holidays e-commerce website powered by OpenCart 2.3.0.2, migrated from Hostinger MySQL to local Replit PostgreSQL for improved performance.
 
 ## Recent Changes
+- **2026-01-17**: Gallery Page Redesign
+  - Implemented vertical tab navigation with year-based organization (2022-2025)
+  - Tours organized by year with expandable sub-menus
+  - Each tour shows: date, route, distance, and photo/video grid
+  - Interactive lightbox for full-size image viewing
+  - Mobile-responsive design with collapsible tabs
+  - Removed old gallery_pro module in favor of new custom design
 - **2026-01-16**: Major SEO & Performance Optimization
   - Added proper OG/Twitter meta tags with Purple Velo branding
   - Added JSON-LD structured data (TravelAgency schema)
