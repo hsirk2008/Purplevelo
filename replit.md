@@ -4,6 +4,14 @@
 Self-guided European cycling holidays e-commerce website powered by OpenCart 2.3.0.2, migrated from Hostinger MySQL to local Replit PostgreSQL for improved performance.
 
 ## Recent Changes
+- **2026-01-19**: AI-Powered Cycling News Aggregator
+  - Fetches news from 8 sources: CyclingNews, VeloNews, BikeRadar, CyclingTips, ProcyclingUK, EscapeCollective, CyclingWeekly, RoadCC
+  - AI categorization using OpenAI gpt-4o-mini via Replit AI Integrations
+  - Three categories: Wheely (positive/achievements), Crash (incidents), Rumour (speculation/transfers)
+  - Keyword fallback if AI unavailable
+  - Database: oc_cycling_news table with auto-cleanup (>7 days)
+  - Refresh endpoint: /index.php?route=api/cycling_news/refresh
+  - API controller: catalog/controller/api/cycling_news.php
 - **2026-01-19**: Community Landing Page
   - Added COMMUNITY menu to navigation (between PURPLE 2026 and GALLERY)
   - Created Bento Box design landing page with 4 sections
