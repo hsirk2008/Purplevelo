@@ -419,6 +419,61 @@
                 </div>
             </div>
             
+            <!-- Public Forums & Newsletters Directory -->
+            <div class="forums-section">
+                <div class="forums-header">
+                    <h2>Public Forums & Newsletters</h2>
+                    <p>Join the conversation in these popular cycling communities and newsletters</p>
+                </div>
+                
+                <div class="forums-grid">
+                    <div class="forum-box reddit">
+                        <h3><i class="fa fa-reddit"></i> Reddit Communities</h3>
+                        <div class="forum-links">
+                            <a href="https://www.reddit.com/r/peloton/" target="_blank" rel="noopener" class="forum-link">
+                                <i class="fa fa-external-link"></i> r/peloton - Pro Cycling Discussion
+                            </a>
+                            <a href="https://www.reddit.com/r/cycling/" target="_blank" rel="noopener" class="forum-link">
+                                <i class="fa fa-external-link"></i> r/cycling - General Cycling
+                            </a>
+                            <a href="https://www.reddit.com/r/Velo/" target="_blank" rel="noopener" class="forum-link">
+                                <i class="fa fa-external-link"></i> r/Velo - Competitive Cycling
+                            </a>
+                            <a href="https://www.reddit.com/r/gravelcycling/" target="_blank" rel="noopener" class="forum-link">
+                                <i class="fa fa-external-link"></i> r/gravelcycling - Gravel Riding
+                            </a>
+                            <a href="https://www.reddit.com/r/bicycling/" target="_blank" rel="noopener" class="forum-link">
+                                <i class="fa fa-external-link"></i> r/bicycling - All Things Bikes
+                            </a>
+                            <a href="https://www.reddit.com/r/bikepacking/" target="_blank" rel="noopener" class="forum-link">
+                                <i class="fa fa-external-link"></i> r/bikepacking - Adventure Cycling
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="forum-box substack">
+                        <h3><i class="fa fa-envelope"></i> Cycling Newsletters</h3>
+                        <div class="forum-links">
+                            <a href="https://theouterline.substack.com/" target="_blank" rel="noopener" class="forum-link">
+                                <i class="fa fa-external-link"></i> The Outer Line - Pro Cycling Analysis
+                            </a>
+                            <a href="https://lanternerouge.substack.com/" target="_blank" rel="noopener" class="forum-link">
+                                <i class="fa fa-external-link"></i> Lanterne Rouge - Race Commentary
+                            </a>
+                            <a href="https://inthedrops.substack.com/" target="_blank" rel="noopener" class="forum-link">
+                                <i class="fa fa-external-link"></i> In The Drops - Cycling Insights
+                            </a>
+                            <a href="https://escapecollective.com/" target="_blank" rel="noopener" class="forum-link">
+                                <i class="fa fa-external-link"></i> Escape Collective - Independent Journalism
+                            </a>
+                            <a href="https://cyclingtips.com/" target="_blank" rel="noopener" class="forum-link">
+                                <i class="fa fa-external-link"></i> CyclingTips - News & Reviews
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div style="text-align: center; margin-top: 30px;">
                 <a href="/Community" class="back-link"><i class="fa fa-arrow-left"></i> Back to Community</a>
             </div>
