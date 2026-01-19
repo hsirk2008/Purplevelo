@@ -214,7 +214,7 @@
 
 <div class="archive-hero">
     <h1>Cycling News Archive</h1>
-    <p>30 days of Pro, Elite & UCI cycling news from around the world</p>
+    <p>30 days of cycling industry news - racing, e-bikes, gear reviews, infrastructure & more</p>
 </div>
 
 <div class="archive-container">

@@ -4,7 +4,7 @@ class ControllerInformationCyclingNewsArchive extends Controller {
         $this->load->language('information/information');
         
         $this->document->setTitle('Cycling News Archive - Purple Velo');
-        $this->document->setDescription('Archive of cycling news from the past 30 days. Pro, Elite, UCI road, gravel and cyclocross racing news.');
+        $this->document->setDescription('30 days of cycling industry news - racing, e-bikes, gear reviews, infrastructure, bikepacking and more.');
         
         $data['breadcrumbs'] = array();
         $data['breadcrumbs'][] = array(
