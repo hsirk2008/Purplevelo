@@ -206,10 +206,25 @@
     display: block;
 }
 .bento-box.cycling-news .bento-content {
-    padding: 25px;
+    padding: 20px;
 }
-.bento-box.cycling-news .bento-description {
-    margin-bottom: 10px;
+.news-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.news-header .bento-title {
+    margin-bottom: 0;
+    font-size: 22px;
+}
+.news-header .bento-title i {
+    margin-right: 8px;
+}
+.news-header .news-tabs {
+    margin-bottom: 0;
 }
 .news-tab-content::-webkit-scrollbar {
     width: 6px;
@@ -400,19 +415,16 @@
     <div class="bento-grid">
         <div class="bento-box cycling-news">
             <div class="bento-content">
-                <div class="bento-icon">
-                    <i class="fa fa-newspaper-o"></i>
-                </div>
-                <h2 class="bento-title">Cycling News</h2>
-                <p class="bento-description">Live news from the world of Pro, Elite, UCI cycling. Categorized by AI.</p>
-                
-                <div class="news-tabs-container">
+                <div class="news-header">
+                    <h2 class="bento-title"><i class="fa fa-newspaper-o"></i> Cycling News</h2>
                     <div class="news-tabs">
                         <button class="news-tab active" data-tab="wheely" title="Good news - Race wins, achievements, records">Wheely</button>
                         <button class="news-tab" data-tab="crash" title="Bad news - Accidents, injuries, incidents">Crash</button>
                         <button class="news-tab" data-tab="rumour" title="Cycling rumours - Transfers, speculation, gossip">Rumour</button>
                     </div>
-                    
+                </div>
+                
+                <div class="news-tabs-container">
                     <div id="tab-wheely" class="news-tab-content active">
                         <?php if (!empty($cycling_news['Wheely'])): ?>
                             <?php foreach ($cycling_news['Wheely'] as $article): ?>
