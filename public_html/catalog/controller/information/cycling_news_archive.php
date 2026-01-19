@@ -18,24 +18,6 @@ class ControllerInformationCyclingNewsArchive extends Controller {
         
         $data['heading_title'] = 'Cycling News Archive';
         
-        $category = isset($this->request->get['category']) ? $this->request->get['category'] : 'all';
-        $page = isset($this->request->get['page']) ? (int)$this->request->get['page'] : 1;
-        $limit = 20;
-        $offset = ($page - 1) * $limit;
-        
-        $data['current_category'] = $category;
-        $data['current_page'] = $page;
-        
-        $whereClause = "is_active = true";
-        if ($category !== 'all' && in_array($category, array('Wheely', 'Crash', 'Rumour'))) {
-            $whereClause .= " AND category = '" . $this->db->escape($category) . "'";
-        }
-        
-        $countQuery = $this->db->query("SELECT COUNT(*) as total FROM " . DB_PREFIX . "cycling_news WHERE " . $whereClause);
-        $total = $countQuery->row['total'];
-        $data['total_articles'] = $total;
-        $data['total_pages'] = ceil($total / $limit);
-        
         $statsQuery = $this->db->query("SELECT category, COUNT(*) as count FROM " . DB_PREFIX . "cycling_news WHERE is_active = true GROUP BY category");
         $stats = array('Wheely' => 0, 'Crash' => 0, 'Rumour' => 0);
         foreach ($statsQuery->rows as $row) {
@@ -45,25 +27,38 @@ class ControllerInformationCyclingNewsArchive extends Controller {
         }
         $data['stats'] = $stats;
         
-        $wheelyQuery = $this->db->query("SELECT news_id, title, link, source, summary, published_at, category FROM " . DB_PREFIX . "cycling_news WHERE is_active = true AND category = 'Wheely' ORDER BY published_at DESC LIMIT 50");
-        $data['wheely_articles'] = array();
-        foreach ($wheelyQuery->rows as $row) {
-            $row['time_ago'] = $this->timeAgo($row['published_at']);
-            $data['wheely_articles'][] = $row;
-        }
+        $allQuery = $this->db->query("SELECT news_id, title, link, source, summary, published_at, category FROM " . DB_PREFIX . "cycling_news WHERE is_active = true ORDER BY published_at DESC");
         
-        $crashQuery = $this->db->query("SELECT news_id, title, link, source, summary, published_at, category FROM " . DB_PREFIX . "cycling_news WHERE is_active = true AND category = 'Crash' ORDER BY published_at DESC LIMIT 50");
-        $data['crash_articles'] = array();
-        foreach ($crashQuery->rows as $row) {
-            $row['time_ago'] = $this->timeAgo($row['published_at']);
-            $data['crash_articles'][] = $row;
-        }
+        $now = time();
+        $todayStart = strtotime('today midnight');
+        $weekStart = strtotime('-7 days midnight');
+        $monthStart = strtotime('-30 days midnight');
         
-        $rumourQuery = $this->db->query("SELECT news_id, title, link, source, summary, published_at, category FROM " . DB_PREFIX . "cycling_news WHERE is_active = true AND category = 'Rumour' ORDER BY published_at DESC LIMIT 50");
-        $data['rumour_articles'] = array();
-        foreach ($rumourQuery->rows as $row) {
+        $data['today'] = array('Wheely' => array(), 'Crash' => array(), 'Rumour' => array());
+        $data['this_week'] = array('Wheely' => array(), 'Crash' => array(), 'Rumour' => array());
+        $data['this_month'] = array('Wheely' => array(), 'Crash' => array(), 'Rumour' => array());
+        
+        $data['today_count'] = 0;
+        $data['week_count'] = 0;
+        $data['month_count'] = 0;
+        
+        foreach ($allQuery->rows as $row) {
+            $publishedTime = strtotime($row['published_at']);
             $row['time_ago'] = $this->timeAgo($row['published_at']);
-            $data['rumour_articles'][] = $row;
+            $category = $row['category'];
+            
+            if (!isset($data['today'][$category])) continue;
+            
+            if ($publishedTime >= $todayStart) {
+                $data['today'][$category][] = $row;
+                $data['today_count']++;
+            } elseif ($publishedTime >= $weekStart) {
+                $data['this_week'][$category][] = $row;
+                $data['week_count']++;
+            } elseif ($publishedTime >= $monthStart) {
+                $data['this_month'][$category][] = $row;
+                $data['month_count']++;
+            }
         }
         
         $data['column_left'] = $this->load->controller('common/column_left');
