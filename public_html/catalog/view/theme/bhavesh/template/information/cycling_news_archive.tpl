@@ -2,53 +2,61 @@
 
 <style>
 .news-archive-page {
-    background: linear-gradient(135deg, #f8f4fa 0%, #efe8f2 100%);
+    background: #fff;
     min-height: 100vh;
-    padding: 40px 20px;
+    padding: 40px 0;
 }
 .news-archive-card {
     max-width: 1200px;
     margin: 0 auto;
-    background: #fff;
-    border-radius: 30px;
-    box-shadow: 0 10px 60px rgba(84, 51, 97, 0.15);
-    overflow: hidden;
+    padding: 0 15px;
 }
 .archive-header {
-    background: linear-gradient(135deg, #543361 0%, #7b4d8e 100%), url('/image/cycling-news-bg.png');
-    background-size: cover;
-    padding: 40px;
+    background: linear-gradient(135deg, #543361 0%, #a578b7 100%);
+    padding: 50px 40px;
     text-align: center;
     color: #fff;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 0;
 }
 .archive-header h1 {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 36px;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 30px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    color: #fff;
+    line-height: 1.4;
 }
 .archive-header p {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 16px;
-    opacity: 0.9;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    opacity: 0.95;
     margin: 0;
+    line-height: 1.4;
+    color: #fff;
 }
 .archive-body {
-    padding: 30px;
+    padding: 40px;
+    background: #fff;
+    border: 1px solid rgba(84, 51, 97, 0.1);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
 }
 .bento-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-bottom: 30px;
+    gap: 25px;
+    margin-bottom: 40px;
 }
 .category-box {
     background: #fff;
-    border-radius: 20px;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(84, 51, 97, 0.1);
+    box-shadow: 0 2px 15px rgba(84, 51, 97, 0.08);
+    border: 1px solid rgba(84, 51, 97, 0.08);
     display: flex;
     flex-direction: column;
 }
@@ -56,7 +64,7 @@
     padding: 20px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 15px;
 }
 .category-header.wheely {
     background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
@@ -71,24 +79,27 @@
     color: #fff;
 }
 .category-icon {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     background: rgba(255,255,255,0.2);
-    border-radius: 10px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 18px;
 }
 .category-info h3 {
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: "Josefin Sans", sans-serif;
     font-size: 18px;
     font-weight: 700;
-    margin: 0 0 2px 0;
+    margin: 0 0 4px 0;
+    color: #fff;
+    line-height: 1.4;
 }
 .category-count {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 12px;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
     opacity: 0.9;
 }
 .category-articles {
@@ -96,82 +107,92 @@
     flex: 1;
     max-height: 400px;
     overflow-y: auto;
+    background: #fff;
 }
 .category-articles::-webkit-scrollbar {
-    width: 5px;
+    width: 6px;
 }
 .category-articles::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #f5f5f5;
     border-radius: 3px;
 }
 .category-articles::-webkit-scrollbar-thumb {
-    background: #ccc;
+    background: #543361;
     border-radius: 3px;
+    opacity: 0.5;
 }
 .news-item {
-    padding: 12px;
-    border-bottom: 1px solid #eee;
+    padding: 14px 12px;
+    border-bottom: 1px solid rgba(84, 51, 97, 0.08);
     transition: background 0.2s;
 }
 .news-item:last-child {
     border-bottom: none;
 }
 .news-item:hover {
-    background: #f9f5fa;
+    background: rgba(84, 51, 97, 0.04);
 }
 .news-item a {
     text-decoration: none;
     color: inherit;
 }
 .news-item-title {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 14px;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 15px;
     font-weight: 600;
-    color: #333;
+    color: #1B1919;
     line-height: 1.4;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
 }
 .news-item-meta {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 11px;
-    color: #888;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #6e6e6d;
+    line-height: 1.4;
 }
 .news-item-source {
     color: #543361;
     font-weight: 600;
 }
 .forums-section {
-    margin-top: 30px;
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(84, 51, 97, 0.1);
 }
 .forums-header {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 .forums-header h2 {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 24px;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 30px;
     font-weight: 700;
-    color: #543361;
+    color: #1B1919;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin: 0;
+    margin: 0 0 10px 0;
+    line-height: 1.4;
 }
 .forums-header p {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 14px;
-    color: #888;
-    margin: 5px 0 0 0;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #6e6e6d;
+    margin: 0;
+    line-height: 1.4;
 }
 .forums-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 25px;
 }
 .forum-box {
     background: #fff;
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 4px 20px rgba(84, 51, 97, 0.08);
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 2px 15px rgba(84, 51, 97, 0.08);
+    border: 1px solid rgba(84, 51, 97, 0.08);
 }
 .forum-box.reddit {
     border-left: 4px solid #ff4500;
@@ -180,17 +201,18 @@
     border-left: 4px solid #ff6719;
 }
 .forum-box h3 {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 16px;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 18px;
     font-weight: 700;
-    color: #333;
-    margin: 0 0 15px 0;
+    color: #1B1919;
+    margin: 0 0 20px 0;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    line-height: 1.4;
 }
 .forum-box h3 i {
-    font-size: 20px;
+    font-size: 22px;
 }
 .forum-box.reddit h3 i {
     color: #ff4500;
@@ -201,50 +223,60 @@
 .forum-links {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
 }
 .forum-link {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 12px;
-    background: #f8f4fa;
-    border-radius: 8px;
+    gap: 12px;
+    padding: 12px 15px;
+    background: rgba(84, 51, 97, 0.04);
+    border-radius: 6px;
     text-decoration: none;
-    color: #333;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 13px;
+    color: #1B1919;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
     transition: all 0.2s;
+    line-height: 1.4;
 }
 .forum-link:hover {
     background: #543361;
     color: #fff;
 }
 .forum-link i {
-    opacity: 0.7;
+    color: #543361;
+}
+.forum-link:hover i {
+    color: #fff;
 }
 .back-link {
-    display: block;
+    display: inline-block;
     text-align: center;
-    margin-top: 30px;
-    padding: 15px 30px;
+    margin-top: 40px;
+    padding: 15px 35px;
     background: #543361;
     color: #fff;
-    border-radius: 30px;
-    font-family: 'Josefin Sans', sans-serif;
+    border-radius: 4px;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 15px;
     font-weight: 600;
     text-decoration: none;
-    display: inline-block;
+    transition: background 0.2s;
+    line-height: 1.4;
 }
 .back-link:hover {
-    background: #7b4d8e;
+    background: #a578b7;
     color: #fff;
 }
 .empty-message {
     text-align: center;
-    padding: 30px;
-    font-family: 'Josefin Sans', sans-serif;
-    color: #888;
+    padding: 35px 20px;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #6e6e6d;
+    line-height: 1.4;
 }
 @media (max-width: 992px) {
     .bento-grid {
@@ -255,14 +287,23 @@
     }
 }
 @media (max-width: 768px) {
+    .archive-header {
+        padding: 35px 25px;
+    }
     .archive-header h1 {
         font-size: 24px;
     }
+    .archive-header p {
+        font-size: 16px;
+    }
     .news-archive-page {
-        padding: 20px 10px;
+        padding: 25px 0;
     }
     .archive-body {
-        padding: 20px;
+        padding: 25px;
+    }
+    .forums-header h2 {
+        font-size: 24px;
     }
 }
 </style>
