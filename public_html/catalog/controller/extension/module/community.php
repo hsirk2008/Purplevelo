@@ -10,7 +10,7 @@ class ControllerExtensionModuleCommunity extends Controller {
         );
         
         try {
-            $query = $this->db->query("SELECT * FROM oc_cycling_news WHERE published_at >= NOW() - INTERVAL '7 days' ORDER BY published_at DESC");
+            $query = $this->db->query("SELECT * FROM oc_cycling_news WHERE published_at >= NOW() - INTERVAL '7 days' AND source NOT LIKE 'Reddit%' AND source NOT LIKE '%Substack%' AND source NOT LIKE 'The Outer Line' AND source NOT LIKE 'Lanterne Rouge' AND source NOT LIKE 'InTheDrops' ORDER BY published_at DESC");
             
             if ($query->num_rows) {
                 foreach ($query->rows as $row) {

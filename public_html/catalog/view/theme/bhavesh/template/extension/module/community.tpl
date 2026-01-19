@@ -122,30 +122,65 @@
 .community-module .bento-box.product-reviews .bento-link {
     color: #543361;
 }
-.community-module .news-tabs-container {
-    margin-top: 15px;
+.community-module .bento-box.cycling-news .bento-content {
+    padding: 20px;
+}
+.community-module .news-intro {
+    margin-bottom: 15px;
+}
+.community-module .news-intro .bento-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+.community-module .news-intro .bento-title {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+.community-module .news-intro .news-subtitle {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    opacity: 0.9;
+    margin: 0;
+    line-height: 1.5;
+}
+.community-module .news-inner-card {
+    background: rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 15px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 .community-module .news-tabs {
     display: flex;
-    gap: 5px;
-    margin-bottom: 15px;
+    gap: 8px;
+    margin-bottom: 12px;
 }
 .community-module .news-tab {
     flex: 1;
-    padding: 8px 12px;
-    background: rgba(255,255,255,0.15);
+    padding: 10px 8px;
+    background: rgba(255,255,255,0.1);
     border: none;
     border-radius: 8px;
     color: #fff;
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     text-transform: uppercase;
     cursor: pointer;
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+.community-module .news-tab i {
+    font-size: 16px;
 }
 .community-module .news-tab:hover {
-    background: rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.2);
 }
 .community-module .news-tab.active {
     background: #fff;
@@ -153,42 +188,15 @@
 }
 .community-module .news-tab-content {
     display: none;
-    max-height: 320px;
+    max-height: 280px;
     overflow-y: auto;
+    flex: 1;
 }
 .community-module .news-tab-content.active {
     display: block;
 }
-.community-module .bento-box.cycling-news .bento-content {
-    padding: 15px;
-}
-.community-module .news-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-.community-module .news-header .bento-title {
-    margin-bottom: 0;
-    font-size: 18px;
-}
-.community-module .news-header .bento-title i {
-    margin-right: 6px;
-}
-.community-module .news-title-block {
-    flex: 1;
-}
-.community-module .news-subtitle {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 11px;
-    opacity: 0.8;
-    margin: 4px 0 0 0;
-    font-weight: 400;
-}
 .community-module .news-tab-content::-webkit-scrollbar {
-    width: 6px;
+    width: 5px;
 }
 .community-module .news-tab-content::-webkit-scrollbar-track {
     background: rgba(255,255,255,0.1);
@@ -366,19 +374,28 @@
         <div class="bento-grid">
             <div class="bento-box cycling-news">
                 <div class="bento-content">
-                    <div class="news-header">
-                        <div class="news-title-block">
-                            <h2 class="bento-title"><i class="fa fa-newspaper-o"></i> Cycling Industry News</h2>
-                            <p class="news-subtitle">AI-powered aggregator pulling from 24 sources including CyclingNews, VeloNews, BikeRumor, Reddit communities, and more - automatically categorized into good news, incidents, and rumours</p>
-                        </div>
-                        <div class="news-tabs">
-                            <button class="news-tab active" data-tab="wheely-home" title="Good news - Race wins, achievements, records">Wheely</button>
-                            <button class="news-tab" data-tab="crash-home" title="Bad news - Accidents, injuries, incidents">Crash</button>
-                            <button class="news-tab" data-tab="rumour-home" title="Cycling rumours - Transfers, speculation, gossip">Rumour</button>
-                        </div>
+                    <div class="news-intro">
+                        <div class="bento-icon"><i class="fa fa-newspaper-o"></i></div>
+                        <h2 class="bento-title">Cycling Industry News</h2>
+                        <p class="news-subtitle">Your one-stop hub for cycling news from across the industry - aggregated and organized so you never miss a story</p>
                     </div>
                     
-                    <div class="news-tabs-container">
+                    <div class="news-inner-card">
+                        <div class="news-tabs">
+                            <button class="news-tab active" data-tab="wheely-home" title="Good news - Race wins, achievements, product launches">
+                                <i class="fa fa-thumbs-up"></i>
+                                Wheely
+                            </button>
+                            <button class="news-tab" data-tab="crash-home" title="Bad news - Accidents, injuries, recalls">
+                                <i class="fa fa-exclamation-triangle"></i>
+                                Crash
+                            </button>
+                            <button class="news-tab" data-tab="rumour-home" title="Cycling rumours - Transfers, speculation, gossip">
+                                <i class="fa fa-comment-o"></i>
+                                Rumour
+                            </button>
+                        </div>
+                        
                         <div id="tab-wheely-home" class="news-tab-content active">
                             <?php if (!empty($cycling_news['Wheely'])): ?>
                                 <?php foreach ($cycling_news['Wheely'] as $article): ?>
@@ -423,8 +440,8 @@
                                 <div class="news-empty">No rumours circulating.</div>
                             <?php endif; ?>
                         </div>
-                        <a href="/cycling-news-archive" class="bento-link" style="margin-top: 15px;">View Full Archive <i class="fa fa-arrow-right"></i></a>
                     </div>
+                    <a href="/cycling-news-archive" class="bento-link" style="margin-top: 15px;">View Full Archive <i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
             
