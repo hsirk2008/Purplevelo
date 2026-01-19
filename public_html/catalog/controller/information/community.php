@@ -39,7 +39,7 @@ class ControllerInformationCommunity extends Controller {
         );
         
         foreach (array('Wheely', 'Crash', 'Rumour') as $category) {
-            $query = $this->db->query("SELECT news_id, title, link, source, summary, published_at, category FROM " . DB_PREFIX . "cycling_news WHERE is_active = true AND category = '" . $this->db->escape($category) . "' ORDER BY published_at DESC LIMIT 5");
+            $query = $this->db->query("SELECT news_id, title, link, source, summary, published_at, category FROM " . DB_PREFIX . "cycling_news WHERE is_active = true AND category = '" . $this->db->escape($category) . "' ORDER BY published_at DESC LIMIT 25");
             
             foreach ($query->rows as $row) {
                 $news[$category][] = array(
