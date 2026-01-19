@@ -223,6 +223,16 @@
 .news-header .bento-title i {
     margin-right: 6px;
 }
+.news-title-block {
+    flex: 1;
+}
+.news-subtitle {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    opacity: 0.8;
+    margin: 4px 0 0 0;
+    font-weight: 400;
+}
 .news-header .news-tabs {
     margin-bottom: 0;
 }
@@ -419,7 +429,10 @@
         <div class="bento-box cycling-news">
             <div class="bento-content">
                 <div class="news-header">
-                    <h2 class="bento-title"><i class="fa fa-newspaper-o"></i> Cycling Industry News</h2>
+                    <div class="news-title-block">
+                        <h2 class="bento-title"><i class="fa fa-newspaper-o"></i> Cycling Industry News</h2>
+                        <p class="news-subtitle">AI-curated news from 24 sources across the cycling world</p>
+                    </div>
                     <div class="news-tabs">
                         <button class="news-tab active" data-tab="wheely" title="Good news - Race wins, achievements, records">Wheely</button>
                         <button class="news-tab" data-tab="crash" title="Bad news - Accidents, injuries, incidents">Crash</button>
