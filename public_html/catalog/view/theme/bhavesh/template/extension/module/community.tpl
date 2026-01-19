@@ -355,7 +355,9 @@
     .community-module .bento-box.travel-blog,
     .community-module .bento-box.product-reviews,
     .community-module .bento-box.testimonials-small,
-    .community-module .bento-box.testimonials-main {
+    .community-module .bento-box.testimonials-main,
+    .community-module .bento-box.buycycle,
+    .community-module .bento-box.tourplanner {
         grid-column: span 1;
         grid-row: span 1;
     }
@@ -384,6 +386,64 @@
 }
 .community-module .section-heading h2 span {
     color: #543361;
+}
+.community-module .bento-box.buycycle {
+    grid-column: span 2;
+    grid-row: span 1;
+    background: linear-gradient(145deg, #2d8659 0%, #1e5c3d 100%);
+    color: #fff;
+}
+.community-module .bento-box.tourplanner {
+    grid-column: span 2;
+    grid-row: span 1;
+    background: linear-gradient(145deg, #e67e22 0%, #c4651a 100%);
+    color: #fff;
+}
+.community-module .tool-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.community-module .tool-search-form {
+    margin-top: 15px;
+}
+.community-module .tool-search-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 25px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 14px;
+    background: rgba(255,255,255,0.95);
+    color: #333;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.community-module .tool-search-input::placeholder {
+    color: #888;
+}
+.community-module .tool-search-input:focus {
+    outline: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.community-module .tool-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+.community-module .tool-feature {
+    background: rgba(255,255,255,0.2);
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-family: 'Josefin Sans', sans-serif;
+}
+.community-module .bento-box.buycycle .bento-link,
+.community-module .bento-box.tourplanner .bento-link {
+    color: #fff;
 }
 </style>
 
@@ -519,6 +579,37 @@
                     <h2 class="bento-title">Stories</h2>
                     <p class="bento-description">Read inspiring stories from fellow cyclists who've experienced Purple Velo tours.</p>
                     <a href="#" class="bento-link">Read Stories <i class="fa fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="bento-box buycycle">
+                <div class="bento-content">
+                    <img src="/image/buycycle-logo.png" alt="BuyCycle" class="tool-logo">
+                    <h2 class="bento-title">BuyCycle</h2>
+                    <p class="bento-description">AI-powered smart shopping assistant that researches bikes, parts & components for you. Find the best deals on new and second-hand items - we encourage recycling and upcycling before buying new!</p>
+                    <div class="tool-features">
+                        <span class="tool-feature"><i class="fa fa-recycle"></i> Recycling First</span>
+                        <span class="tool-feature"><i class="fa fa-search"></i> Smart Research</span>
+                        <span class="tool-feature"><i class="fa fa-gbp"></i> Cash Friendly</span>
+                    </div>
+                    <div class="tool-search-form">
+                        <input type="text" class="tool-search-input" placeholder="What are you looking for? e.g., 'Carbon road bike under £2000'">
+                    </div>
+                    <a href="#" class="bento-link" style="margin-top: 15px;">Start Searching <i class="fa fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="bento-box tourplanner">
+                <div class="bento-content">
+                    <img src="/image/tourplanner-logo.png" alt="TourPlanner" class="tool-logo">
+                    <h2 class="bento-title">TourPlanner</h2>
+                    <p class="bento-description">AI-powered family holiday planner for cycling enthusiasts. Plan smart holidays that keep costs low while maximizing quality family time - no more guilt about balancing your cycling passion with family vacations!</p>
+                    <div class="tool-features">
+                        <span class="tool-feature"><i class="fa fa-users"></i> Family Focused</span>
+                        <span class="tool-feature"><i class="fa fa-calendar"></i> School-Friendly</span>
+                        <span class="tool-feature"><i class="fa fa-heart"></i> Guilt-Free</span>
+                    </div>
+                    <a href="#" class="bento-link" style="margin-top: 15px;">Plan Your Holiday <i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
             
