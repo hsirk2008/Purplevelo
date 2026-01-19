@@ -1,301 +1,406 @@
 <?php echo $header; ?>
 
 <style>
-.archive-hero {
-    background: linear-gradient(135deg, #543361 0%, #7b4d8e 100%);
-    padding: 60px 20px;
-    text-align: center;
-    color: #fff;
-}
-.archive-hero h1 {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 42px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    margin-bottom: 10px;
-}
-.archive-hero p {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 18px;
-    opacity: 0.9;
-}
-.archive-container {
-    max-width: 1200px;
-    margin: 0 auto;
+.news-archive-page {
+    background: linear-gradient(135deg, #f8f4fa 0%, #efe8f2 100%);
+    min-height: 100vh;
     padding: 40px 20px;
 }
-.archive-filters {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.filter-btn {
-    padding: 12px 24px;
+.news-archive-card {
+    max-width: 1200px;
+    margin: 0 auto;
     background: #fff;
-    border: 2px solid #543361;
     border-radius: 30px;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    color: #543361;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
+    box-shadow: 0 10px 60px rgba(84, 51, 97, 0.15);
+    overflow: hidden;
 }
-.filter-btn:hover, .filter-btn.active {
-    background: #543361;
+.archive-header {
+    background: linear-gradient(135deg, #543361 0%, #7b4d8e 100%), url('/image/cycling-news-bg.png');
+    background-size: cover;
+    padding: 40px;
+    text-align: center;
     color: #fff;
 }
-.filter-btn .count {
-    background: rgba(84, 51, 97, 0.15);
-    padding: 2px 8px;
-    border-radius: 10px;
-    font-size: 12px;
-    margin-left: 5px;
-}
-.filter-btn.active .count, .filter-btn:hover .count {
-    background: rgba(255,255,255,0.2);
-}
-.stats-bar {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-}
-.stat-item {
+.archive-header h1 {
     font-family: 'Josefin Sans', sans-serif;
-    text-align: center;
-}
-.stat-number {
     font-size: 36px;
     font-weight: 700;
-    color: #543361;
-}
-.stat-label {
-    font-size: 14px;
-    color: #888;
     text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
 }
-.articles-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 25px;
-}
-.article-card {
-    background: #fff;
-    border-radius: 15px;
-    padding: 25px;
-    box-shadow: 0 2px 15px rgba(84, 51, 97, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.article-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 25px rgba(84, 51, 97, 0.15);
-}
-.article-category {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 15px;
+.archive-header p {
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    margin-bottom: 12px;
+    font-size: 16px;
+    opacity: 0.9;
+    margin: 0;
 }
-.article-category.wheely {
-    background: #e8f5e9;
-    color: #2e7d32;
+.archive-body {
+    padding: 30px;
 }
-.article-category.crash {
-    background: #ffebee;
-    color: #c62828;
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
 }
-.article-category.rumour {
-    background: #fff3e0;
-    color: #ef6c00;
+.category-box {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(84, 51, 97, 0.1);
+    display: flex;
+    flex-direction: column;
 }
-.article-title {
+.category-header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.category-header.wheely {
+    background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+    color: #fff;
+}
+.category-header.crash {
+    background: linear-gradient(135deg, #f44336 0%, #c62828 100%);
+    color: #fff;
+}
+.category-header.rumour {
+    background: linear-gradient(135deg, #ff9800 0%, #ef6c00 100%);
+    color: #fff;
+}
+.category-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+.category-info h3 {
     font-family: 'Josefin Sans', sans-serif;
     font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 2px 0;
+}
+.category-count {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
+    opacity: 0.9;
+}
+.category-articles {
+    padding: 15px;
+    flex: 1;
+    max-height: 400px;
+    overflow-y: auto;
+}
+.category-articles::-webkit-scrollbar {
+    width: 5px;
+}
+.category-articles::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+.category-articles::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+}
+.news-item {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s;
+}
+.news-item:last-child {
+    border-bottom: none;
+}
+.news-item:hover {
+    background: #f9f5fa;
+}
+.news-item a {
+    text-decoration: none;
+    color: inherit;
+}
+.news-item-title {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 14px;
     font-weight: 600;
     color: #333;
     line-height: 1.4;
-    margin-bottom: 10px;
+    margin-bottom: 4px;
 }
-.article-title a {
-    color: inherit;
-    text-decoration: none;
-}
-.article-title a:hover {
-    color: #543361;
-}
-.article-summary {
+.news-item-meta {
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 14px;
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 15px;
-}
-.article-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 12px;
-    color: #999;
-}
-.article-source {
-    font-weight: 600;
-    color: #543361;
-}
-.pagination {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 40px;
-}
-.page-link {
-    padding: 10px 18px;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 14px;
-    color: #543361;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-.page-link:hover, .page-link.active {
-    background: #543361;
-    color: #fff;
-    border-color: #543361;
-}
-.no-articles {
-    text-align: center;
-    padding: 60px 20px;
-    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
     color: #888;
 }
-.back-to-community {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 30px;
+.news-item-source {
+    color: #543361;
+    font-weight: 600;
+}
+.forums-section {
+    margin-top: 30px;
+}
+.forums-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.forums-header h2 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #543361;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+}
+.forums-header p {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 14px;
+    color: #888;
+    margin: 5px 0 0 0;
+}
+.forums-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+.forum-box {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(84, 51, 97, 0.08);
+}
+.forum-box.reddit {
+    border-left: 4px solid #ff4500;
+}
+.forum-box.substack {
+    border-left: 4px solid #ff6719;
+}
+.forum-box h3 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.forum-box h3 i {
+    font-size: 20px;
+}
+.forum-box.reddit h3 i {
+    color: #ff4500;
+}
+.forum-box.substack h3 i {
+    color: #ff6719;
+}
+.forum-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.forum-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: #f8f4fa;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+.forum-link:hover {
+    background: #543361;
+    color: #fff;
+}
+.forum-link i {
+    opacity: 0.7;
+}
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px 30px;
     background: #543361;
     color: #fff;
     border-radius: 30px;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 600;
     text-decoration: none;
-    transition: background 0.3s ease;
+    display: inline-block;
 }
-.back-to-community:hover {
+.back-link:hover {
     background: #7b4d8e;
     color: #fff;
 }
-@media (max-width: 768px) {
-    .archive-hero h1 {
-        font-size: 28px;
-    }
-    .articles-grid {
+.empty-message {
+    text-align: center;
+    padding: 30px;
+    font-family: 'Josefin Sans', sans-serif;
+    color: #888;
+}
+@media (max-width: 992px) {
+    .bento-grid {
         grid-template-columns: 1fr;
     }
-    .stats-bar {
-        gap: 20px;
+    .forums-grid {
+        grid-template-columns: 1fr;
     }
-    .stat-number {
-        font-size: 28px;
+}
+@media (max-width: 768px) {
+    .archive-header h1 {
+        font-size: 24px;
+    }
+    .news-archive-page {
+        padding: 20px 10px;
+    }
+    .archive-body {
+        padding: 20px;
     }
 }
 </style>
 
-<div class="archive-hero">
-    <h1>Cycling News Archive</h1>
-    <p>30 days of cycling industry news - racing, e-bikes, gear reviews, infrastructure & more</p>
-</div>
-
-<div class="archive-container">
-    <div class="stats-bar">
-        <div class="stat-item">
-            <div class="stat-number"><?php echo $total_articles; ?></div>
-            <div class="stat-label">Total Articles</div>
+<div class="news-archive-page">
+    <div class="news-archive-card">
+        <div class="archive-header">
+            <h1>Cycling News Archive</h1>
+            <p>30 days of cycling industry news - aggregated and organized by category</p>
         </div>
-        <div class="stat-item">
-            <div class="stat-number"><?php echo $stats['Wheely']; ?></div>
-            <div class="stat-label">Good News</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number"><?php echo $stats['Crash']; ?></div>
-            <div class="stat-label">Incidents</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number"><?php echo $stats['Rumour']; ?></div>
-            <div class="stat-label">Rumours</div>
-        </div>
-    </div>
-
-    <div class="archive-filters">
-        <a href="?route=information/cycling_news_archive&category=all" class="filter-btn <?php echo $current_category == 'all' ? 'active' : ''; ?>">
-            All News <span class="count"><?php echo $total_articles; ?></span>
-        </a>
-        <a href="?route=information/cycling_news_archive&category=Wheely" class="filter-btn <?php echo $current_category == 'Wheely' ? 'active' : ''; ?>">
-            Wheely <span class="count"><?php echo $stats['Wheely']; ?></span>
-        </a>
-        <a href="?route=information/cycling_news_archive&category=Crash" class="filter-btn <?php echo $current_category == 'Crash' ? 'active' : ''; ?>">
-            Crash <span class="count"><?php echo $stats['Crash']; ?></span>
-        </a>
-        <a href="?route=information/cycling_news_archive&category=Rumour" class="filter-btn <?php echo $current_category == 'Rumour' ? 'active' : ''; ?>">
-            Rumour <span class="count"><?php echo $stats['Rumour']; ?></span>
-        </a>
-    </div>
-
-    <?php if (!empty($articles)): ?>
-    <div class="articles-grid">
-        <?php foreach ($articles as $article): ?>
-        <div class="article-card">
-            <span class="article-category <?php echo strtolower($article['category']); ?>"><?php echo $article['category']; ?></span>
-            <h3 class="article-title">
-                <a href="<?php echo $article['link']; ?>" target="_blank" rel="noopener"><?php echo htmlspecialchars($article['title']); ?></a>
-            </h3>
-            <?php if (!empty($article['summary'])): ?>
-            <p class="article-summary"><?php echo htmlspecialchars(substr($article['summary'], 0, 150)); ?>...</p>
-            <?php endif; ?>
-            <div class="article-meta">
-                <span class="article-source"><?php echo $article['source']; ?></span>
-                <span><?php echo $article['date_formatted']; ?></span>
+        
+        <div class="archive-body">
+            <div class="bento-grid">
+                <div class="category-box">
+                    <div class="category-header wheely">
+                        <div class="category-icon"><i class="fa fa-thumbs-up"></i></div>
+                        <div class="category-info">
+                            <h3>Wheely</h3>
+                            <span class="category-count"><?php echo $stats['Wheely']; ?> articles</span>
+                        </div>
+                    </div>
+                    <div class="category-articles">
+                        <?php if (!empty($wheely_articles)): ?>
+                            <?php foreach ($wheely_articles as $article): ?>
+                            <div class="news-item">
+                                <a href="<?php echo $article['link']; ?>" target="_blank" rel="noopener">
+                                    <div class="news-item-title"><?php echo htmlspecialchars($article['title']); ?></div>
+                                    <div class="news-item-meta"><span class="news-item-source"><?php echo $article['source']; ?></span> &bull; <?php echo $article['time_ago']; ?></div>
+                                </a>
+                            </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <div class="empty-message">No good news yet</div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+                
+                <div class="category-box">
+                    <div class="category-header crash">
+                        <div class="category-icon"><i class="fa fa-exclamation-triangle"></i></div>
+                        <div class="category-info">
+                            <h3>Crash</h3>
+                            <span class="category-count"><?php echo $stats['Crash']; ?> articles</span>
+                        </div>
+                    </div>
+                    <div class="category-articles">
+                        <?php if (!empty($crash_articles)): ?>
+                            <?php foreach ($crash_articles as $article): ?>
+                            <div class="news-item">
+                                <a href="<?php echo $article['link']; ?>" target="_blank" rel="noopener">
+                                    <div class="news-item-title"><?php echo htmlspecialchars($article['title']); ?></div>
+                                    <div class="news-item-meta"><span class="news-item-source"><?php echo $article['source']; ?></span> &bull; <?php echo $article['time_ago']; ?></div>
+                                </a>
+                            </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <div class="empty-message">No incidents reported</div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+                
+                <div class="category-box">
+                    <div class="category-header rumour">
+                        <div class="category-icon"><i class="fa fa-comment-o"></i></div>
+                        <div class="category-info">
+                            <h3>Rumour</h3>
+                            <span class="category-count"><?php echo $stats['Rumour']; ?> articles</span>
+                        </div>
+                    </div>
+                    <div class="category-articles">
+                        <?php if (!empty($rumour_articles)): ?>
+                            <?php foreach ($rumour_articles as $article): ?>
+                            <div class="news-item">
+                                <a href="<?php echo $article['link']; ?>" target="_blank" rel="noopener">
+                                    <div class="news-item-title"><?php echo htmlspecialchars($article['title']); ?></div>
+                                    <div class="news-item-meta"><span class="news-item-source"><?php echo $article['source']; ?></span> &bull; <?php echo $article['time_ago']; ?></div>
+                                </a>
+                            </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <div class="empty-message">No rumours circulating</div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="forums-section">
+                <div class="forums-header">
+                    <h2>Public Forums</h2>
+                    <p>Join the conversation in cycling communities across the web</p>
+                </div>
+                
+                <div class="forums-grid">
+                    <div class="forum-box reddit">
+                        <h3><i class="fa fa-reddit-alien"></i> Reddit Communities</h3>
+                        <div class="forum-links">
+                            <a href="https://reddit.com/r/peloton" target="_blank" rel="noopener" class="forum-link">
+                                <i class="fa fa-external-link"></i> r/peloton - Pro Cycling Discussion
+                            </a>
+                            <a href="https://reddit.com/r/cycling" target="_blank" rel="noopener" class="forum-link">
+                                <i class="fa fa-external-link"></i> r/cycling - General Cycling
+                            </a>
+                            <a href="https://reddit.com/r/Velo" target="_blank" rel="noopener" class="forum-link">
+                                <i class="fa fa-external-link"></i> r/Velo - Competitive Cycling
+                            </a>
+                            <a href="https://reddit.com/r/gravelcycling" target="_blank" rel="noopener" class="forum-link">
+                                <i class="fa fa-external-link"></i> r/gravelcycling - Gravel & Adventure
+                            </a>
+                            <a href="https://reddit.com/r/bicycletouring" target="_blank" rel="noopener" class="forum-link">
+                                <i class="fa fa-external-link"></i> r/bicycletouring - Touring & Bikepacking
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="forum-box substack">
+                        <h3><i class="fa fa-pencil-square-o"></i> Substack & Newsletters</h3>
+                        <div class="forum-links">
+                            <a href="https://theouterline.substack.com" target="_blank" rel="noopener" class="forum-link">
+                                <i class="fa fa-external-link"></i> The Outer Line - Industry Analysis
+                            </a>
+                            <a href="https://lanternerouge.substack.com" target="_blank" rel="noopener" class="forum-link">
+                                <i class="fa fa-external-link"></i> Lanterne Rouge - Race Coverage
+                            </a>
+                            <a href="https://inthedrops.substack.com" target="_blank" rel="noopener" class="forum-link">
+                                <i class="fa fa-external-link"></i> In The Drops - Cycling Stories
+                            </a>
+                            <a href="https://escapecollective.com" target="_blank" rel="noopener" class="forum-link">
+                                <i class="fa fa-external-link"></i> Escape Collective - Premium Content
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="/Community" class="back-link"><i class="fa fa-arrow-left"></i> Back to Community</a>
             </div>
         </div>
-        <?php endforeach; ?>
-    </div>
-
-    <?php if ($total_pages > 1): ?>
-    <div class="pagination">
-        <?php if ($current_page > 1): ?>
-        <a href="?route=information/cycling_news_archive&category=<?php echo $current_category; ?>&page=<?php echo $current_page - 1; ?>" class="page-link">Previous</a>
-        <?php endif; ?>
-        
-        <?php for ($i = max(1, $current_page - 2); $i <= min($total_pages, $current_page + 2); $i++): ?>
-        <a href="?route=information/cycling_news_archive&category=<?php echo $current_category; ?>&page=<?php echo $i; ?>" class="page-link <?php echo $i == $current_page ? 'active' : ''; ?>"><?php echo $i; ?></a>
-        <?php endfor; ?>
-        
-        <?php if ($current_page < $total_pages): ?>
-        <a href="?route=information/cycling_news_archive&category=<?php echo $current_category; ?>&page=<?php echo $current_page + 1; ?>" class="page-link">Next</a>
-        <?php endif; ?>
-    </div>
-    <?php endif; ?>
-
-    <?php else: ?>
-    <div class="no-articles">
-        <h3>No articles found</h3>
-        <p>Try selecting a different category or check back later for new articles.</p>
-    </div>
-    <?php endif; ?>
-
-    <div style="text-align: center; margin-top: 40px;">
-        <a href="/Community" class="back-to-community">Back to Community</a>
     </div>
 </div>
 

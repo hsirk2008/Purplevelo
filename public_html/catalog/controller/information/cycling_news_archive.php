@@ -36,16 +36,6 @@ class ControllerInformationCyclingNewsArchive extends Controller {
         $data['total_articles'] = $total;
         $data['total_pages'] = ceil($total / $limit);
         
-        $query = $this->db->query("SELECT news_id, title, link, source, summary, published_at, category, fetched_at FROM " . DB_PREFIX . "cycling_news WHERE " . $whereClause . " ORDER BY published_at DESC LIMIT " . $limit . " OFFSET " . $offset);
-        
-        $articles = array();
-        foreach ($query->rows as $row) {
-            $row['time_ago'] = $this->timeAgo($row['published_at']);
-            $row['date_formatted'] = date('M j, Y', strtotime($row['published_at']));
-            $articles[] = $row;
-        }
-        $data['articles'] = $articles;
-        
         $statsQuery = $this->db->query("SELECT category, COUNT(*) as count FROM " . DB_PREFIX . "cycling_news WHERE is_active = true GROUP BY category");
         $stats = array('Wheely' => 0, 'Crash' => 0, 'Rumour' => 0);
         foreach ($statsQuery->rows as $row) {
@@ -54,6 +44,27 @@ class ControllerInformationCyclingNewsArchive extends Controller {
             }
         }
         $data['stats'] = $stats;
+        
+        $wheelyQuery = $this->db->query("SELECT news_id, title, link, source, summary, published_at, category FROM " . DB_PREFIX . "cycling_news WHERE is_active = true AND category = 'Wheely' ORDER BY published_at DESC LIMIT 50");
+        $data['wheely_articles'] = array();
+        foreach ($wheelyQuery->rows as $row) {
+            $row['time_ago'] = $this->timeAgo($row['published_at']);
+            $data['wheely_articles'][] = $row;
+        }
+        
+        $crashQuery = $this->db->query("SELECT news_id, title, link, source, summary, published_at, category FROM " . DB_PREFIX . "cycling_news WHERE is_active = true AND category = 'Crash' ORDER BY published_at DESC LIMIT 50");
+        $data['crash_articles'] = array();
+        foreach ($crashQuery->rows as $row) {
+            $row['time_ago'] = $this->timeAgo($row['published_at']);
+            $data['crash_articles'][] = $row;
+        }
+        
+        $rumourQuery = $this->db->query("SELECT news_id, title, link, source, summary, published_at, category FROM " . DB_PREFIX . "cycling_news WHERE is_active = true AND category = 'Rumour' ORDER BY published_at DESC LIMIT 50");
+        $data['rumour_articles'] = array();
+        foreach ($rumourQuery->rows as $row) {
+            $row['time_ago'] = $this->timeAgo($row['published_at']);
+            $data['rumour_articles'][] = $row;
+        }
         
         $data['column_left'] = $this->load->controller('common/column_left');
         $data['column_right'] = $this->load->controller('common/column_right');
