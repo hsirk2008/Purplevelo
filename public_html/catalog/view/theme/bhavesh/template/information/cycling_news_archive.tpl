@@ -70,15 +70,15 @@
     gap: 15px;
 }
 .category-header.wheely {
-    background: linear-gradient(145deg, #4caf50 0%, #2e7d32 100%);
+    background: linear-gradient(145deg, #543361 0%, #6b4378 100%);
     color: #fff;
 }
 .category-header.crash {
-    background: linear-gradient(145deg, #f44336 0%, #c62828 100%);
+    background: linear-gradient(145deg, #7a4d8a 0%, #543361 100%);
     color: #fff;
 }
 .category-header.rumour {
-    background: linear-gradient(145deg, #ff9800 0%, #ef6c00 100%);
+    background: linear-gradient(145deg, #6b4378 0%, #7a4d8a 100%);
     color: #fff;
 }
 .category-icon {
