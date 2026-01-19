@@ -390,13 +390,13 @@
 .community-module .bento-box.buycycle {
     grid-column: span 2;
     grid-row: span 1;
-    background: linear-gradient(145deg, #2d8659 0%, #1e5c3d 100%);
+    background: linear-gradient(145deg, #6a3093 0%, #543361 100%);
     color: #fff;
 }
 .community-module .bento-box.tourplanner {
     grid-column: span 2;
     grid-row: span 1;
-    background: linear-gradient(145deg, #e67e22 0%, #c4651a 100%);
+    background: linear-gradient(145deg, #7a4d8a 0%, #543361 100%);
     color: #fff;
 }
 .community-module .tool-logo {
