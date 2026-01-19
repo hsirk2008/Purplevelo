@@ -2,108 +2,113 @@
 
 <style>
 .news-archive-page {
-    background: #fff;
+    background: #f8f4fa;
     min-height: 100vh;
     padding: 40px 0;
 }
 .news-archive-card {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 0 20px;
 }
 .archive-header {
-    background: linear-gradient(135deg, #543361 0%, #a578b7 100%);
+    background: linear-gradient(145deg, rgba(84, 51, 97, 0.92) 0%, rgba(107, 67, 120, 0.95) 100%);
     padding: 50px 40px;
     text-align: center;
     color: #fff;
-    border-radius: 8px 8px 0 0;
+    border-radius: 20px 20px 0 0;
     margin-bottom: 0;
 }
 .archive-header h1 {
-    font-family: "Josefin Sans", sans-serif;
-    font-size: 30px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 28px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
     color: #fff;
     line-height: 1.4;
 }
 .archive-header p {
-    font-family: "Josefin Sans", sans-serif;
-    font-size: 18px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
     font-weight: 400;
-    opacity: 0.95;
+    opacity: 0.9;
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.7;
     color: #fff;
 }
 .archive-body {
-    padding: 40px;
+    padding: 30px;
     background: #fff;
-    border: 1px solid rgba(84, 51, 97, 0.1);
-    border-top: none;
-    border-radius: 0 0 8px 8px;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 4px 20px rgba(84, 51, 97, 0.12);
 }
 .bento-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-    margin-bottom: 40px;
+    gap: 20px;
+    margin-bottom: 30px;
 }
 .category-box {
     background: #fff;
-    border-radius: 8px;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 2px 15px rgba(84, 51, 97, 0.08);
-    border: 1px solid rgba(84, 51, 97, 0.08);
+    box-shadow: 0 4px 20px rgba(84, 51, 97, 0.12);
     display: flex;
     flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.category-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(84, 51, 97, 0.2);
 }
 .category-header {
-    padding: 20px;
+    padding: 25px;
     display: flex;
     align-items: center;
     gap: 15px;
 }
 .category-header.wheely {
-    background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%);
+    background: linear-gradient(145deg, #4caf50 0%, #2e7d32 100%);
     color: #fff;
 }
 .category-header.crash {
-    background: linear-gradient(135deg, #f44336 0%, #c62828 100%);
+    background: linear-gradient(145deg, #f44336 0%, #c62828 100%);
     color: #fff;
 }
 .category-header.rumour {
-    background: linear-gradient(135deg, #ff9800 0%, #ef6c00 100%);
+    background: linear-gradient(145deg, #ff9800 0%, #ef6c00 100%);
     color: #fff;
 }
 .category-icon {
-    width: 44px;
-    height: 44px;
-    background: rgba(255,255,255,0.2);
-    border-radius: 8px;
+    width: 50px;
+    height: 50px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    font-size: 22px;
 }
 .category-info h3 {
-    font-family: "Josefin Sans", sans-serif;
-    font-size: 18px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 22px;
     font-weight: 700;
     margin: 0 0 4px 0;
     color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     line-height: 1.4;
 }
 .category-count {
-    font-family: "Josefin Sans", sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
     font-size: 14px;
     font-weight: 400;
     opacity: 0.9;
 }
 .category-articles {
-    padding: 15px;
+    padding: 20px;
     flex: 1;
     max-height: 400px;
     overflow-y: auto;
@@ -113,16 +118,18 @@
     width: 6px;
 }
 .category-articles::-webkit-scrollbar-track {
-    background: #f5f5f5;
+    background: #f8f4fa;
     border-radius: 3px;
 }
 .category-articles::-webkit-scrollbar-thumb {
-    background: #543361;
+    background: rgba(84, 51, 97, 0.3);
     border-radius: 3px;
-    opacity: 0.5;
+}
+.category-articles::-webkit-scrollbar-thumb:hover {
+    background: rgba(84, 51, 97, 0.5);
 }
 .news-item {
-    padding: 14px 12px;
+    padding: 15px 12px;
     border-bottom: 1px solid rgba(84, 51, 97, 0.08);
     transition: background 0.2s;
 }
@@ -130,69 +137,73 @@
     border-bottom: none;
 }
 .news-item:hover {
-    background: rgba(84, 51, 97, 0.04);
+    background: #f8f4fa;
 }
 .news-item a {
     text-decoration: none;
     color: inherit;
 }
 .news-item-title {
-    font-family: "Josefin Sans", sans-serif;
-    font-size: 15px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
     font-weight: 600;
     color: #1B1919;
-    line-height: 1.4;
+    line-height: 1.7;
     margin-bottom: 6px;
 }
 .news-item-meta {
-    font-family: "Josefin Sans", sans-serif;
-    font-size: 13px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 14px;
     font-weight: 400;
-    color: #6e6e6d;
-    line-height: 1.4;
+    color: #555;
+    line-height: 1.7;
 }
 .news-item-source {
     color: #543361;
     font-weight: 600;
 }
 .forums-section {
-    margin-top: 40px;
-    padding-top: 40px;
+    margin-top: 30px;
+    padding-top: 30px;
     border-top: 1px solid rgba(84, 51, 97, 0.1);
 }
 .forums-header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 .forums-header h2 {
-    font-family: "Josefin Sans", sans-serif;
-    font-size: 30px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 28px;
     font-weight: 700;
     color: #1B1919;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin: 0 0 10px 0;
+    margin: 0 0 15px 0;
     line-height: 1.4;
 }
 .forums-header p {
-    font-family: "Josefin Sans", sans-serif;
-    font-size: 18px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
     font-weight: 400;
-    color: #6e6e6d;
+    color: #555;
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.7;
 }
 .forums-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 25px;
+    gap: 20px;
 }
 .forum-box {
     background: #fff;
-    border-radius: 8px;
-    padding: 25px;
-    box-shadow: 0 2px 15px rgba(84, 51, 97, 0.08);
-    border: 1px solid rgba(84, 51, 97, 0.08);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(84, 51, 97, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.forum-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(84, 51, 97, 0.2);
 }
 .forum-box.reddit {
     border-left: 4px solid #ff4500;
@@ -201,18 +212,20 @@
     border-left: 4px solid #ff6719;
 }
 .forum-box h3 {
-    font-family: "Josefin Sans", sans-serif;
-    font-size: 18px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 22px;
     font-weight: 700;
     color: #1B1919;
     margin: 0 0 20px 0;
     display: flex;
     align-items: center;
     gap: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     line-height: 1.4;
 }
 .forum-box h3 i {
-    font-size: 22px;
+    font-size: 24px;
 }
 .forum-box.reddit h3 i {
     color: #ff4500;
@@ -229,16 +242,16 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 15px;
-    background: rgba(84, 51, 97, 0.04);
-    border-radius: 6px;
+    padding: 14px 16px;
+    background: #f8f4fa;
+    border-radius: 12px;
     text-decoration: none;
-    color: #1B1919;
-    font-family: "Josefin Sans", sans-serif;
-    font-size: 15px;
+    color: #555;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
     font-weight: 400;
-    transition: all 0.2s;
-    line-height: 1.4;
+    transition: all 0.3s ease;
+    line-height: 1.7;
 }
 .forum-link:hover {
     background: #543361;
@@ -246,37 +259,45 @@
 }
 .forum-link i {
     color: #543361;
+    opacity: 0.7;
 }
 .forum-link:hover i {
     color: #fff;
+    opacity: 1;
 }
 .back-link {
-    display: inline-block;
-    text-align: center;
-    margin-top: 40px;
-    padding: 15px 35px;
+    display: inline-flex;
+    align-items: center;
+    margin-top: 30px;
+    padding: 15px 30px;
     background: #543361;
     color: #fff;
-    border-radius: 4px;
-    font-family: "Josefin Sans", sans-serif;
-    font-size: 15px;
+    border-radius: 12px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 14px;
     font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     text-decoration: none;
-    transition: background 0.2s;
+    transition: all 0.3s ease;
     line-height: 1.4;
 }
 .back-link:hover {
-    background: #a578b7;
+    background: #7a4d8a;
     color: #fff;
+    opacity: 0.9;
+}
+.back-link i {
+    margin-right: 8px;
 }
 .empty-message {
     text-align: center;
-    padding: 35px 20px;
-    font-family: "Josefin Sans", sans-serif;
-    font-size: 15px;
+    padding: 40px 20px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
     font-weight: 400;
-    color: #6e6e6d;
-    line-height: 1.4;
+    color: #555;
+    line-height: 1.7;
 }
 @media (max-width: 992px) {
     .bento-grid {
@@ -289,21 +310,29 @@
 @media (max-width: 768px) {
     .archive-header {
         padding: 35px 25px;
+        border-radius: 15px 15px 0 0;
     }
     .archive-header h1 {
-        font-size: 24px;
+        font-size: 22px;
     }
     .archive-header p {
-        font-size: 16px;
+        font-size: 14px;
     }
     .news-archive-page {
         padding: 25px 0;
     }
     .archive-body {
-        padding: 25px;
+        padding: 20px;
+        border-radius: 0 0 15px 15px;
     }
     .forums-header h2 {
-        font-size: 24px;
+        font-size: 22px;
+    }
+    .category-box, .forum-box {
+        border-radius: 15px;
+    }
+    .category-info h3 {
+        font-size: 18px;
     }
 }
 </style>
