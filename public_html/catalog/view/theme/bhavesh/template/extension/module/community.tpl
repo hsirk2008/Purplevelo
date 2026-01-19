@@ -391,8 +391,10 @@
 .community-module .bento-box.tourplanner {
     grid-column: span 2;
     grid-row: span 1;
-    background: linear-gradient(145deg, #6a3093 0%, #543361 100%);
-    color: #fff;
+    background: linear-gradient(135deg, #f5f0f7 0%, #e8dced 100%), url('/image/cycling-news-bg.png');
+    background-size: cover;
+    background-position: center;
+    color: #543361;
 }
 .community-module .bento-box.buycycle .bento-content,
 .community-module .bento-box.tourplanner .bento-content {
@@ -406,7 +408,8 @@
 .community-module .tool-icon {
     width: 50px;
     height: 50px;
-    background: rgba(255,255,255,0.2);
+    background: #543361;
+    color: #fff;
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -428,7 +431,8 @@
     margin: 0;
 }
 .community-module .coming-soon-badge {
-    background: rgba(255,255,255,0.25);
+    background: #543361;
+    color: #fff;
     padding: 4px 10px;
     border-radius: 12px;
     font-size: 10px;
