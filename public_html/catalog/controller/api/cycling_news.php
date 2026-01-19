@@ -18,14 +18,6 @@ class ControllerApiCyclingNews extends Controller {
         'CyclingIndustryNews' => 'https://cyclingindustry.news/feed/',
         'ElectricBikeReview' => 'https://electricbikereview.com/feed/',
         'Bikepacking' => 'https://bikepacking.com/feed/',
-        // Reddit Communities
-        'Reddit r/peloton' => 'https://www.reddit.com/r/peloton/.rss',
-        'Reddit r/cycling' => 'https://www.reddit.com/r/cycling/.rss',
-        'Reddit r/Velo' => 'https://www.reddit.com/r/Velo/.rss',
-        'Reddit r/gravelcycling' => 'https://www.reddit.com/r/gravelcycling/.rss',
-        'Reddit r/ebikes' => 'https://www.reddit.com/r/ebikes/.rss',
-        'Reddit r/bicycling' => 'https://www.reddit.com/r/bicycling/.rss',
-        'Reddit r/bikepacking' => 'https://www.reddit.com/r/bikepacking/.rss',
         // Substacks & Commentary
         'The Outer Line' => 'https://theouterline.substack.com/feed',
         'Lanterne Rouge' => 'https://lanternerouge.substack.com/feed'
