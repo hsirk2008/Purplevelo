@@ -369,10 +369,29 @@
         font-size: 24px;
     }
 }
+.community-module .section-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.community-module .section-heading h2 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+}
+.community-module .section-heading h2 span {
+    color: #543361;
+}
 </style>
 
 <div class="community-module">
     <div class="bento-container">
+        <div class="section-heading">
+            <h2><span>PURPLE</span> COMMUNITY</h2>
+        </div>
         <div class="bento-grid">
             <div class="bento-box cycling-news">
                 <div class="bento-content">
