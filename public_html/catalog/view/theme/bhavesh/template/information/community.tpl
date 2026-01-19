@@ -199,11 +199,17 @@
 }
 .news-tab-content {
     display: none;
-    max-height: 400px;
+    max-height: 320px;
     overflow-y: auto;
 }
 .news-tab-content.active {
     display: block;
+}
+.bento-box.cycling-news .bento-content {
+    padding: 25px;
+}
+.bento-box.cycling-news .bento-description {
+    margin-bottom: 10px;
 }
 .news-tab-content::-webkit-scrollbar {
     width: 6px;
