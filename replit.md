@@ -4,6 +4,14 @@
 Self-guided European cycling holidays e-commerce website powered by OpenCart 2.3.0.2, migrated from Hostinger MySQL to local Replit PostgreSQL for improved performance.
 
 ## Recent Changes
+- **2026-01-19**: Community Landing Page
+  - Added COMMUNITY menu to navigation (between PURPLE 2026 and GALLERY)
+  - Created Bento Box design landing page with 4 sections
+  - Sections: Cycling News, Travel Blog, Product Reviews, Testimonials
+  - Custom controller: catalog/controller/information/community.php
+  - Custom template: catalog/view/theme/bhavesh/template/information/community.tpl
+  - URL alias: /Community routes to information/community controller
+  - Mega menu note: status=0 means ENABLED in bhavesh theme (inverted logic)
 - **2026-01-17**: Gallery Page Redesign
   - Implemented vertical tab navigation with year-based organization (2022-2025)
   - Tours organized by year with expandable sub-menus
