@@ -19,6 +19,8 @@ class ControllerInformationCommunity extends Controller {
         
         $data['heading_title'] = 'Community';
         
+        $data['cycling_news'] = $this->getCyclingNews();
+        
         $data['column_left'] = $this->load->controller('common/column_left');
         $data['column_right'] = $this->load->controller('common/column_right');
         $data['content_top'] = $this->load->controller('common/content_top');
@@ -27,5 +29,50 @@ class ControllerInformationCommunity extends Controller {
         $data['header'] = $this->load->controller('common/header');
         
         $this->response->setOutput($this->load->view('information/community', $data));
+    }
+    
+    private function getCyclingNews() {
+        $news = array(
+            'Wheely' => array(),
+            'Crash' => array(),
+            'Rumour' => array()
+        );
+        
+        foreach (array('Wheely', 'Crash', 'Rumour') as $category) {
+            $query = $this->db->query("SELECT news_id, title, link, source, summary, published_at, category FROM " . DB_PREFIX . "cycling_news WHERE is_active = true AND category = '" . $this->db->escape($category) . "' ORDER BY published_at DESC LIMIT 5");
+            
+            foreach ($query->rows as $row) {
+                $news[$category][] = array(
+                    'title' => $row['title'],
+                    'link' => $row['link'],
+                    'source' => $row['source'],
+                    'summary' => $row['summary'],
+                    'published_at' => $row['published_at'] ? date('M j, Y', strtotime($row['published_at'])) : '',
+                    'time_ago' => $row['published_at'] ? $this->timeAgo($row['published_at']) : ''
+                );
+            }
+        }
+        
+        return $news;
+    }
+    
+    private function timeAgo($datetime) {
+        $time = strtotime($datetime);
+        $diff = time() - $time;
+        
+        if ($diff < 60) {
+            return 'just now';
+        } elseif ($diff < 3600) {
+            $mins = floor($diff / 60);
+            return $mins . ' min' . ($mins > 1 ? 's' : '') . ' ago';
+        } elseif ($diff < 86400) {
+            $hours = floor($diff / 3600);
+            return $hours . ' hour' . ($hours > 1 ? 's' : '') . ' ago';
+        } elseif ($diff < 604800) {
+            $days = floor($diff / 86400);
+            return $days . ' day' . ($days > 1 ? 's' : '') . ' ago';
+        } else {
+            return date('M j', $time);
+        }
     }
 }

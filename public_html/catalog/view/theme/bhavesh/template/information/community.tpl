@@ -168,6 +168,75 @@
     margin-right: 12px;
     flex-shrink: 0;
 }
+.news-tabs-container {
+    margin-top: 15px;
+}
+.news-tabs {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+.news-tab {
+    flex: 1;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.15);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.news-tab:hover {
+    background: rgba(255,255,255,0.25);
+}
+.news-tab.active {
+    background: #fff;
+    color: #543361;
+}
+.news-tab-content {
+    display: none;
+}
+.news-tab-content.active {
+    display: block;
+}
+.news-article {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.news-article:last-child {
+    border-bottom: none;
+}
+.news-article a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}
+.news-article a:hover {
+    opacity: 0.9;
+}
+.news-article-title {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 4px;
+}
+.news-article-meta {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    opacity: 0.7;
+}
+.news-empty {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    opacity: 0.7;
+    padding: 15px 0;
+    text-align: center;
+}
 .testimonials-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -313,22 +382,60 @@
                     <i class="fa fa-newspaper-o"></i>
                 </div>
                 <h2 class="bento-title">Cycling News</h2>
-                <p class="bento-description">Stay up-to-date with the latest cycling news from around Europe. From major races and events to new cycling routes and infrastructure updates.</p>
-                <div class="news-preview">
-                    <div class="news-item">
-                        <span class="news-dot"></span>
-                        Tour de France 2026 route announced
+                <p class="bento-description">Live news from the world of Pro, Elite, UCI cycling. Categorized by AI.</p>
+                
+                <div class="news-tabs-container">
+                    <div class="news-tabs">
+                        <button class="news-tab active" data-tab="wheely">Wheely</button>
+                        <button class="news-tab" data-tab="crash">Crash</button>
+                        <button class="news-tab" data-tab="rumour">Rumour</button>
                     </div>
-                    <div class="news-item">
-                        <span class="news-dot"></span>
-                        New cycle paths open in Provence
+                    
+                    <div id="tab-wheely" class="news-tab-content active">
+                        <?php if (!empty($cycling_news['Wheely'])): ?>
+                            <?php foreach ($cycling_news['Wheely'] as $article): ?>
+                            <div class="news-article">
+                                <a href="<?php echo $article['link']; ?>" target="_blank" rel="noopener">
+                                    <div class="news-article-title"><?php echo htmlspecialchars($article['title']); ?></div>
+                                    <div class="news-article-meta"><?php echo $article['source']; ?> &bull; <?php echo $article['time_ago']; ?></div>
+                                </a>
+                            </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <div class="news-empty">No positive news yet. Click refresh to fetch latest.</div>
+                        <?php endif; ?>
                     </div>
-                    <div class="news-item">
-                        <span class="news-dot"></span>
-                        Best spring cycling destinations
+                    
+                    <div id="tab-crash" class="news-tab-content">
+                        <?php if (!empty($cycling_news['Crash'])): ?>
+                            <?php foreach ($cycling_news['Crash'] as $article): ?>
+                            <div class="news-article">
+                                <a href="<?php echo $article['link']; ?>" target="_blank" rel="noopener">
+                                    <div class="news-article-title"><?php echo htmlspecialchars($article['title']); ?></div>
+                                    <div class="news-article-meta"><?php echo $article['source']; ?> &bull; <?php echo $article['time_ago']; ?></div>
+                                </a>
+                            </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <div class="news-empty">No incident news. That's good!</div>
+                        <?php endif; ?>
+                    </div>
+                    
+                    <div id="tab-rumour" class="news-tab-content">
+                        <?php if (!empty($cycling_news['Rumour'])): ?>
+                            <?php foreach ($cycling_news['Rumour'] as $article): ?>
+                            <div class="news-article">
+                                <a href="<?php echo $article['link']; ?>" target="_blank" rel="noopener">
+                                    <div class="news-article-title"><?php echo htmlspecialchars($article['title']); ?></div>
+                                    <div class="news-article-meta"><?php echo $article['source']; ?> &bull; <?php echo $article['time_ago']; ?></div>
+                                </a>
+                            </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <div class="news-empty">No rumours circulating.</div>
+                        <?php endif; ?>
                     </div>
                 </div>
-                <a href="#" class="bento-link">Read All News <i class="fa fa-arrow-right"></i></a>
             </div>
         </div>
         
@@ -412,5 +519,23 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var tabs = document.querySelectorAll('.news-tab');
+    tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            tabs.forEach(function(t) { t.classList.remove('active'); });
+            tab.classList.add('active');
+            
+            var tabContents = document.querySelectorAll('.news-tab-content');
+            tabContents.forEach(function(content) { content.classList.remove('active'); });
+            
+            var targetId = 'tab-' + tab.getAttribute('data-tab');
+            document.getElementById(targetId).classList.add('active');
+        });
+    });
+});
+</script>
 
 <?php echo $footer; ?>
