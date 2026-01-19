@@ -386,9 +386,9 @@
                 
                 <div class="news-tabs-container">
                     <div class="news-tabs">
-                        <button class="news-tab active" data-tab="wheely">Wheely</button>
-                        <button class="news-tab" data-tab="crash">Crash</button>
-                        <button class="news-tab" data-tab="rumour">Rumour</button>
+                        <button class="news-tab active" data-tab="wheely" title="Good news - Race wins, achievements, records">Wheely</button>
+                        <button class="news-tab" data-tab="crash" title="Bad news - Accidents, injuries, incidents">Crash</button>
+                        <button class="news-tab" data-tab="rumour" title="Cycling rumours - Transfers, speculation, gossip">Rumour</button>
                     </div>
                     
                     <div id="tab-wheely" class="news-tab-content active">
@@ -435,6 +435,7 @@
                             <div class="news-empty">No rumours circulating.</div>
                         <?php endif; ?>
                     </div>
+                    <a href="/cycling-news-archive" class="bento-link" style="margin-top: 15px;">View Full Archive <i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>

@@ -9,7 +9,16 @@ class ControllerApiCyclingNews extends Controller {
         'CyclingWeekly' => 'https://www.cyclingweekly.com/feed',
         'RoadCC' => 'https://road.cc/rss.xml',
         'EscapeCollective' => 'https://escapecollective.com/rss/',
-        'ProcyclingUK' => 'https://www.procyclinguk.com/feed/'
+        'ProcyclingUK' => 'https://www.procyclinguk.com/feed/',
+        'Reddit r/peloton' => 'https://www.reddit.com/r/peloton/.rss',
+        'Reddit r/cycling' => 'https://www.reddit.com/r/cycling/.rss',
+        'Reddit r/Velo' => 'https://www.reddit.com/r/Velo/.rss',
+        'Reddit r/gravelcycling' => 'https://www.reddit.com/r/gravelcycling/.rss',
+        'The Outer Line' => 'https://theouterline.substack.com/feed',
+        'Lanterne Rouge' => 'https://lanternerouge.substack.com/feed',
+        'InTheDrops' => 'https://inthedrops.substack.com/feed',
+        'CyclingMaven' => 'https://www.youtube.com/feeds/videos.xml?channel_id=UCATCNaWdpBCWjwVGGMm0_hw',
+        'GCN Racing' => 'https://www.youtube.com/feeds/videos.xml?channel_id=UCTCfS0FUdAeakbf3S7X1eiQ'
     );
     
     public function refresh() {
@@ -236,7 +245,7 @@ Respond with ONLY the category name (Wheely, Crash, or Rumour), nothing else.";
     }
     
     private function cleanupOldItems() {
-        $this->db->query("DELETE FROM " . DB_PREFIX . "cycling_news WHERE fetched_at < NOW() - INTERVAL '7 days'");
+        $this->db->query("DELETE FROM " . DB_PREFIX . "cycling_news WHERE fetched_at < NOW() - INTERVAL '30 days'");
     }
     
     public function getNews() {
