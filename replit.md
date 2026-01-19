@@ -5,13 +5,19 @@ Self-guided European cycling holidays e-commerce website powered by OpenCart 2.3
 
 ## Recent Changes
 - **2026-01-19**: AI-Powered Cycling News Aggregator
-  - Fetches news from 8 sources: CyclingNews, VeloNews, BikeRadar, CyclingTips, ProcyclingUK, EscapeCollective, CyclingWeekly, RoadCC
+  - Fetches news from 17 sources including mainstream, Reddit, and Substack:
+    - Mainstream: CyclingNews, VeloNews, BikeRadar, CyclingTips, ProcyclingUK, EscapeCollective, CyclingWeekly, RoadCC
+    - Reddit: r/peloton, r/cycling, r/Velo, r/gravelcycling
+    - Substack: The Outer Line, Lanterne Rouge, InTheDrops
+    - YouTube: CyclingMaven, GCN Racing
   - AI categorization using OpenAI gpt-4o-mini via Replit AI Integrations
-  - Three categories: Wheely (positive/achievements), Crash (incidents), Rumour (speculation/transfers)
+  - Three categories: Wheely (good news), Crash (bad news), Rumour (cycling rumours)
   - Keyword fallback if AI unavailable
-  - Database: oc_cycling_news table with auto-cleanup (>7 days)
+  - Database: oc_cycling_news table with 30-day circular storage
   - Refresh endpoint: /index.php?route=api/cycling_news/refresh
   - API controller: catalog/controller/api/cycling_news.php
+  - Archive page: /cycling-news-archive with filtering and pagination
+  - Tab tooltips explain each category on hover
 - **2026-01-19**: Community Landing Page
   - Added COMMUNITY menu to navigation (between PURPLE 2026 and GALLERY)
   - Created Bento Box design landing page with 4 sections
