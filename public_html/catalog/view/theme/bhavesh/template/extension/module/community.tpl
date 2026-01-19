@@ -357,7 +357,7 @@
     .community-module .bento-box.testimonials-small,
     .community-module .bento-box.testimonials-main,
     .community-module .bento-box.buycycle,
-    .community-module .bento-box.tourplanner {
+    .community-module .bento-box.velosync {
         grid-column: span 1;
         grid-row: span 1;
     }
@@ -388,7 +388,7 @@
     color: #543361;
 }
 .community-module .bento-box.buycycle,
-.community-module .bento-box.tourplanner {
+.community-module .bento-box.velosync {
     grid-column: span 2;
     grid-row: span 1;
     background: linear-gradient(135deg, #f5f0f7 0%, #e8dced 100%), url('/image/cycling-news-bg.png');
@@ -397,7 +397,7 @@
     color: #543361;
 }
 .community-module .bento-box.buycycle .bento-content,
-.community-module .bento-box.tourplanner .bento-content {
+.community-module .bento-box.velosync .bento-content {
     padding: 20px;
 }
 .community-module .tool-header {
@@ -442,7 +442,7 @@
     font-family: 'Josefin Sans', sans-serif;
 }
 .community-module .bento-box.buycycle .bento-link,
-.community-module .bento-box.tourplanner .bento-link {
+.community-module .bento-box.velosync .bento-link {
     color: #fff;
 }
 </style>
@@ -595,12 +595,12 @@
                 </div>
             </div>
             
-            <div class="bento-box tourplanner">
+            <div class="bento-box velosync">
                 <div class="bento-content">
                     <div class="tool-header">
                         <div class="tool-icon"><i class="fa fa-calendar-check-o"></i></div>
                         <div class="tool-info">
-                            <h2 class="bento-title">TourPlanner</h2>
+                            <h2 class="bento-title">VeloSync</h2>
                             <p class="bento-description">AI-powered family holiday planner for cyclists - balance your passion with quality family time</p>
                         </div>
                         <span class="coming-soon-badge">Coming Soon</span>
