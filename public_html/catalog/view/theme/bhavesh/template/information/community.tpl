@@ -206,25 +206,28 @@
     display: block;
 }
 .bento-box.cycling-news .bento-content {
-    padding: 20px;
+    padding: 15px;
 }
 .news-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
 }
 .news-header .bento-title {
     margin-bottom: 0;
-    font-size: 22px;
+    font-size: 18px;
 }
 .news-header .bento-title i {
-    margin-right: 8px;
+    margin-right: 6px;
 }
 .news-header .news-tabs {
     margin-bottom: 0;
+}
+.news-tabs-container {
+    margin-top: 0;
 }
 .news-tab-content::-webkit-scrollbar {
     width: 6px;
@@ -241,7 +244,7 @@
     background: rgba(255,255,255,0.5);
 }
 .news-article {
-    padding: 10px 0;
+    padding: 8px 0;
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 .news-article:last-child {
@@ -259,12 +262,12 @@
     font-family: 'Josefin Sans', sans-serif;
     font-size: 13px;
     font-weight: 600;
-    line-height: 1.4;
-    margin-bottom: 4px;
+    line-height: 1.3;
+    margin-bottom: 2px;
 }
 .news-article-meta {
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 11px;
+    font-size: 10px;
     opacity: 0.7;
 }
 .news-empty {
