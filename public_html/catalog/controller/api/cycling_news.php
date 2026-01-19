@@ -2,23 +2,33 @@
 class ControllerApiCyclingNews extends Controller {
     
     private $rss_feeds = array(
+        // Pro Racing & Elite
         'CyclingNews' => 'https://www.cyclingnews.com/rss/',
         'VeloNews' => 'https://www.velonews.com/feed/',
-        'BikeRadar' => 'https://www.bikeradar.com/feed/',
         'CyclingTips' => 'https://cyclingtips.com/feed/',
-        'CyclingWeekly' => 'https://www.cyclingweekly.com/feed',
-        'RoadCC' => 'https://road.cc/rss.xml',
         'EscapeCollective' => 'https://escapecollective.com/rss/',
         'ProcyclingUK' => 'https://www.procyclinguk.com/feed/',
+        // General Cycling & Industry
+        'BikeRadar' => 'https://www.bikeradar.com/feed/',
+        'CyclingWeekly' => 'https://www.cyclingweekly.com/feed',
+        'RoadCC' => 'https://road.cc/rss.xml',
+        'BikeRumor' => 'https://bikerumor.com/feed/',
+        'Bicycling' => 'https://www.bicycling.com/rss/all.xml/',
+        'BikeExif' => 'https://www.bikeexif.com/feed',
+        'CyclingIndustryNews' => 'https://cyclingindustry.news/feed/',
+        'ElectricBikeReview' => 'https://electricbikereview.com/feed/',
+        'Bikepacking' => 'https://bikepacking.com/feed/',
+        // Reddit Communities
         'Reddit r/peloton' => 'https://www.reddit.com/r/peloton/.rss',
         'Reddit r/cycling' => 'https://www.reddit.com/r/cycling/.rss',
         'Reddit r/Velo' => 'https://www.reddit.com/r/Velo/.rss',
         'Reddit r/gravelcycling' => 'https://www.reddit.com/r/gravelcycling/.rss',
+        'Reddit r/ebikes' => 'https://www.reddit.com/r/ebikes/.rss',
+        'Reddit r/bicycling' => 'https://www.reddit.com/r/bicycling/.rss',
+        'Reddit r/bikepacking' => 'https://www.reddit.com/r/bikepacking/.rss',
+        // Substacks & Commentary
         'The Outer Line' => 'https://theouterline.substack.com/feed',
-        'Lanterne Rouge' => 'https://lanternerouge.substack.com/feed',
-        'InTheDrops' => 'https://inthedrops.substack.com/feed',
-        'CyclingMaven' => 'https://www.youtube.com/feeds/videos.xml?channel_id=UCATCNaWdpBCWjwVGGMm0_hw',
-        'GCN Racing' => 'https://www.youtube.com/feeds/videos.xml?channel_id=UCTCfS0FUdAeakbf3S7X1eiQ'
+        'Lanterne Rouge' => 'https://lanternerouge.substack.com/feed'
     );
     
     public function refresh() {
@@ -174,10 +184,10 @@ class ControllerApiCyclingNews extends Controller {
             return $this->categorizeWithKeywords($title, $summary);
         }
         
-        $prompt = "Categorize this cycling news article into exactly ONE of these categories:
-- Wheely: Positive news about achievements, race wins, records, new products, good news
-- Crash: Accidents, injuries, incidents, crashes, negative events  
-- Rumour: Speculation, transfers, rumors, unconfirmed news, gossip
+        $prompt = "Categorize this cycling industry news article into exactly ONE of these categories:
+- Wheely: Positive news - race wins, achievements, records, new product launches, industry growth, infrastructure improvements, innovation, reviews, adventure stories, e-bike adoption, sustainability wins
+- Crash: Negative news - accidents, injuries, crashes, deaths, recalls, company closures, layoffs, legal issues, doping scandals, safety concerns
+- Rumour: Speculation - transfers, rumors, unconfirmed news, gossip, expected announcements, leaked information, market speculation
 
 Title: " . $title . "
 Summary: " . substr($summary, 0, 300) . "
@@ -226,8 +236,8 @@ Respond with ONLY the category name (Wheely, Crash, or Rumour), nothing else.";
     private function categorizeWithKeywords($title, $summary) {
         $text = strtolower($title . ' ' . $summary);
         
-        $crashKeywords = array('crash', 'accident', 'injury', 'injured', 'hospital', 'broken', 'fall', 'collision', 'hit', 'died', 'death', 'tragic', 'abandon', 'withdrew', 'dns', 'dnf');
-        $rumourKeywords = array('rumour', 'rumor', 'speculation', 'reportedly', 'allegedly', 'might', 'could', 'transfer', 'signing', 'linked', 'expected', 'set to', 'poised', 'deal');
+        $crashKeywords = array('crash', 'accident', 'injury', 'injured', 'hospital', 'broken', 'fall', 'collision', 'hit', 'died', 'death', 'tragic', 'abandon', 'withdrew', 'dns', 'dnf', 'recall', 'lawsuit', 'layoff', 'closure', 'bankrupt', 'doping', 'ban', 'suspended', 'fraud', 'defect', 'warning', 'danger');
+        $rumourKeywords = array('rumour', 'rumor', 'speculation', 'reportedly', 'allegedly', 'might', 'could', 'transfer', 'signing', 'linked', 'expected', 'set to', 'poised', 'deal', 'leaked', 'sources say', 'unconfirmed', 'potential', 'possible', 'considering');
         
         foreach ($crashKeywords as $keyword) {
             if (strpos($text, $keyword) !== false) {
