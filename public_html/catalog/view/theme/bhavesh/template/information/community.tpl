@@ -431,7 +431,7 @@
                 <div class="news-header">
                     <div class="news-title-block">
                         <h2 class="bento-title"><i class="fa fa-newspaper-o"></i> Cycling Industry News</h2>
-                        <p class="news-subtitle">AI-curated news from 24 sources across the cycling world</p>
+                        <p class="news-subtitle">AI-powered aggregator pulling from 24 sources including CyclingNews, VeloNews, BikeRumor, Reddit communities, and more - automatically categorized into good news, incidents, and rumours</p>
                     </div>
                     <div class="news-tabs">
                         <button class="news-tab active" data-tab="wheely" title="Good news - Race wins, achievements, records">Wheely</button>
