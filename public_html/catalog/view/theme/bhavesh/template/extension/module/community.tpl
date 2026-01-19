@@ -25,7 +25,9 @@
 .community-module .bento-box.cycling-news {
     grid-column: span 2;
     grid-row: span 2;
-    background: linear-gradient(145deg, #543361 0%, #6b4378 100%);
+    background: linear-gradient(145deg, rgba(84, 51, 97, 0.88) 0%, rgba(107, 67, 120, 0.9) 100%), url('/image/cycling-news-bg.png');
+    background-size: cover;
+    background-position: center;
     color: #fff;
 }
 .community-module .bento-box.travel-blog {
