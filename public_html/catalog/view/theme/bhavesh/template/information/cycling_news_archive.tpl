@@ -419,54 +419,6 @@
                 </div>
             </div>
             
-            <div class="forums-section">
-                <div class="forums-header">
-                    <h2>Public Forums</h2>
-                    <p>Join the conversation in cycling communities across the web</p>
-                </div>
-                
-                <div class="forums-grid">
-                    <div class="forum-box reddit">
-                        <h3><i class="fa fa-reddit-alien"></i> Reddit Communities</h3>
-                        <div class="forum-links">
-                            <a href="https://reddit.com/r/peloton" target="_blank" rel="noopener" class="forum-link">
-                                <i class="fa fa-external-link"></i> r/peloton - Pro Cycling Discussion
-                            </a>
-                            <a href="https://reddit.com/r/cycling" target="_blank" rel="noopener" class="forum-link">
-                                <i class="fa fa-external-link"></i> r/cycling - General Cycling
-                            </a>
-                            <a href="https://reddit.com/r/Velo" target="_blank" rel="noopener" class="forum-link">
-                                <i class="fa fa-external-link"></i> r/Velo - Competitive Cycling
-                            </a>
-                            <a href="https://reddit.com/r/gravelcycling" target="_blank" rel="noopener" class="forum-link">
-                                <i class="fa fa-external-link"></i> r/gravelcycling - Gravel & Adventure
-                            </a>
-                            <a href="https://reddit.com/r/bicycletouring" target="_blank" rel="noopener" class="forum-link">
-                                <i class="fa fa-external-link"></i> r/bicycletouring - Touring & Bikepacking
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="forum-box substack">
-                        <h3><i class="fa fa-pencil-square-o"></i> Substack & Newsletters</h3>
-                        <div class="forum-links">
-                            <a href="https://theouterline.substack.com" target="_blank" rel="noopener" class="forum-link">
-                                <i class="fa fa-external-link"></i> The Outer Line - Industry Analysis
-                            </a>
-                            <a href="https://lanternerouge.substack.com" target="_blank" rel="noopener" class="forum-link">
-                                <i class="fa fa-external-link"></i> Lanterne Rouge - Race Coverage
-                            </a>
-                            <a href="https://inthedrops.substack.com" target="_blank" rel="noopener" class="forum-link">
-                                <i class="fa fa-external-link"></i> In The Drops - Cycling Stories
-                            </a>
-                            <a href="https://escapecollective.com" target="_blank" rel="noopener" class="forum-link">
-                                <i class="fa fa-external-link"></i> Escape Collective - Premium Content
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
             <div style="text-align: center; margin-top: 30px;">
                 <a href="/Community" class="back-link"><i class="fa fa-arrow-left"></i> Back to Community</a>
             </div>
