@@ -398,30 +398,62 @@
 }
 @media (max-width: 768px) {
     .community-hero h1 {
-        font-size: 32px;
+        font-size: 28px;
     }
     .community-hero p {
-        font-size: 16px;
+        font-size: 15px;
+    }
+    .bento-container {
+        padding: 0 15px;
     }
     .bento-grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
     }
     .bento-box.cycling-news,
     .bento-box.travel-blog,
     .bento-box.product-reviews,
     .bento-box.testimonials-small,
     .bento-box.testimonials-main {
-        grid-column: span 1;
-        grid-row: span 1;
+        width: 100%;
+    }
+    .bento-content {
+        padding: 20px;
     }
     .testimonials-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 20px;
     }
     .blog-preview {
         flex-direction: column;
+        gap: 12px;
     }
     .bento-title {
-        font-size: 24px;
+        font-size: 22px;
+    }
+    .bento-description {
+        font-size: 14px;
+    }
+    .news-inner-card {
+        padding: 12px;
+    }
+    .news-tab {
+        padding: 8px 5px;
+        font-size: 10px;
+    }
+    .news-tab i {
+        font-size: 14px;
+    }
+    .section-header h3 {
+        font-size: 22px;
+    }
+    .testimonial-card {
+        padding: 18px;
+    }
+    .testimonial-quote {
+        font-size: 14px;
     }
 }
 </style>
