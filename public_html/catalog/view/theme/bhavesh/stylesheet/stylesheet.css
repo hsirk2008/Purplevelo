@@ -7636,3 +7636,51 @@ ul.sitemap > li > ul > li > ul > li > a {margin-left:28px;opacity:0.8;}
         width: 100% !important;
     }
 }
+
+/* ========================================
+   DESTINATIONS PAGE MOBILE FIXES
+   ======================================== */
+
+/* Tablet breakpoint */
+@media (max-width: 992px) {
+    .destinations-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        grid-auto-rows: auto !important;
+        gap: 15px !important;
+    }
+    .destinations-grid .dest-box {
+        grid-column: auto !important;
+        grid-row: auto !important;
+        min-height: 280px !important;
+    }
+    .dest-custom {
+        grid-column: 1 / -1 !important;
+        min-height: 200px !important;
+    }
+}
+
+/* Mobile breakpoint */
+@media (max-width: 767px) {
+    .destinations-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+    .destinations-grid .dest-box {
+        width: 100% !important;
+        min-height: 300px !important;
+        grid-column: unset !important;
+        grid-row: unset !important;
+    }
+    .dest-custom {
+        min-height: 220px !important;
+    }
+    .destinations-page h3 {
+        font-size: 20px !important;
+        padding: 0 15px !important;
+    }
+    .destinations-page p {
+        font-size: 14px !important;
+        padding: 0 10px !important;
+    }
+}
