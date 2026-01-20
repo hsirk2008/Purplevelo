@@ -47,13 +47,14 @@
 }
 .bento-box.cycling-news {
     grid-column: span 2;
-    grid-row: span 2;
+    grid-row: span 1;
     background: linear-gradient(145deg, rgba(84, 51, 97, 0.88) 0%, rgba(107, 67, 120, 0.9) 100%), url('/image/cycling-news-bg.png');
     background-size: cover;
     background-position: center;
     color: #fff;
     display: flex;
     flex-direction: column;
+    max-height: 320px;
 }
 .bento-box.travel-blog {
     grid-column: span 2;
