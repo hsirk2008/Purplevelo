@@ -137,6 +137,10 @@ class ControllerApiCyclingNews extends Controller {
         $existingQuery = $this->db->query("SELECT news_id FROM " . DB_PREFIX . "cycling_news WHERE link = '" . $this->db->escape($item['link']) . "'");
         
         if ($existingQuery->num_rows == 0) {
+            if (!$this->isCyclingRelated($item['title'], $item['summary'])) {
+                return;
+            }
+            
             $publishedAt = $item['published_at'] ? "'" . $this->db->escape($item['published_at']) . "'" : 'NULL';
             
             $this->db->query("INSERT INTO " . DB_PREFIX . "cycling_news (title, link, source, summary, published_at, category, fetched_at) VALUES (
@@ -149,6 +153,76 @@ class ControllerApiCyclingNews extends Controller {
                 NOW()
             )");
         }
+    }
+    
+    private function isCyclingRelated($title, $summary) {
+        $baseUrl = getenv('AI_INTEGRATIONS_OPENAI_BASE_URL');
+        $apiKey = getenv('AI_INTEGRATIONS_OPENAI_API_KEY');
+        
+        if (!$baseUrl || !$apiKey) {
+            return $this->isCyclingRelatedKeywords($title, $summary);
+        }
+        
+        $prompt = "Is this article about CYCLING (bicycles, bike racing, cycling tours, cycling equipment, cyclists, bike industry)? 
+NOT about: motorcycles, motorbikes, hiking, running, triathlon swimming, cars, or other non-cycling sports.
+
+Title: " . $title . "
+Summary: " . substr($summary, 0, 200) . "
+
+Respond with ONLY 'YES' or 'NO'.";
+        
+        $data = array(
+            'model' => 'gpt-4o-mini',
+            'messages' => array(
+                array('role' => 'user', 'content' => $prompt)
+            ),
+            'max_tokens' => 5,
+            'temperature' => 0
+        );
+        
+        $ch = curl_init($baseUrl . '/chat/completions');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Content-Type: application/json',
+            'Authorization: Bearer ' . $apiKey
+        ));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+        curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+        
+        $response = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+        
+        if ($httpCode == 200 && $response) {
+            $result = json_decode($response, true);
+            if (isset($result['choices'][0]['message']['content'])) {
+                $answer = strtoupper(trim($result['choices'][0]['message']['content']));
+                return strpos($answer, 'YES') !== false;
+            }
+        }
+        
+        return $this->isCyclingRelatedKeywords($title, $summary);
+    }
+    
+    private function isCyclingRelatedKeywords($title, $summary) {
+        $text = strtolower($title . ' ' . $summary);
+        
+        $excludeKeywords = array('motorcycle', 'motorbike', 'motor racing', 'formula 1', 'f1', 'hiking', 'trail running', 'running shoes', 'marathon', 'triathlon swim', 'car review', 'automobile');
+        foreach ($excludeKeywords as $keyword) {
+            if (strpos($text, $keyword) !== false) {
+                return false;
+            }
+        }
+        
+        $cyclingKeywords = array('cycling', 'cyclist', 'bicycle', 'bike', 'peloton', 'tour de', 'giro', 'vuelta', 'race', 'velodrome', 'road bike', 'gravel', 'mtb', 'e-bike', 'ebike', 'pedal', 'saddle', 'handlebars', 'groupset', 'shimano', 'sram', 'campagnolo');
+        foreach ($cyclingKeywords as $keyword) {
+            if (strpos($text, $keyword) !== false) {
+                return true;
+            }
+        }
+        
+        return true;
     }
     
     private function categorizeUncategorizedItems() {

@@ -4,12 +4,16 @@
 Self-guided European cycling holidays e-commerce website powered by OpenCart 2.3.0.2, migrated from Hostinger MySQL to local Replit PostgreSQL for improved performance.
 
 ## Recent Changes
+- **2026-01-20**: Automated News Refresh & AI Content Filtering
+  - Automatic 3x daily news refresh (every 8 hours) built into website
+  - AI-powered cycling relevance filtering rejects non-cycling content (motorcycles, hiking, etc.)
+  - Manual "Refresh Now" button on Community page
+  - Schedule tracking table: oc_news_schedule
+  - Auto-refresh logic in: catalog/controller/information/community.php
 - **2026-01-19**: AI-Powered Cycling News Aggregator
-  - Fetches news from 17 sources including mainstream, Reddit, and Substack:
-    - Mainstream: CyclingNews, VeloNews, BikeRadar, CyclingTips, ProcyclingUK, EscapeCollective, CyclingWeekly, RoadCC
-    - Reddit: r/peloton, r/cycling, r/Velo, r/gravelcycling
-    - Substack: The Outer Line, Lanterne Rouge, InTheDrops
-    - YouTube: CyclingMaven, GCN Racing
+  - Fetches news from 15 cycling-focused sources:
+    - Mainstream: CyclingNews, VeloNews, BikeRadar, CyclingTips, ProcyclingUK, EscapeCollective, CyclingWeekly, RoadCC, BikeRumor, Bicycling, BikeExif, CyclingIndustryNews, ElectricBikeReview, Bikepacking
+    - Substacks: The Outer Line, Lanterne Rouge
   - AI categorization using OpenAI gpt-4o-mini via Replit AI Integrations
   - Three categories: Wheely (good news), Crash (bad news), Rumour (cycling rumours)
   - Keyword fallback if AI unavailable
