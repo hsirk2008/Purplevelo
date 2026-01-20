@@ -3,6 +3,8 @@ class ControllerInformationCommunity extends Controller {
     public function index() {
         $this->load->language('information/information');
         
+        $this->checkAutoRefresh();
+        
         $this->document->setTitle('Community - Purple Velo');
         $this->document->setDescription('Join the Purple Velo cycling community. Cycling news, travel blogs, product reviews, and testimonials from fellow cyclists.');
         $this->document->setKeywords('cycling community, cycling news, travel blog, product reviews, cycling testimonials');
