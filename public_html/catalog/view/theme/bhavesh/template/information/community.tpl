@@ -47,14 +47,11 @@
 }
 .bento-box.cycling-news {
     grid-column: span 2;
-    grid-row: span 1;
+    grid-row: span 2;
     background: linear-gradient(145deg, rgba(84, 51, 97, 0.88) 0%, rgba(107, 67, 120, 0.9) 100%), url('/image/cycling-news-bg.png');
     background-size: cover;
     background-position: center;
     color: #fff;
-    display: flex;
-    flex-direction: column;
-    max-height: 320px;
 }
 .bento-box.travel-blog {
     grid-column: span 2;
@@ -175,17 +172,9 @@
 }
 .news-tabs-container {
     margin-top: 15px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
 }
 .bento-box.cycling-news .bento-content {
     padding: 20px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
 }
 .news-intro {
     margin-bottom: 15px;
@@ -214,7 +203,6 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    min-height: 0;
 }
 .news-tabs {
     display: flex;
@@ -251,15 +239,12 @@
 }
 .news-tab-content {
     display: none;
+    max-height: 280px;
     overflow-y: auto;
     flex: 1;
-    min-height: 0;
 }
 .news-tab-content.active {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-height: 0;
+    display: block;
 }
 .news-tab-content::-webkit-scrollbar {
     width: 5px;
@@ -568,7 +553,7 @@
                         <?php endif; ?>
                     </div>
                 </div>
-                <a href="/cycling-news-archive" class="bento-link" style="margin-top: auto; padding-top: 10px;">View Full Archive <i class="fa fa-arrow-right"></i></a>
+                <a href="/cycling-news-archive" class="bento-link" style="margin-top: 15px;">View Full Archive <i class="fa fa-arrow-right"></i></a>
             </div>
         </div>
         
