@@ -348,9 +348,19 @@
     }
 }
 @media (max-width: 768px) {
-    .community-module .bento-grid {
-        grid-template-columns: 1fr;
+    .community-module .bento-container {
+        padding: 0 10px;
+        margin: 20px auto;
+        max-width: 100%;
+        overflow-x: hidden;
     }
+    .community-module .bento-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px;
+        width: 100%;
+    }
+    .community-module .bento-box,
     .community-module .bento-box.cycling-news,
     .community-module .bento-box.travel-blog,
     .community-module .bento-box.product-reviews,
@@ -358,17 +368,54 @@
     .community-module .bento-box.testimonials-main,
     .community-module .bento-box.buycycle,
     .community-module .bento-box.velosync {
-        grid-column: span 1;
-        grid-row: span 1;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    .community-module .bento-content {
+        padding: 15px;
     }
     .community-module .testimonials-grid {
-        grid-template-columns: 1fr;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px;
+        padding: 15px;
+    }
+    .community-module .testimonial-card {
+        width: 100%;
     }
     .community-module .blog-preview {
         flex-direction: column;
+        gap: 10px;
     }
     .community-module .bento-title {
+        font-size: 20px !important;
+    }
+    .community-module .bento-description {
+        font-size: 14px;
+    }
+    .community-module .section-heading h2 {
         font-size: 24px;
+    }
+    .community-module .tool-header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .community-module .tool-info .bento-title {
+        font-size: 16px !important;
+    }
+    .community-module .coming-soon-badge {
+        margin-top: 5px;
+    }
+    .community-module .news-inner-card {
+        padding: 10px;
+    }
+    .community-module .news-tab {
+        padding: 8px 4px;
+        font-size: 9px;
+    }
+    .community-module .news-tab i {
+        font-size: 14px;
     }
 }
 .community-module .section-heading {
