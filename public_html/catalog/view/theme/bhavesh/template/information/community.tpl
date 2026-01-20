@@ -52,6 +52,8 @@
     background-size: cover;
     background-position: center;
     color: #fff;
+    display: flex;
+    flex-direction: column;
 }
 .bento-box.travel-blog {
     grid-column: span 2;
@@ -175,6 +177,9 @@
 }
 .bento-box.cycling-news .bento-content {
     padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 .news-intro {
     margin-bottom: 15px;
@@ -203,6 +208,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    min-height: 0;
 }
 .news-tabs {
     display: flex;
@@ -239,12 +245,14 @@
 }
 .news-tab-content {
     display: none;
-    max-height: 280px;
+    min-height: 280px;
+    max-height: 350px;
     overflow-y: auto;
     flex: 1;
 }
 .news-tab-content.active {
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 .news-tab-content::-webkit-scrollbar {
     width: 5px;
@@ -553,7 +561,7 @@
                         <?php endif; ?>
                     </div>
                 </div>
-                <a href="/cycling-news-archive" class="bento-link" style="margin-top: 15px;">View Full Archive <i class="fa fa-arrow-right"></i></a>
+                <a href="/cycling-news-archive" class="bento-link" style="margin-top: auto; padding-top: 10px;">View Full Archive <i class="fa fa-arrow-right"></i></a>
             </div>
         </div>
         
