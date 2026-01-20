@@ -174,12 +174,17 @@
 }
 .news-tabs-container {
     margin-top: 15px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
 }
 .bento-box.cycling-news .bento-content {
     padding: 20px;
     flex: 1;
     display: flex;
     flex-direction: column;
+    min-height: 0;
 }
 .news-intro {
     margin-bottom: 15px;
@@ -245,14 +250,15 @@
 }
 .news-tab-content {
     display: none;
-    min-height: 280px;
-    max-height: 350px;
     overflow-y: auto;
     flex: 1;
+    min-height: 0;
 }
 .news-tab-content.active {
     display: flex;
     flex-direction: column;
+    flex: 1;
+    min-height: 0;
 }
 .news-tab-content::-webkit-scrollbar {
     width: 5px;
