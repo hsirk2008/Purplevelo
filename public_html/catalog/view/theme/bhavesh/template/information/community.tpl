@@ -487,6 +487,12 @@
                 </div>
                 
                 <div class="news-inner-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <span style="font-size: 11px; opacity: 0.7;">Auto-refreshes 3x daily</span>
+                        <button id="refresh-news-btn" onclick="refreshCyclingNews()" style="background: rgba(255,255,255,0.2); border: none; color: #fff; padding: 6px 12px; border-radius: 6px; font-family: 'Josefin Sans', sans-serif; font-size: 11px; cursor: pointer; display: flex; align-items: center; gap: 5px;">
+                            <i class="fa fa-refresh"></i> Refresh Now
+                        </button>
+                    </div>
                     <div class="news-tabs">
                         <button class="news-tab active" data-tab="wheely" title="Good news - Race wins, achievements, product launches">
                             <i class="fa fa-thumbs-up"></i>
@@ -648,6 +654,29 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+function refreshCyclingNews() {
+    var btn = document.getElementById('refresh-news-btn');
+    var originalText = btn.innerHTML;
+    btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Refreshing...';
+    btn.disabled = true;
+    
+    fetch('/index.php?route=api/cycling_news/refresh')
+        .then(function(response) { return response.json(); })
+        .then(function(data) {
+            btn.innerHTML = '<i class="fa fa-check"></i> Done! Reloading...';
+            setTimeout(function() {
+                window.location.reload();
+            }, 1000);
+        })
+        .catch(function(error) {
+            btn.innerHTML = '<i class="fa fa-times"></i> Error';
+            setTimeout(function() {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 2000);
+        });
+}
 </script>
 
 <?php echo $footer; ?>
