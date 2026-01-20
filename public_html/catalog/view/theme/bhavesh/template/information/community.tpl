@@ -173,6 +173,36 @@
 .news-tabs-container {
     margin-top: 15px;
 }
+.news-refresh-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.news-auto-text {
+    font-size: 11px;
+    opacity: 0.7;
+    font-family: 'Josefin Sans', sans-serif;
+}
+.news-refresh-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+.news-refresh-btn:hover {
+    background: rgba(255,255,255,0.3);
+}
 .bento-box.cycling-news .bento-content {
     padding: 20px;
 }
@@ -468,6 +498,75 @@
     .testimonial-quote {
         font-size: 13px;
     }
+    .news-intro .bento-title {
+        font-size: 18px !important;
+    }
+    .news-intro .news-subtitle {
+        font-size: 12px;
+    }
+    .news-article-title {
+        font-size: 12px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    .news-article-meta {
+        font-size: 9px;
+    }
+    .news-refresh-btn {
+        padding: 5px 8px !important;
+        font-size: 10px !important;
+    }
+    .news-auto-text {
+        font-size: 10px;
+    }
+}
+@media (max-width: 480px) {
+    .community-hero h1 {
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+    .community-hero p {
+        font-size: 13px;
+    }
+    .bento-container {
+        padding: 0 8px;
+    }
+    .bento-content {
+        padding: 12px;
+    }
+    .news-inner-card {
+        padding: 8px;
+    }
+    .news-tab {
+        padding: 6px 3px;
+        font-size: 8px;
+    }
+    .news-tab i {
+        font-size: 12px;
+    }
+    .news-tab-content {
+        max-height: 220px;
+    }
+    .news-article {
+        padding: 6px 0;
+    }
+    .news-article-title {
+        font-size: 11px;
+    }
+    .bento-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+    .bento-title {
+        font-size: 16px !important;
+        margin-bottom: 10px;
+    }
+    .bento-description {
+        font-size: 13px;
+        line-height: 1.5;
+    }
 }
 </style>
 
@@ -487,10 +586,10 @@
                 </div>
                 
                 <div class="news-inner-card">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <span style="font-size: 11px; opacity: 0.7;">Auto-refreshes 3x daily</span>
-                        <button id="refresh-news-btn" onclick="refreshCyclingNews()" style="background: rgba(255,255,255,0.2); border: none; color: #fff; padding: 6px 12px; border-radius: 6px; font-family: 'Josefin Sans', sans-serif; font-size: 11px; cursor: pointer; display: flex; align-items: center; gap: 5px;">
-                            <i class="fa fa-refresh"></i> Refresh Now
+                    <div class="news-refresh-row">
+                        <span class="news-auto-text">Auto-refreshes 3x daily</span>
+                        <button id="refresh-news-btn" class="news-refresh-btn" onclick="refreshCyclingNews()">
+                            <i class="fa fa-refresh"></i> Refresh
                         </button>
                     </div>
                     <div class="news-tabs">
