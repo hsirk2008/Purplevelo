@@ -397,76 +397,63 @@
     }
 }
 @media (max-width: 768px) {
-    .community-hero {
-        padding: 40px 15px;
-    }
     .community-hero h1 {
-        font-size: 24px;
+        font-size: 28px;
     }
     .community-hero p {
-        font-size: 14px;
+        font-size: 15px;
     }
     .bento-container {
-        padding: 0 10px;
-        max-width: 100%;
-        overflow-x: hidden;
+        padding: 0 15px;
     }
     .bento-grid {
-        display: flex !important;
-        flex-direction: column !important;
+        display: flex;
+        flex-direction: column;
         gap: 15px;
-        width: 100%;
     }
-    .bento-box,
     .bento-box.cycling-news,
     .bento-box.travel-blog,
     .bento-box.product-reviews,
     .bento-box.testimonials-small,
     .bento-box.testimonials-main {
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
+        width: 100%;
     }
     .bento-content {
-        padding: 15px;
+        padding: 20px;
     }
     .testimonials-grid {
-        display: flex !important;
-        flex-direction: column !important;
+        grid-template-columns: 1fr;
         gap: 15px;
-        padding: 15px;
-    }
-    .testimonial-card {
-        width: 100%;
+        padding: 20px;
     }
     .blog-preview {
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
     }
     .bento-title {
-        font-size: 20px !important;
+        font-size: 22px;
     }
     .bento-description {
         font-size: 14px;
     }
     .news-inner-card {
-        padding: 10px;
+        padding: 12px;
     }
     .news-tab {
-        padding: 8px 4px;
-        font-size: 9px;
+        padding: 8px 5px;
+        font-size: 10px;
     }
     .news-tab i {
         font-size: 14px;
     }
     .section-header h3 {
-        font-size: 20px;
+        font-size: 22px;
     }
     .testimonial-card {
-        padding: 15px;
+        padding: 18px;
     }
     .testimonial-quote {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 </style>

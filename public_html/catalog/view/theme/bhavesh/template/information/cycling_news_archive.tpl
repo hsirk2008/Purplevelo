@@ -386,112 +386,38 @@
     }
 }
 @media (max-width: 768px) {
-    .news-archive-page {
-        padding: 15px 0;
-    }
-    .news-archive-card {
-        padding: 0 10px;
-        max-width: 100%;
-        overflow-x: hidden;
-    }
     .archive-header {
-        padding: 25px 15px;
-        border-radius: 12px 12px 0 0;
+        padding: 35px 25px;
+        border-radius: 15px 15px 0 0;
     }
     .archive-header h1 {
-        font-size: 20px;
+        font-size: 22px;
     }
     .archive-header p {
-        font-size: 13px;
+        font-size: 14px;
+    }
+    .news-archive-page {
+        padding: 25px 0;
     }
     .archive-body {
-        padding: 15px;
-        border-radius: 0 0 12px 12px;
-    }
-    .category-tabs {
-        flex-direction: column;
-        gap: 10px;
-    }
-    .category-tab {
-        width: 100%;
-        justify-content: center;
-        padding: 12px 15px;
-        font-size: 13px;
+        padding: 20px;
+        border-radius: 0 0 15px 15px;
     }
     .accordion-header {
-        padding: 12px 15px;
-        border-radius: 10px;
-    }
-    .accordion-header.expanded {
-        border-radius: 10px 10px 0 0;
+        padding: 15px 20px;
     }
     .accordion-header h3 {
-        font-size: 14px;
-    }
-    .accordion-header-left {
-        gap: 10px;
-    }
-    .accordion-header-left i {
         font-size: 16px;
-    }
-    .accordion-count {
-        font-size: 11px;
-        padding: 4px 10px;
-    }
-    .accordion-toggle {
-        font-size: 14px;
     }
     .accordion-content {
-        padding: 10px;
-    }
-    .news-columns {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 15px;
-    }
-    .news-column {
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-    .column-header h4 {
-        font-size: 16px;
-    }
-    .news-item {
-        padding: 10px;
-    }
-    .news-item-title {
-        font-size: 13px;
-    }
-    .news-item-meta {
-        font-size: 10px;
-    }
-    .forums-section {
-        margin-top: 20px;
         padding: 15px;
     }
     .forums-header h2 {
-        font-size: 18px;
-    }
-    .forums-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 12px;
+        font-size: 20px;
     }
     .forum-box {
-        padding: 15px;
-        border-radius: 10px;
-    }
-    .forum-name {
-        font-size: 14px;
-    }
-    .forum-description {
-        font-size: 12px;
-    }
-    .back-link {
-        width: 100%;
-        justify-content: center;
-        padding: 12px 20px;
-        font-size: 13px;
+        padding: 20px;
+        border-radius: 15px;
     }
 }
 </style>
