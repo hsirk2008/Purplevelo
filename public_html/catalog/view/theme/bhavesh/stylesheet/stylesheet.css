@@ -7466,7 +7466,7 @@ ul.sitemap > li > ul > li > ul > li > a {margin-left:28px;opacity:0.8;}
     .top_line {
         display: block !important;
         width: 100% !important;
-        padding: 8px 0 !important;
+        padding: 8px 0 12px 0 !important;
     }
     
     /* CRITICAL FIX: Remove the 1px line from top_line:before */
