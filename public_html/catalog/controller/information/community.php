@@ -3,8 +3,6 @@ class ControllerInformationCommunity extends Controller {
     public function index() {
         $this->load->language('information/information');
         
-        $this->checkAutoRefresh();
-        
         $this->document->setTitle('Community - Purple Velo');
         $this->document->setDescription('Join the Purple Velo cycling community. Cycling news, travel blogs, product reviews, and testimonials from fellow cyclists.');
         $this->document->setKeywords('cycling community, cycling news, travel blog, product reviews, cycling testimonials');
@@ -76,45 +74,5 @@ class ControllerInformationCommunity extends Controller {
         } else {
             return date('M j', $time);
         }
-    }
-    
-    private function checkAutoRefresh() {
-        $query = $this->db->query("SELECT last_run, is_running, lock_expires FROM " . DB_PREFIX . "news_schedule WHERE id = 1");
-        
-        if ($query->num_rows == 0) {
-            $this->db->query("INSERT INTO " . DB_PREFIX . "news_schedule (id, last_run, is_running) VALUES (1, NULL, FALSE)");
-            $lastRun = null;
-            $isRunning = false;
-        } else {
-            $lastRun = $query->row['last_run'];
-            $isRunning = $query->row['is_running'];
-            $lockExpires = $query->row['lock_expires'];
-        }
-        
-        if ($isRunning && $lockExpires && strtotime($lockExpires) > time()) {
-            return;
-        }
-        
-        $refreshInterval = 8 * 3600;
-        
-        if ($lastRun === null || (time() - strtotime($lastRun)) >= $refreshInterval) {
-            $lockExpiry = date('Y-m-d H:i:s', time() + 300);
-            $this->db->query("UPDATE " . DB_PREFIX . "news_schedule SET is_running = TRUE, lock_expires = '" . $this->db->escape($lockExpiry) . "' WHERE id = 1");
-            
-            $this->triggerAsyncRefresh();
-            
-            $this->db->query("UPDATE " . DB_PREFIX . "news_schedule SET last_run = NOW(), is_running = FALSE, lock_expires = NULL WHERE id = 1");
-        }
-    }
-    
-    private function triggerAsyncRefresh() {
-        $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/index.php?route=api/cycling_news/refresh';
-        
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 120);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-        curl_exec($ch);
-        curl_close($ch);
     }
 }

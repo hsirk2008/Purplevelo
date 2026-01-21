@@ -127,15 +127,6 @@ final class PostgreSQL {
         
         $sql = preg_replace('/\bRAND\s*\(\s*\)/i', 'RANDOM()', $sql);
         
-        // SHA1 function - translate MySQL SHA1 to PostgreSQL encode(digest(..., 'sha1'), 'hex')
-        // Handle nested SHA1 calls by running multiple times
-        for ($i = 0; $i < 5; $i++) {
-            $sql = preg_replace('/\bSHA1\s*\(\s*([^()]+(?:\([^()]*\)[^()]*)*)\s*\)/i', "encode(digest($1::bytea, 'sha1'), 'hex')", $sql);
-        }
-        
-        // MD5 function translation
-        $sql = preg_replace('/\bMD5\s*\(\s*([^)]+)\s*\)/i', 'md5($1)', $sql);
-        
         $sql = preg_replace('/\bAUTO_INCREMENT\b/i', '', $sql);
         $sql = preg_replace('/\bUNSIGNED\b/i', '', $sql);
         $sql = preg_replace('/\bENGINE\s*=\s*\w+/i', '', $sql);

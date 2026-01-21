@@ -1,11 +1,10 @@
-modules = ["php-8.2", "python-3.11", "postgresql-16"]
+modules = ["php-8.2", "postgresql-16"]
 [nix]
 channel = "stable-25_05"
-packages = ["mariadb", "unzip"]
+packages = ["unzip", "mariadb"]
 
 [agent]
 expertMode = true
-integrations = ["python_openai_ai_integrations:1.0.0"]
 
 [workflows]
 runButton = "Project"

@@ -36,18 +36,9 @@ class User {
 	}
 
 	public function login($username, $password) {
-		$user_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "user WHERE username = '" . $this->db->escape($username) . "' AND status = '1'");
+		$user_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "user WHERE username = '" . $this->db->escape($username) . "' AND (password = SHA1(CONCAT(salt, SHA1(CONCAT(salt, SHA1('" . $this->db->escape(htmlspecialchars($password, ENT_QUOTES)) . "'))))) OR password = '" . $this->db->escape(md5($password)) . "') AND status = '1'");
 
 		if ($user_query->num_rows) {
-			$user = $user_query->row;
-			$salt = $user['salt'];
-			$expected_hash = sha1($salt . sha1($salt . sha1($password)));
-			$md5_hash = md5($password);
-			
-			if ($user['password'] !== $expected_hash && $user['password'] !== $md5_hash) {
-				return false;
-			}
-			
 			$this->session->data['user_id'] = $user_query->row['user_id'];
 
 			$this->user_id = $user_query->row['user_id'];
