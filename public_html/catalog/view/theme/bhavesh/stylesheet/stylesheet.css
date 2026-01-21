@@ -7466,7 +7466,20 @@ ul.sitemap > li > ul > li > ul > li > a {margin-left:28px;opacity:0.8;}
     .top_line {
         display: block !important;
         width: 100% !important;
-        padding: 8px 0 12px 0 !important;
+        padding: 8px 0 15px 0 !important;
+    }
+    
+    /* Move header section down to cover brown gap */
+    .sticky-header {
+        margin-top: 5px !important;
+    }
+    
+    /* Move hero/video section down slightly */
+    .main-wrapper,
+    .bhslider-video-wrapper,
+    .bhvideo-main,
+    #bhslider {
+        margin-top: 3px !important;
     }
     
     /* CRITICAL FIX: Remove the 1px line from top_line:before */
