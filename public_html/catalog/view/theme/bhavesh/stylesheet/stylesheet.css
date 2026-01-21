@@ -7460,28 +7460,45 @@ ul.sitemap > li > ul > li > ul > li > a {margin-left:28px;opacity:0.8;}
    PURPLE VELO EXTENDED MOBILE FIXES
    ======================================== */
 
-@media (max-width: 767px) {
-    /* CRITICAL: Hide desktop navigation on mobile */
+/* Mobile/Tablet header fix - must come before other mobile rules */
+@media (max-width: 991px) {
+    /* CRITICAL: Hide desktop navigation on mobile/tablet */
     .header-main .table-cell.menu-cell,
-    .header-main .menu-cell {
+    .header-main .menu-cell,
+    .table-cell.menu-cell,
+    .menu-cell,
+    .header-main .main-menu {
         display: none !important;
+        visibility: hidden !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
     }
     
-    /* Fix header layout on mobile */
+    /* Fix header table layout */
+    .header-main.table,
+    .header-main {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+    }
+    
+    /* Logo cell */
     .header-main .table-cell.logo {
+        display: block !important;
         width: auto !important;
-        text-align: left !important;
+        flex: 0 0 auto !important;
     }
+    
+    /* Shortcuts cell */
     .header-main .table-cell.shortcuts {
+        display: block !important;
         width: auto !important;
-        text-align: right !important;
+        flex: 0 0 auto !important;
     }
-    
-    /* Ensure hamburger menu trigger is visible */
-    .menu-trigger {
-        display: inline-block !important;
-    }
-    
+}
+
+@media (max-width: 767px) {
     /* Fix top line spacing */
     .top_line .promo-message {
         font-size: 12px !important;
