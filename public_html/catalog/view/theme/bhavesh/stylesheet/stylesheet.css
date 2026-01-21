@@ -7536,10 +7536,31 @@ ul.sitemap > li > ul > li > ul > li > a {margin-left:28px;opacity:0.8;}
     .header-wrapper,
     .sticky-header,
     .header-style,
-    .outer-container.header-style {
+    .outer-container.header-style,
+    .header-wrapper::after,
+    .header-wrapper::before,
+    .sticky-header::after,
+    .sticky-header::before,
+    .fixed-header-possible {
         border: none !important;
         border-bottom: none !important;
         box-shadow: none !important;
+    }
+    
+    /* Ensure no gap between header and content */
+    .header-wrapper {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    .sticky-header {
+        margin-bottom: 0 !important;
+    }
+    
+    /* Remove any dark line elements */
+    .header-wrapper + *,
+    .sticky-header + * {
+        margin-top: 0 !important;
+        border-top: none !important;
     }
 }
 
