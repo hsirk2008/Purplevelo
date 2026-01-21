@@ -7531,6 +7531,16 @@ ul.sitemap > li > ul > li > ul > li > a {margin-left:28px;opacity:0.8;}
         width: auto !important;
         flex: 0 0 auto !important;
     }
+    
+    /* Remove black line/border above hero section */
+    .header-wrapper,
+    .sticky-header,
+    .header-style,
+    .outer-container.header-style {
+        border: none !important;
+        border-bottom: none !important;
+        box-shadow: none !important;
+    }
 }
 
 @media (max-width: 767px) {
