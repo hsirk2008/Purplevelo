@@ -7461,6 +7461,32 @@ ul.sitemap > li > ul > li > ul > li > a {margin-left:28px;opacity:0.8;}
    ======================================== */
 
 @media (max-width: 767px) {
+    /* CRITICAL: Hide desktop navigation on mobile */
+    .header-main .table-cell.menu-cell,
+    .header-main .menu-cell {
+        display: none !important;
+    }
+    
+    /* Fix header layout on mobile */
+    .header-main .table-cell.logo {
+        width: auto !important;
+        text-align: left !important;
+    }
+    .header-main .table-cell.shortcuts {
+        width: auto !important;
+        text-align: right !important;
+    }
+    
+    /* Ensure hamburger menu trigger is visible */
+    .menu-trigger {
+        display: inline-block !important;
+    }
+    
+    /* Fix top line spacing */
+    .top_line .promo-message {
+        font-size: 12px !important;
+    }
+    
     /* Product grids - only non-carousel grids */
     .grid-holder:not(.slick-initialized):not(.carousel),
     .grid-holder.grid2:not(.slick-initialized):not(.carousel),
