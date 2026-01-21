@@ -7462,25 +7462,42 @@ ul.sitemap > li > ul > li > ul > li > a {margin-left:28px;opacity:0.8;}
 
 /* Mobile/Tablet header fix - must come before other mobile rules */
 @media (max-width: 991px) {
-    /* PRESERVE top_line (brown bar) - must display properly */
+    /* PRESERVE top_line (brown bar) - compact on mobile */
     .top_line {
         display: block !important;
         width: 100% !important;
-        padding: 5px 0 !important;
+        padding: 8px 0 !important;
     }
     .top_line .table {
-        display: table !important;
+        display: block !important;
         width: 100% !important;
+        text-align: center !important;
     }
-    .top_line .table-cell {
-        display: table-cell !important;
-        vertical-align: middle !important;
+    .top_line .table-cell.left {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+    /* Hide the right side links on mobile (they have hidden-xs hidden-sm) */
+    .top_line .table-cell.hidden-xs,
+    .top_line .table-cell.hidden-sm {
+        display: none !important;
     }
     .top_line .promo-message {
         display: inline-block !important;
         padding: 5px 10px !important;
-        font-size: 12px !important;
+        font-size: 13px !important;
         line-height: 1.4 !important;
+    }
+    
+    /* CRITICAL: Hide sticky-header-placeholder - this causes the huge gap */
+    span.sticky-header-placeholder,
+    .sticky-header-placeholder {
+        display: none !important;
+        height: 0 !important;
+        min-height: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
     
     /* CRITICAL: Hide desktop navigation on mobile/tablet - ONLY in header-main */
