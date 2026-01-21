@@ -7462,6 +7462,20 @@ ul.sitemap > li > ul > li > ul > li > a {margin-left:28px;opacity:0.8;}
 
 /* Mobile/Tablet header fix - must come before other mobile rules */
 @media (max-width: 991px) {
+    /* Reduce top line height on mobile - 1/3 of original */
+    .top_line {
+        padding: 3px 0 !important;
+        min-height: auto !important;
+    }
+    .top_line .promo-message {
+        padding: 2px 0 !important;
+        line-height: 14px !important;
+        font-size: 11px !important;
+    }
+    .top_line .table-cell {
+        padding: 2px 5px !important;
+    }
+    
     /* CRITICAL: Hide desktop navigation on mobile/tablet */
     .header-main .table-cell.menu-cell,
     .header-main .menu-cell,
