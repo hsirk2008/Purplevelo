@@ -7492,12 +7492,17 @@ ul.sitemap > li > ul > li > ul > li > a {margin-left:28px;opacity:0.8;}
     
     /* CRITICAL: Hide sticky-header-placeholder - this causes the huge gap */
     span.sticky-header-placeholder,
-    .sticky-header-placeholder {
+    .sticky-header-placeholder,
+    span.table.header-main.sticky-header-placeholder,
+    span.header-main {
         display: none !important;
         height: 0 !important;
         min-height: 0 !important;
         padding: 0 !important;
         margin: 0 !important;
+        visibility: hidden !important;
+        overflow: hidden !important;
+        background: transparent !important;
     }
     
     /* CRITICAL: Hide desktop navigation on mobile/tablet - ONLY in header-main */
