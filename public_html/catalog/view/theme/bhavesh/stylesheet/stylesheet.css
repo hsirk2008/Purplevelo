@@ -7462,32 +7462,9 @@ ul.sitemap > li > ul > li > ul > li > a {margin-left:28px;opacity:0.8;}
 
 /* Mobile/Tablet header fix - must come before other mobile rules */
 @media (max-width: 991px) {
-    /* PRESERVE top_line (brown bar) - compact on mobile */
+    /* HIDE brown top bar completely on mobile */
     .top_line {
-        display: block !important;
-        width: 100% !important;
-        padding: 8px 0 !important;
-    }
-    .top_line .table {
-        display: block !important;
-        width: 100% !important;
-        text-align: center !important;
-    }
-    .top_line .table-cell.left {
-        display: block !important;
-        width: 100% !important;
-        text-align: center !important;
-    }
-    /* Hide the right side links on mobile (they have hidden-xs hidden-sm) */
-    .top_line .table-cell.hidden-xs,
-    .top_line .table-cell.hidden-sm {
         display: none !important;
-    }
-    .top_line .promo-message {
-        display: inline-block !important;
-        padding: 5px 10px !important;
-        font-size: 13px !important;
-        line-height: 1.4 !important;
     }
     
     /* CRITICAL: Hide sticky-header-placeholder - this causes the huge gap */
