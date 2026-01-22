@@ -7248,3 +7248,18 @@ ul.sitemap > li > ul > li > ul > li > a {margin-left:28px;opacity:0.8;}
         display: none !important;
     }
 }
+
+/* WhatsApp chat button - smaller size and repositioned */
+.czm-fixed .czm-button {
+    bottom: 15px !important;
+}
+.czm-right .czm-button {
+    right: 15px !important;
+}
+.czm-button {
+    transform: scale(0.8) !important;
+    transform-origin: bottom right !important;
+}
+.czm-chat-support-2 .czm-button-person-avatar i {
+    font-size: 24px !important;
+}
