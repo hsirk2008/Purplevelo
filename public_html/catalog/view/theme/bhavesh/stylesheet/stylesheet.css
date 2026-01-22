@@ -7241,3 +7241,10 @@ ul.sitemap > li > ul > li > ul > li > a {margin-left:28px;opacity:0.8;}
 .icon-vynil:before {content: "\e92d";}
 .icon-truck:before {content: "\e92e";}
 .icon-world:before {content: "\e92f";}
+
+/* Hide WhatsApp chat speech bubble tooltip on mobile */
+@media (max-width: 768px) {
+    .czm-speech-bubble {
+        display: none !important;
+    }
+}
