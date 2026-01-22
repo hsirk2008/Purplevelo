@@ -49,12 +49,17 @@
 <!-- Preconnect for fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+<!-- Preload critical fonts for faster rendering -->
+<link rel="preload" href="https://fonts.gstatic.com/s/josefinsans/v32/Qw3PZQNVED7rKGKxtqIqX5E-AVSJrOCfjY46_DjQbMZhKSbpUVzEEQ.woff2" as="font" type="font/woff2" crossorigin>
 
 <!-- Critical CSS -->
 <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
 
 <!-- Fonts with display swap for performance -->
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
 
 <!-- Core JS - jQuery must load first -->
 <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js"></script>

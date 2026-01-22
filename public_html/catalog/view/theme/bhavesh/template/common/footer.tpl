@@ -205,8 +205,6 @@ $('#column-left, #column-right').theiaStickySidebar({containerSelector:$(this).c
  
  
 
-<script  src="https://digitalcosmo.in/perfectnails/ani/script.js"></script>
-
 <script async type="text/javascript">
     // This Function repeats the News-Ticker-Text
     var tickerElement = document.getElementById("ticker_text");
@@ -215,12 +213,18 @@ $('#column-left, #column-right').theiaStickySidebar({containerSelector:$(this).c
         tickerElement.innerHTML = repeatText.repeat(1000);
     }
     
-    
-    
-    
-    
-
-    
+    // Native lazy loading for images and videos - applies to all elements
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add lazy loading to all images without it
+        document.querySelectorAll('img:not([loading])').forEach(function(img) {
+            img.setAttribute('loading', 'lazy');
+            img.setAttribute('decoding', 'async');
+        });
+        // Add lazy loading to all videos and iframes
+        document.querySelectorAll('video:not([loading]), iframe:not([loading])').forEach(function(el) {
+            el.setAttribute('loading', 'lazy');
+        });
+    });
 </script>
 
 

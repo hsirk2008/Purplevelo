@@ -1,4 +1,9 @@
 <?php
+// Enable Gzip compression for text-based content
+if (!ob_start("ob_gzhandler")) {
+    ob_start();
+}
+
 // Add CORS headers for fonts and assets
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');

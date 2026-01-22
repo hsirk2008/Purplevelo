@@ -4,6 +4,15 @@
 Self-guided European cycling holidays e-commerce website powered by OpenCart 2.3.0.2, migrated from Hostinger MySQL to local Replit PostgreSQL for improved performance.
 
 ## Recent Changes
+- **2026-01-22**: Mobile & Performance Optimization
+  - Fixed Community page mobile layout - all bento boxes now stack vertically on mobile
+  - Updated /Latest-News URL to serve the Cycling News Archive page
+  - Added Gzip compression for all HTML responses
+  - Added global lazy loading for all images, videos, and iframes
+  - Added font preloading for Josefin Sans (critical font)
+  - Async font loading (non-render-blocking)
+  - Removed external digitalcosmo.in script dependency
+  - CORS errors for fonts are development-only (work fine on published site)
 - **2026-01-19**: AI-Powered Cycling News Aggregator
   - Fetches news from 17 sources including mainstream, Reddit, and Substack:
     - Mainstream: CyclingNews, VeloNews, BikeRadar, CyclingTips, ProcyclingUK, EscapeCollective, CyclingWeekly, RoadCC
