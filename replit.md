@@ -4,7 +4,7 @@
 Self-guided European cycling holidays e-commerce website powered by OpenCart 2.3.0.2, migrated from Hostinger MySQL to local Replit PostgreSQL for improved performance.
 
 ## Recent Changes
-- **2026-01-22**: Mobile & Performance Optimization
+- **2026-01-22**: Mobile, Performance & Cloudflare CDN Optimization
   - Fixed Community page mobile layout - all bento boxes now stack vertically on mobile
   - Updated /Latest-News URL to serve the Cycling News Archive page
   - Added Gzip compression for all HTML responses
@@ -12,6 +12,13 @@ Self-guided European cycling holidays e-commerce website powered by OpenCart 2.3
   - Added font preloading for Josefin Sans (critical font)
   - Async font loading (non-render-blocking)
   - Removed external digitalcosmo.in script dependency
+  - **Cloudflare CDN Ready**: Optimized cache headers for global content delivery
+    - Images: 30-day cache with stale-while-revalidate
+    - Fonts: 30-day cache with immutable flag
+    - CSS/JS: 1-day cache with ETag validation
+    - Videos: 30-day cache with byte-range support for streaming
+    - s-maxage headers for Cloudflare edge caching
+  - Real visitor IP detection when behind Cloudflare proxy
   - CORS errors for fonts are development-only (work fine on published site)
 - **2026-01-19**: AI-Powered Cycling News Aggregator
   - Fetches news from 17 sources including mainstream, Reddit, and Substack:
