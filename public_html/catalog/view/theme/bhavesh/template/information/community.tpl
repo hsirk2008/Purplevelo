@@ -237,6 +237,31 @@
     background: #fff;
     color: #543361;
 }
+.news-refresh-btn {
+    padding: 8px 10px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.news-refresh-btn:hover {
+    background: rgba(255,255,255,0.25);
+}
+.news-refresh-btn i {
+    font-size: 16px;
+}
+.news-refresh-btn.spinning i {
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
 .news-tab-content {
     display: none;
     max-height: 280px;
@@ -487,6 +512,9 @@
                             <i class="fa fa-comment-o"></i>
                             Rumour
                         </button>
+                        <button class="news-refresh-btn" id="refreshNewsBtn" title="Refresh news feeds">
+                            <i class="fa fa-refresh"></i>
+                        </button>
                     </div>
                     
                     <div id="tab-wheely" class="news-tab-content active">
@@ -621,7 +649,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    var tabs = document.querySelectorAll('.news-tab');
+    var tabs = document.querySelectorAll('.news-tab[data-tab]');
     tabs.forEach(function(tab) {
         tab.addEventListener('click', function() {
             tabs.forEach(function(t) { t.classList.remove('active'); });
@@ -634,6 +662,45 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById(targetId).classList.add('active');
         });
     });
+
+    var refreshBtn = document.getElementById('refreshNewsBtn');
+    if (refreshBtn) {
+        refreshBtn.addEventListener('click', function() {
+            if (refreshBtn.classList.contains('spinning')) return;
+            refreshBtn.classList.add('spinning');
+
+            fetch('/index.php?route=api/cycling_news/refresh')
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                    return fetch('/index.php?route=api/cycling_news/getNewsByCategory');
+                })
+                .then(function(r) { return r.json(); })
+                .then(function(news) {
+                    ['Wheely', 'Crash', 'Rumour'].forEach(function(cat) {
+                        var tabId = 'tab-' + cat.toLowerCase();
+                        var container = document.getElementById(tabId);
+                        if (!container) return;
+                        if (news[cat] && news[cat].length > 0) {
+                            var html = '';
+                            news[cat].forEach(function(a) {
+                                html += '<div class="news-article"><a href="' + a.link + '" target="_blank" rel="noopener">';
+                                html += '<div class="news-article-title">' + a.title.replace(/</g, '&lt;') + '</div>';
+                                html += '<div class="news-article-meta">' + a.source + '</div>';
+                                html += '</a></div>';
+                            });
+                            container.innerHTML = html;
+                        } else {
+                            container.innerHTML = '<div class="news-empty">No articles in this category yet.</div>';
+                        }
+                    });
+                    refreshBtn.classList.remove('spinning');
+                })
+                .catch(function() {
+                    refreshBtn.classList.remove('spinning');
+                    alert('Could not refresh feeds. Please try again later.');
+                });
+        });
+    }
 });
 </script>
 
