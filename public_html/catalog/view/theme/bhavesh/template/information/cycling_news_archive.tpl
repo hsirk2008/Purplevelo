@@ -370,6 +370,10 @@
 .back-link i {
     margin-right: 8px;
 }
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
 @media (max-width: 992px) {
     .news-columns {
         grid-template-columns: 1fr;
@@ -427,6 +431,9 @@
         <div class="archive-header">
             <h1>Cycling News Archive</h1>
             <p>30 days of cycling industry news - aggregated and organized by category</p>
+            <button id="archiveRefreshBtn" style="margin-top:15px;padding:10px 22px;background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.4);border-radius:10px;color:#fff;font-family:'Josefin Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.3s ease;display:inline-flex;align-items:center;gap:8px;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
+                <i class="fa fa-refresh" id="archiveRefreshIcon"></i> Refresh Feeds
+            </button>
         </div>
         
         <div class="archive-body">
@@ -773,6 +780,33 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    var refreshBtn = document.getElementById('archiveRefreshBtn');
+    var refreshIcon = document.getElementById('archiveRefreshIcon');
+    if (refreshBtn) {
+        refreshBtn.addEventListener('click', function() {
+            if (refreshBtn.disabled) return;
+            refreshBtn.disabled = true;
+            refreshIcon.style.animation = 'spin 1s linear infinite';
+            refreshBtn.innerHTML = '<i class="fa fa-refresh" id="archiveRefreshIcon" style="animation:spin 1s linear infinite"></i> Refreshing...';
+
+            fetch('/index.php?route=api/cycling_news/refresh')
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                    var msg = 'Fetched ' + data.fetched + ' articles, categorized ' + data.categorized;
+                    if (data.errors && data.errors.length > 0) {
+                        msg += ' (' + data.errors.length + ' sources had issues)';
+                    }
+                    refreshBtn.innerHTML = '<i class="fa fa-check"></i> ' + msg;
+                    setTimeout(function() { location.reload(); }, 2000);
+                })
+                .catch(function() {
+                    refreshBtn.innerHTML = '<i class="fa fa-refresh"></i> Refresh Feeds';
+                    refreshBtn.disabled = false;
+                    alert('Could not refresh feeds. Please try again.');
+                });
+        });
+    }
 });
 </script>
 

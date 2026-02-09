@@ -152,7 +152,7 @@ class ControllerApiCyclingNews extends Controller {
     }
     
     private function categorizeUncategorizedItems() {
-        $query = $this->db->query("SELECT news_id, title, summary FROM " . DB_PREFIX . "cycling_news WHERE category = 'uncategorized' ORDER BY fetched_at DESC LIMIT 20");
+        $query = $this->db->query("SELECT news_id, title, summary FROM " . DB_PREFIX . "cycling_news WHERE category = 'uncategorized' ORDER BY fetched_at DESC LIMIT 50");
         
         $categorized = 0;
         
