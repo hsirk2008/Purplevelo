@@ -238,9 +238,9 @@
     color: #543361;
 }
 .news-refresh-btn {
-    padding: 8px 10px;
-    background: rgba(255,255,255,0.1);
-    border: none;
+    padding: 10px 16px;
+    background: rgba(255,255,255,0.15);
+    border: 1.5px solid rgba(255,255,255,0.3);
     border-radius: 8px;
     color: #fff;
     cursor: pointer;
@@ -248,12 +248,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 6px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 .news-refresh-btn:hover {
-    background: rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.3);
+    border-color: rgba(255,255,255,0.5);
 }
 .news-refresh-btn i {
-    font-size: 16px;
+    font-size: 14px;
 }
 .news-refresh-btn.spinning i {
     animation: spin 1s linear infinite;
@@ -513,7 +520,7 @@
                             Rumour
                         </button>
                         <button class="news-refresh-btn" id="refreshNewsBtn" title="Refresh news feeds">
-                            <i class="fa fa-refresh"></i>
+                            <i class="fa fa-refresh"></i> Refresh
                         </button>
                     </div>
                     
