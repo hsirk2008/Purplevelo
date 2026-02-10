@@ -197,15 +197,17 @@
     line-height: 1.5;
 }
 .news-inner-card {
-    background: rgba(255,255,255,0.12);
+    background: rgba(84, 51, 97, 0.85);
     border-radius: 12px;
     padding: 15px;
     flex: 1;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 .news-tabs {
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
     margin-bottom: 12px;
 }
@@ -474,15 +476,16 @@
     }
     .news-inner-card {
         padding: 10px;
+        background: rgba(84, 51, 97, 0.9);
     }
     .news-tabs {
         flex-wrap: wrap;
-        gap: 6px;
+        gap: 5px;
     }
     .news-tab {
-        padding: 8px 10px;
-        font-size: 11px;
-        flex: 1 1 auto;
+        padding: 8px 6px;
+        font-size: 10px;
+        flex: 1 1 28%;
         min-width: 0;
     }
     .news-tab i {
@@ -492,22 +495,26 @@
     }
     .news-refresh-btn {
         padding: 8px 12px;
-        font-size: 11px;
-        width: 100%;
+        font-size: 10px;
+        flex: 1 1 100%;
         justify-content: center;
-        order: 4;
     }
     .news-tab-content {
-        max-height: 250px;
+        max-height: 220px;
+        -webkit-overflow-scrolling: touch;
     }
     .news-article-title {
-        font-size: 13px !important;
+        font-size: 12px !important;
     }
     .news-article-meta {
-        font-size: 11px !important;
+        font-size: 10px !important;
     }
     .news-article {
-        padding: 8px 0 !important;
+        padding: 7px 0 !important;
+    }
+    .news-empty {
+        min-height: 50px;
+        font-size: 12px;
     }
     .section-header h3 {
         font-size: 22px;
