@@ -323,8 +323,12 @@
     font-family: 'Josefin Sans', sans-serif;
     font-size: 13px;
     opacity: 0.7;
-    padding: 15px 0;
+    padding: 20px 10px;
     text-align: center;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .testimonials-grid {
     display: grid;
@@ -469,14 +473,41 @@
         font-size: 14px;
     }
     .news-inner-card {
-        padding: 12px;
+        padding: 10px;
+    }
+    .news-tabs {
+        flex-wrap: wrap;
+        gap: 6px;
     }
     .news-tab {
-        padding: 8px 5px;
-        font-size: 10px;
+        padding: 8px 10px;
+        font-size: 11px;
+        flex: 1 1 auto;
+        min-width: 0;
     }
     .news-tab i {
-        font-size: 14px;
+        font-size: 13px;
+        display: block;
+        margin-bottom: 2px;
+    }
+    .news-refresh-btn {
+        padding: 8px 12px;
+        font-size: 11px;
+        width: 100%;
+        justify-content: center;
+        order: 4;
+    }
+    .news-tab-content {
+        max-height: 250px;
+    }
+    .news-article-title {
+        font-size: 13px !important;
+    }
+    .news-article-meta {
+        font-size: 11px !important;
+    }
+    .news-article {
+        padding: 8px 0 !important;
     }
     .section-header h3 {
         font-size: 22px;
